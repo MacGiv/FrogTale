@@ -9,6 +9,12 @@ namespace FrogGame.UI
         [Header("Input System Setup")]
         [SerializeField] private InputActionReference submitAction;
 
+        private void Awake()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         private void OnEnable()
         {
             if (submitAction != null)
