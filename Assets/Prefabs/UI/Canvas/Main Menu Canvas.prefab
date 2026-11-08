@@ -969,6 +969,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 803315199596307830}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1562409810660753172}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1106,6 +1118,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1223,6 +1251,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1562409810660753172}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 803315199596307830}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1457,6 +1497,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Credits Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 5941553744634216465}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 3635056442815974135}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1574,6 +1626,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 3635056442815974135}
+    - target: {fileID: 8345016776505192790, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 5941553744634216465}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
