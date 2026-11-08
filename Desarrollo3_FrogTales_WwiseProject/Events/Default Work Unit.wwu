@@ -89,7 +89,7 @@
 								<Action Name="" ID="{8D91BE80-FD9D-49EA-B49D-72630C5B7996}" ShortID="891126611">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Dead" ID="{CD1547AC-557C-4ECB-AE1F-3A2E9A2EB542}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Enemy_Dead" ID="{FB0CCC2B-FA9E-4987-B62E-48637D11F16A}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -119,7 +119,7 @@
 								<Action Name="" ID="{292A2086-6857-4974-AB80-A75782F05210}" ShortID="690512914">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Alert_Attack" ID="{14B1FE48-1B42-4C66-A8F7-B87740C0EF7F}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Alert" ID="{4FE2EBCD-A0D3-48D4-AA03-DC6359701C9B}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
