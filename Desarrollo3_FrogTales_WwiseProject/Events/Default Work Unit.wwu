@@ -356,7 +356,7 @@
 								<Action Name="" ID="{50771814-DC1E-4CA0-AF1F-86A1B093F35F}" ShortID="516771588">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Tongue_Hit" ID="{D9F8663B-F77C-43F9-B466-307DDD0ADA5E}" WorkUnitID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}"/>
+											<ObjectRef Name="Player_Tongue_Hit_SWITCH" ID="{3C1C9BF7-43C4-4E5B-82FE-10A5C75850EA}" WorkUnitID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -365,6 +365,7 @@
 						<Event Name="Play_Player_Tongue_Shot" ID="{1FDE9248-201B-44BA-A616-B33C54D36B29}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="Inclusion" Type="bool" Value="False"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
@@ -402,6 +403,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player_Vox" ID="{8B68F8CA-1D0C-4554-9CE2-990BB14EB09F}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Player_Enemy_Mask_Remove" ID="{89AE58F5-5382-4327-AC9F-68D7B99F08A1}">
+							<ChildrenList>
+								<Action Name="" ID="{3C9E960C-B38E-41B4-9176-245D1BC22DC9}" ShortID="686019326">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Enemy_Mask_Remove" ID="{62F7EE7E-2AF4-47BE-BBE7-744703B4A598}" WorkUnitID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

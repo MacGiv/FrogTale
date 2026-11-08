@@ -119,15 +119,32 @@
 														<MediaID ID="335759465"/>
 													</MediaIDList>
 												</AudioFileSource>
+												<AudioFileSource Name="SFX_FLECHA_MADERA" ID="{436C45BD-10B7-430F-A659-02C3C61EFE79}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.56092"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.88466"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SFX_FLECHA_MADERA.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="927570048"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{A4ABF366-561A-4B14-91FB-215F8BEB65A4}" Platform="Linked"/>
+												<ActiveSource Name="SFX_FLECHA_MADERA" ID="{436C45BD-10B7-430F-A659-02C3C61EFE79}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Player_Bow_Hit_Metal" ID="{7FC385EF-7FF1-4C21-8339-73C08C67BC30}" ShortID="571679815">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -156,6 +173,11 @@
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="SFX_FLECHA_METAL" ID="{EC712225-692B-44D3-8B3D-AD6D5D8C0857}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.20884"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.64473"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_FLECHA_METAL.wav</AudioFile>
 													<MediaIDList>
@@ -168,6 +190,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}" ShortID="1050650305">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -194,9 +223,22 @@
 														<MediaID ID="335759465"/>
 													</MediaIDList>
 												</AudioFileSource>
+												<AudioFileSource Name="SFX_FLECHA_ARBUSTO" ID="{D9AE0C93-06FA-42B0-8F0F-8F39D38C12FE}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.04486"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.10335"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.39978"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>SFX_FLECHA_ARBUSTO.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="325305236"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{401B9E33-F48A-45B3-A8F8-15BD3887D7C7}" Platform="Linked"/>
+												<ActiveSource Name="SFX_FLECHA_ARBUSTO" ID="{D9AE0C93-06FA-42B0-8F0F-8F39D38C12FE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -262,12 +304,32 @@
 												<MediaID ID="916400711"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="SFX_MOCO" ID="{FFB99485-C7D7-47AE-AFED-E73A7169D60B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.16405"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.59451"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.43501"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SFX_MOCO.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="130985290"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{473E0B97-DA49-4089-BD5B-4CE2DFE16CA2}" Platform="Linked"/>
+										<ActiveSource Name="SFX_MOCO" ID="{FFB99485-C7D7-47AE-AFED-E73A7169D60B}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Player_Bow_Shot" ID="{3FBA8C73-147B-4657-8F20-6E5693686FA3}" ShortID="185388181">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -294,73 +356,255 @@
 												<MediaID ID="335759465"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="SFX_ARCOFLECHA" ID="{6565DFA9-C174-4CC9-9E99-2721723C326D}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.70436"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.40602"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SFX_ARCOFLECHA.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="69480265"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{0FE2128E-A5D5-42E9-82BB-1E8CAA4741D3}" Platform="Linked"/>
+										<ActiveSource Name="SFX_ARCOFLECHA" ID="{6565DFA9-C174-4CC9-9E99-2721723C326D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="Player_Tongue_Hit" ID="{D9F8663B-F77C-43F9-B466-307DDD0ADA5E}" ShortID="865565168">
+								<SwitchContainer Name="Player_Tongue_Hit_SWITCH" ID="{3C1C9BF7-43C4-4E5B-82FE-10A5C75850EA}" ShortID="571792992">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{193F27D9-12C0-4635-9373-1970116BEBE5}">
+										<Sound Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}" ShortID="1061881348">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>32</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
 												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+												</Reference>
 											</ReferenceList>
-											<Language>SFX</Language>
-											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="335759465"/>
-											</MediaIDList>
-										</AudioFileSource>
+											<ChildrenList>
+												<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+														</Reference>
+													</ReferenceList>
+													<Language>SFX</Language>
+													<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="335759465"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.38798"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.92622"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LENGUA_SIN_AGARRE.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="838428872"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="Player_Tongue_Hit_RANDOM" ID="{6324B478-5EDB-44FB-8F06-E4172C85D979}" ShortID="1007689716">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Player_Tongue_Hit_02" ID="{3256F127-B048-48AA-BF3C-0130A8653886}" ShortID="451765119">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="AGARRE_LENGUA_02" ID="{4CC8BCA9-B3B6-482F-8BE9-98ED79AB3BB5}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.14745"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.62498"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AGARRE_LENGUA_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="892825442"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AGARRE_LENGUA_02" ID="{4CC8BCA9-B3B6-482F-8BE9-98ED79AB3BB5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Player_Tongue_Hit_01" ID="{D9F8663B-F77C-43F9-B466-307DDD0ADA5E}" ShortID="865565168">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{193F27D9-12C0-4635-9373-1970116BEBE5}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+																</Reference>
+															</ReferenceList>
+															<Language>SFX</Language>
+															<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="335759465"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="AGARRE_LENGUA_01" ID="{F111C254-C94C-43EC-8292-F2B452DB976D}">
+															<PropertyList>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimBegin" Type="Real64" Value="0.34253"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.80438"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>AGARRE_LENGUA_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="426116860"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="AGARRE_LENGUA_01" ID="{F111C254-C94C-43EC-8292-F2B452DB976D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<Sound Name="Player_Tongue_Hit_Rock" ID="{4CBF1AD1-724A-4C42-8E16-B79CDCFA30AA}" ShortID="476916309">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AGARRAR_PIEDRA" ID="{11A5F6AE-B665-4722-8800-D72E5394B820}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.77223"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.35006"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>AGARRAR_PIEDRA.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="960606334"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="AGARRAR_PIEDRA" ID="{11A5F6AE-B665-4722-8800-D72E5394B820}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{193F27D9-12C0-4635-9373-1970116BEBE5}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}" ShortID="1061881348">
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Player_Tongue_Hit_RANDOM" ID="{6324B478-5EDB-44FB-8F06-E4172C85D979}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Player_Tongue_Hit_Rock" ID="{4CBF1AD1-724A-4C42-8E16-B79CDCFA30AA}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<Sound Name="Player_Enemy_Mask_Remove" ID="{62F7EE7E-2AF4-47BE-BBE7-744703B4A598}" ShortID="585706819">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
+										<AudioFileSource Name="SFX_SACAR_MASCARA" ID="{FA7E655D-A3A8-4B9F-B053-38BBF988AD8A}">
 											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.46157"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.3173"/>
 											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
-												</Reference>
-											</ReferenceList>
 											<Language>SFX</Language>
-											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+											<AudioFile>SFX_SACAR_MASCARA.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="335759465"/>
+												<MediaID ID="243081135"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}" Platform="Linked"/>
+										<ActiveSource Name="SFX_SACAR_MASCARA" ID="{FA7E655D-A3A8-4B9F-B053-38BBF988AD8A}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
