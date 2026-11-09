@@ -114,5 +114,24 @@ namespace FrogGame.Gameplay
                 }
             }
         }
+
+        private void TrySpawnDrop()
+        {
+            if (droppableItems == null || droppableItems.Length == 0) return;
+
+            foreach (DropItem dropItem in droppableItems)
+            {
+                if (dropItem.Prefab == null) continue;
+
+                int randomValue = Random.Range(0, 100);
+
+                if (randomValue < dropItem.DropChance)
+                {
+                    Instantiate(dropItem.Prefab, transform.position, Quaternion.identity);
+
+                    break;
+                }
+            }
+        }
     }
 }
