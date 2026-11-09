@@ -48,9 +48,14 @@ namespace FrogGame.Core
         {
             if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
             {
-                if (EventSystem.current.currentSelectedGameObject.TryGetComponent(out Button selectable))
+                Transform currentSelectedTransform = EventSystem.current.currentSelectedGameObject.transform;
+
+                if (currentSelectedTransform.IsChildOf(transform))
                 {
-                    LastSelected = selectable;
+                    if (EventSystem.current.currentSelectedGameObject.TryGetComponent(out Button selectable))
+                    {
+                        LastSelected = selectable;
+                    }
                 }
             }
         }
