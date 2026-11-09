@@ -7,7 +7,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Item that can be grabbed and retrieved via tongue or direct interaction.
-    /// Objeto interactivo que puede ser sujetado y arrastrado por la lengua.
+    /// Supports locking onto floor switches and carrying physics.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class GrabbableItem : MonoBehaviour
@@ -23,7 +23,7 @@ namespace FrogGame.Gameplay
         }
 
         [Header("Item Settings")]
-        [SerializeField] private ItemType type = ItemType.Collectible;
+        [SerializeField] private ItemType type = ItemType.CarriableBox;
         [SerializeField] private float pullSpeed = 25f;
         [SerializeField] private float stopDistance = 0.5f;
 
@@ -32,15 +32,41 @@ namespace FrogGame.Gameplay
         [SerializeField] private UnityEvent onCollected;
 
         private bool isBeingPulled = false;
+        private bool isLockedOnSwitch = false;
         private Collider2D itemCollider;
+        private Rigidbody2D rb;
 
         public ItemType Type => type;
         public bool IsBeingPulled => isBeingPulled;
+        public bool IsLockedOnSwitch => isLockedOnSwitch;
         public Collider2D ItemCollider => itemCollider;
 
         private void Awake()
         {
             itemCollider = GetComponent<Collider2D>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        /// <summary>
+        /// Locks the item permanently to the center of a switch, disabling further grabs.
+        /// </summary>
+        public void LockToSwitch(Vector3 switchCenterPosition)
+        {
+            isLockedOnSwitch = true;
+            isBeingPulled = false;
+            transform.SetParent(null);
+            transform.position = switchCenterPosition;
+
+            if (rb != null)
+            {
+                rb.simulated = true;
+                rb.linearVelocity = Vector2.zero;
+            }
+
+            if (itemCollider != null)
+            {
+                itemCollider.enabled = true;
+            }
         }
 
         /// <summary>
@@ -48,10 +74,15 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void OnGrabStarted()
         {
-            if (isBeingPulled) return;
+            if (isBeingPulled || isLockedOnSwitch) return;
 
             isBeingPulled = true;
             onGrabbed?.Invoke();
+
+            if (rb != null)
+            {
+                rb.simulated = false;
+            }
 
             if (itemCollider != null && type != ItemType.HeavyBlock)
             {
@@ -69,6 +100,8 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void OnGrabCompleted(Transform pullTarget)
         {
+            if (isLockedOnSwitch) return;
+
             onCollected?.Invoke();
 
             if (AudioManager.Instance != null)
@@ -99,13 +132,18 @@ namespace FrogGame.Gameplay
 
                 case ItemType.HeavyBlock:
                     if (itemCollider != null) itemCollider.enabled = true;
+                    if (rb != null) rb.simulated = true;
                     isBeingPulled = false;
                     break;
 
                 case ItemType.CarriableBox:
-                    if (pullTarget != null && pullTarget.TryGetComponent<PlayerCarryHandler>(out var carryHandler))
+                    if (pullTarget != null)
                     {
-                        carryHandler.AttachBox(this);
+                        PlayerCarryHandler carryHandler = pullTarget.GetComponentInParent<PlayerCarryHandler>();
+                        if (carryHandler != null)
+                        {
+                            carryHandler.AttachBox(this);
+                        }
                     }
                     isBeingPulled = false;
                     break;
@@ -134,7 +172,7 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void Grab(Transform pullTarget)
         {
-            if (isBeingPulled) return;
+            if (isBeingPulled || isLockedOnSwitch) return;
 
             OnGrabStarted();
             StartCoroutine(LegacyPullRoutine(pullTarget));
