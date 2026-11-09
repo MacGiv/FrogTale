@@ -1,44 +1,117 @@
 namespace FrogGame.Gameplay
 {
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Tilemaps;
 
     /// <summary>
-    /// Handles destroyable objects in the scene by checking 2D trigger collisions against a specified layer
-    /// and clearing their Tilemap cell before destruction.
+    /// Handles destruction of environmental props/bushes, clears tilemap cells, 
+    /// and instantiates dropped items based on percentage chances.
     /// </summary>
     [RequireComponent(typeof(BoxCollider2D))]
     public class Destroyable : MonoBehaviour
     {
+        [System.Serializable]
+        public struct DropEntry
+        {
+            [Tooltip("Prefab of the pickup item to drop (e.g. PickupHealth, PickupArrow)")]
+            public GameObject itemPrefab;
+
+            [Tooltip("Drop chance percentage (0 to 100%)")]
+            [Range(0f, 100f)] public float dropChance;
+        }
+
         [Header("Layer Detection")]
-        [SerializeField] private LayerMask arrowLayer;
+        [SerializeField] private LayerMask damageLayers;
 
         [Header("Effects")]
         [SerializeField] private GameObject explosionVfxPrefab;
 
+        [Header("Loot Drop Table")]
+        [Tooltip("Overall chance that this object drops ANY item upon destruction (0-100%).")]
+        [Range(0f, 100f)][SerializeField] private float overallDropChance = 60f;
+
+        [Tooltip("List of potential items and their individual drop probabilities.")]
+        [SerializeField] private List<DropEntry> lootTable = new List<DropEntry>();
+
+        private bool isDestroyed = false;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (((1 << collision.gameObject.layer) & arrowLayer) != 0)
+            if (isDestroyed) return;
+
+            if (((1 << collision.gameObject.layer) & damageLayers) != 0)
             {
-                if (AudioManager.Instance != null)
+                DestroyBush();
+            }
+        }
+
+        /// <summary>
+        /// Executes destruction routines, spawns destruction VFX, triggers loot table drops, and clears tilemap cell.
+        /// </summary>
+        public void DestroyBush()
+        {
+            isDestroyed = true;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvRockDrop(gameObject);
+            }
+
+            // 1. Instanciar VFX de destrucción
+            if (explosionVfxPrefab != null)
+            {
+                Instantiate(explosionVfxPrefab, transform.position, Quaternion.identity);
+            }
+
+            // 2. Try dropping item
+            TrySpawnLoot();
+
+            // 3. Clear tile in Tilemap if the object is part of one
+            Tilemap tilemap = GetComponentInParent<Tilemap>();
+            if (tilemap != null)
+            {
+                Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
+                tilemap.SetTile(cellPosition, null);
+            }
+
+            Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Calculates loot drop chance and instantiates the selected item prefab.
+        /// </summary>
+        private void TrySpawnLoot()
+        {
+            if (lootTable == null || lootTable.Count == 0) return;
+
+            // Throw to check if this destroyable drops something
+            float roll = Random.Range(0f, 100f);
+            if (roll > overallDropChance) return;
+
+            // Item selection throw
+            float totalWeight = 0f;
+            foreach (var entry in lootTable)
+            {
+                totalWeight += entry.dropChance;
+            }
+
+            if (totalWeight <= 0f) return;
+
+            float itemRoll = Random.Range(0f, totalWeight);
+            float currentSum = 0f;
+
+            foreach (var entry in lootTable)
+            {
+                currentSum += entry.dropChance;
+                if (itemRoll <= currentSum)
                 {
-                    AudioManager.Instance.PlayEnvRockDrop(gameObject);
+                    if (entry.itemPrefab != null)
+                    {
+                        Instantiate(entry.itemPrefab, transform.position, Quaternion.identity);
+                    }
+                    break;
                 }
-
-                if (explosionVfxPrefab != null)
-                {
-                    Instantiate(explosionVfxPrefab, transform.position, Quaternion.identity);
-                }
-
-                Tilemap tilemap = GetComponentInParent<Tilemap>();
-
-                if (tilemap != null)
-                {
-                    Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
-                    tilemap.SetTile(cellPosition, null);
-                }
-
-                Destroy(gameObject);
             }
         }
     }
