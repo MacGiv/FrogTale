@@ -2,15 +2,18 @@ namespace FrogGame.World
 {
     using UnityEngine;
     using UnityEngine.Events;
+    using FrogGame.Gameplay;
 
     /// <summary>
     /// Pressure plate that triggers events when stepped on by player or pushable blocks.
+    /// Snaps and locks grabbable items/stones to its center upon contact.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class FloorSwitch : MonoBehaviour
     {
         [Header("Switch Logic")]
         [SerializeField] private bool stayPressed = false;
+        [SerializeField] private bool lockStonesOnCenter = true;
         [SerializeField] private LayerMask triggerLayers;
 
         [Header("Events")]
@@ -27,14 +30,34 @@ namespace FrogGame.World
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            HandleCollision(collision);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            HandleCollision(collision);
+        }
+
+        private void HandleCollision(Collider2D collision)
+        {
             int colLayer = 1 << collision.gameObject.layer;
 
             if ((colLayer & triggerLayers) != 0)
             {
-                occupantsCount++;
-
-                if (occupantsCount == 1)
+                GrabbableItem grabbable = collision.GetComponent<GrabbableItem>();
+                if (grabbable == null)
                 {
+                    grabbable = collision.GetComponentInParent<GrabbableItem>();
+                }
+
+                if (grabbable != null && lockStonesOnCenter && !grabbable.IsLockedOnSwitch && !grabbable.IsBeingPulled)
+                {
+                    grabbable.LockToSwitch(transform.position);
+                }
+
+                if (occupantsCount == 0)
+                {
+                    occupantsCount = 1;
                     OnSwitchPressed();
                 }
             }
