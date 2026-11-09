@@ -3,7 +3,7 @@
   "Project": {
    "Name": "Desarrollo3_FrogTales_WwiseProject",
    "GUID": "{C0D80EC9-C34D-4298-852D-9235E0F74F71}",
-   "Generator": "2025.1.12.9287"
+   "Generator": "2025.1.6.9117"
   },
   "CacheRoot": "../.cache",
   "Platforms": [
@@ -31,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{7FA06801-E4D7-6E1B-6ECD-45EA0B00098D}"
+  "FileHash": "{DFE914FB-9B20-7A69-5ECD-9C6BA9847757}"
  }
 }

@@ -1,25 +1,45 @@
 Event	ID	Name			Wwise Object Path	Notes
+	98439365	Play_Player_Footsteps			\Default Work Unit\Player\Play_Player_Footsteps	
+	304580579	Play_Env_Platform			\Default Work Unit\Enviroment\Play_Env_Platform	
 	445041756	Play_Env_Rock_PushButton			\Default Work Unit\Enviroment\Play_Env_Rock_PushButton	
+	466760000	Play_Enemy_Alert_Attack			\Default Work Unit\Enemies\Play_Enemy_Alert_Attack	
+	917757380	Play_Env_Player_PushButton			\Default Work Unit\Enviroment\Play_Env_Player_PushButton	
+	1071460542	Play_Player_Enemy_Mask_Remove			\Default Work Unit\Player\Play_Player_Enemy_Mask_Remove	
+	1431043311	Play_Player_Vox			\Default Work Unit\Player\Play_Player_Vox	
 	1464352939	Play_Env_Rock_Drop			\Default Work Unit\Enviroment\Play_Env_Rock_Drop	
-	1892059696	Play_Player_Booger_Hit			\Default Work Unit\Player\Play_Player_Booger_Hit	
-	2203765675	Play_Enemy_ArrowHit			\Default Work Unit\Enemies\Play_Enemy_ArrowHit	
+	1588384297	Play_Enemy_Booger_Hit			\Default Work Unit\Enemies\Play_Enemy_Booger_Hit	
+	2257393085	Play_Enemy_Attack			\Default Work Unit\Enemies\Play_Enemy_Attack	
 	2311449283	Play_Enemy_Dead			\Default Work Unit\Enemies\Play_Enemy_Dead	
 	2447410425	Play_MX			\Default Work Unit\Music\Play_MX	
 	2585949963	Play_Player_Bow_Shot			\Default Work Unit\Player\Play_Player_Bow_Shot	
 	2861822361	Play_Env_Items_Pickup			\Default Work Unit\Enviroment\Play_Env_Items_Pickup	
-	2956601346	Play_Player_Bow_Hit			\Default Work Unit\Player\Play_Player_Bow_Hit	
 	3211564518	Play_Test_sound			\Default Work Unit\Play_Test_sound	
 	3262794997	Play_Player_Booger_Shot			\Default Work Unit\Player\Play_Player_Booger_Shot	
-	3353124379	Play_Player_Tongue_Shot			\Default Work Unit\Player\Play_Player_Tongue_Shot	
-	3439094466	Play_Enemy_BoogerHit			\Default Work Unit\Enemies\Play_Enemy_BoogerHit	
 	3570856298	Play_Enemy_Damage			\Default Work Unit\Enemies\Play_Enemy_Damage	
 	3638125099	Play_Player_Damage			\Default Work Unit\Player\Play_Player_Damage	
 	3676654925	Play_Enemy_Combat_Alert_Owl			\Default Work Unit\Enemies\Play_Enemy_Combat_Alert_Owl	
 	3772621023	Play_Player_Fall_Water			\Default Work Unit\Player\Play_Player_Fall_Water	
 	3812302960	Play_Enemy_Combat_Alert_Fox			\Default Work Unit\Enemies\Play_Enemy_Combat_Alert_Fox	
+	3850900273	Play_Player_Arrow_Hit			\Default Work Unit\Player\Play_Player_Arrow_Hit	
 	3947027502	Play_Env_Fly_Health			\Default Work Unit\Enviroment\Play_Env_Fly_Health	
 	4062598144	Play_Env_Doors_Open			\Default Work Unit\Enviroment\Play_Env_Doors_Open	
 	4231385810	Play_Player_Tongue_Hit			\Default Work Unit\Player\Play_Player_Tongue_Hit	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2004922858	Arrow_Hit			\Default Work Unit\Arrow_Hit	
+	2385628198	Footsteps			\Default Work Unit\Footsteps	
+	3805217580	Enemy_Dead			\Default Work Unit\Enemy_Dead	
+
+Switch	ID	Name	Switch Group			Notes
+	2058049674	Wood	Arrow_Hit			
+	2473969246	Metal	Arrow_Hit			
+	4248645337	Grass	Arrow_Hit			
+	1216965916	Stone	Footsteps			
+	2405689736	LargeGrass	Footsteps			
+	4248645337	Grass	Footsteps			
+	679047689	Owl	Enemy_Dead			
+	1083137540	Fox	Enemy_Dead			
+	1560169506	Boss	Enemy_Dead			
 
 State Group	ID	Name			Wwise Object Path	Notes
 	1690668539	Music_States			\Default Work Unit\Music_States	
@@ -33,10 +53,70 @@ State	ID	Name	State Group			Notes
 	1562068129	Overworld	Music_States			
 	2607556080	Menu	Music_States			
 
+Effect plug-ins	ID	Name	Type				Notes
+	49815012	Parametric EQ (Custom)	Wwise Parametric EQ			
+	450117453	Parametric EQ (Custom)	Wwise Parametric EQ			
+	514769385	RoomVerb (Custom)	Wwise RoomVerb			
+	558735567	Parametric EQ (Custom)	Wwise Parametric EQ			
+	699488797	Delay (Custom)	Wwise Delay			
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	335759465	Enemy_Damage	.cache\9B\{9B5E1005-1EA5-ED90-8E3E-CC6C13F99FED}.wem		\Containers\Default Work Unit\SFX\SFX\Enemies\Enemy_Damage		13980
-	432275089	Test sound	.cache\53\{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem		\Containers\Default Work Unit\SFX\SFX\Test sound		277274
+	26752513	Alert	.cache\B6\{B69906AA-DD63-8E60-9331-CF61CAC1ED45}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Alert		82972
+	60935626	Rock_Grass-009	.cache\C0\{C0642599-DE64-2621-7C05-D0652138CBC1}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-009		29632
+	69480265	Player_Bow_Shot	.cache\AC\{AC3A528F-565A-174D-CE7F-AFC5B3DD0F6B}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Bow_Shot		134816
+	89186472	Rock_Grass-003	.cache\C8\{C851B286-78BC-D4BB-503B-3133785D5F8D}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-003		41680
+	101349570	Player_Vox	.cache\1A\{1AEAC0D8-FB27-CE45-B5E7-9D4E5EC2108B}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Vox		56484
+	111192099	StepsSlime_05	.cache\16\{16316C16-8785-34A0-40E4-F918D18862B4}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_05		14048
+	128744452	Env_Fly_Health	.cache\A8\{A8D981BA-B2E4-7ED3-6878-0FE2BC8DCBD1}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Fly_Health		91000
+	130985290	Player_Booger_Shot	.cache\9A\{9A37EA24-0070-3B17-5658-3CEB579EBD23}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Booger_Shot		161472
+	133182041	Rock_Grass-011	.cache\F3\{F3301042-CDBB-7F53-3A32-95696111EE0C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-011		28244
+	153124544	StepsSlime_01	.cache\F3\{F30D54F8-E787-89B8-3C4F-100133317E98}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_01		20064
+	157965559	Player_Bow_Hit_Metal	.cache\CB\{CBAA9B0C-63BC-8FB2-DCF9-9AB8BF962151}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Arrow_Hit\Player_Bow_Hit_Metal		83788
+	179428524	Env_Items_Pickup	.cache\59\{5913DDBB-2DF9-B16A-3A24-6D0F43E32F80}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Items_Pickup		121184
+	179884082	Enemy_Combat_Alert_Fox	.cache\E1\{E1E97FA7-FB4A-95BA-6373-B5802DF2B099}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Combat_Alert_Fox		85728
+	190010783	StepsSlime_07	.cache\2A\{2AC350B4-3D9D-E9D4-05D3-6A2931ED6FC6}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_07		14400
+	243081135	Player_Enemy_Mask_Remove	.cache\2B\{2BD55966-8937-C414-7580-68CE420769C2}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Enemy_Mask_Remove		164396
+	245641774	Rock_Grass-006	.cache\ED\{EDF6E948-1F9C-CE12-2773-A434382BB2DA}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-006		35580
+	252169713	StepsGrass_19	.cache\D2\{D2CAC4F4-909C-2D0D-2492-F65FAA61FB4B}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_19		25748
+	265150354	StepsGrass_23	.cache\2A\{2AC2AD67-5B2E-14CB-4227-15DE7A3F2C46}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_23		28244
+	265716765	Rock_Grass-005	.cache\67\{67F9DB5A-36CA-36EA-5217-283239E219A9}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-005		28240
+	295743545	Env_Rock	.cache\E5\{E542EEA6-E6F6-430A-8EBF-7AFF168D4B44}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\Env_Rock		28644
+	300931770	StepsGrass_18	.cache\3C\{3CF51CA3-C2DB-D5E1-6977-D52E5C6327D8}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_18		29632
+	306124964	EnemyDeadSFX	.cache\C7\{C74E4CDC-FD44-DF08-CF1A-8F246766D947}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Dead\EnemyDeadSFX		65128
+	313960653	Rock_Grass-004	.cache\47\{4710DCE2-34FA-B69D-8388-29CD9A384712}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-004		34488
+	325305236	Player_Bow_Hit_Grass	.cache\5C\{5C4F6061-F60F-D929-C218-58194723F389}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Arrow_Hit\Player_Bow_Hit_Grass		57008
+	334642355	StepsGrass_17	.cache\50\{502D3D4B-17BD-136C-EC14-6687B77F4AFD}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_17		32732
+	335759465	Enemy_BoogerHit	.cache\9B\{9B5E1005-1EA5-ED90-8E3E-CC6C13F99FED}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Enemies\Enemy_BoogerHit		13980
+	351896890	StepsSlime_09	.cache\7A\{7A8D7B0E-F33A-91AD-AFCB-454FC932F780}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_09		14624
+	362316015	Env_Player_PushButton	.cache\0A\{0A2BCA9F-9998-3A42-D5C8-F0ED321464A8}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Player_PushButton		62816
+	375505261	StepsGrass_13	.cache\9F\{9F7DDECF-AD1C-532B-E803-C4818F78B44D}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_13		27696
+	432275089	Test sound	.cache\53\{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem		\Containers\Default Work Unit\Test sound		277274
+	471718197	StepsSlime_03	.cache\96\{962092C8-5530-DF18-E5EB-DFAA7BD608EA}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_03		17392
+	473922960	StepsSlime_06	.cache\14\{147ADFC5-4273-09CD-438C-7F4858D91E8C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_06		17504
+	485585036	Rock_Grass-008	.cache\BC\{BCC6F2D6-E9FD-2EBB-ABB0-21AE04666DC6}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-008		25748
+	518218550	Player_Damage	.cache\96\{965193B2-13B6-32FF-9071-57A86A8A8767}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Damage		82944
+	599760697	StepsGrass_14	.cache\07\{070E0CCD-5B0E-CE71-178B-18F39BA66D3C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_14		27016
+	605672027	Env_Doors_Open	.cache\83\{831805EE-B92D-2DDA-C2CA-B8213B5B54C9}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Doors_Open		131680
 	606682010	Dungeon_MX	.cache\41\{4181A67A-CEDA-3793-F066-562CD4BF6D33}.wem		\Containers\Default Work Unit\Music\MX\Dungeon\Dungeon\Dungeon_MX		16443232
-	819493186	Player_Booger_Hit	.cache\28\{2892D939-1011-EBFD-24B4-16932E0BDDD9}.wem		\Containers\Default Work Unit\SFX\SFX\Player\Player_Booger_Hit		19356
-	916400711	Player_Booger_Shot	.cache\FF\{FFBC5A66-91A0-EC88-FDC0-F8130714D360}.wem		\Containers\Default Work Unit\SFX\SFX\Player\Player_Booger_Shot		22034
+	610803839	StepsSlime_04	.cache\51\{5118F973-CDC0-EFBF-4A26-AD5E42E06142}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_04		14960
+	642623019	StepsGrass_21	.cache\D7\{D7DEE63F-318F-3BAE-1807-ACAE7F700CD3}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_21		27016
+	657977403	StepsSlime_10	.cache\39\{39783A06-F032-A65F-BDEC-8A1F72F82A56}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_10		17744
+	669452368	Enemy_Attack	.cache\7A\{7ABB1681-7F54-B0E3-0036-A18D4D49A520}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Attack		54560
+	670862142	StepsSlime_02	.cache\65\{652A8337-1DB5-7A63-7EB5-12F60F12B9F4}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_02		13296
+	768225910	Rock_Grass-002	.cache\A0\{A0F8D308-F5B8-161E-D35C-388765985392}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-002		27696
+	804048877	Rock_Grass-010	.cache\78\{784646D6-3621-6E27-0D3E-6F80167905F3}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-010		27016
+	806286827	Enemy_Dead_Boss	.cache\A7\{A7077F76-E230-5703-B48D-F3C3C0392431}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Dead\Enemy_Dead_Switch\Enemy_Dead_Boss		69216
+	842583880	StepsGrass_20	.cache\CE\{CE91EF3C-055E-C0B7-4A5E-D6D499F4033C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_20		29632
+	849681906	Player_Fall_Water	.cache\68\{68B65611-0AA8-2D34-01B2-E570BB0443BD}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Fall_Water		164704
+	872860176	Rock_Grass-007	.cache\8D\{8D86B952-8C60-BB9F-B1D2-77E670558D2C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-007		38344
+	879706433	StepsSlime_08	.cache\BC\{BC7826CB-BC9B-AF04-4FCC-F646DE6DD7F8}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_08		13920
+	924978201	Rock_Grass-001	.cache\A5\{A5EF591A-71A0-5E35-05DD-A3796DE260D6}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Environment\Env_Rock_Drop\RockDropGrass\Rock_Grass-001		34500
+	927570048	Player_Bow_Hit_Wood	.cache\4C\{4C7552C5-2DFA-F09D-74D7-0E64C1B7EF13}.wem		\Containers\Default Work Unit\SFX_Made\SFX\Player\Player_Arrow_Hit\Player_Bow_Hit_Wood		62256
+	953373557	Enemy_Combat_Alert_Owl	.cache\EA\{EAA52215-91AC-B307-DE3F-C19AF33E3799}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Combat_Alert_Owl		91104
+	961110060	StepsSlime_11	.cache\1D\{1DA89FFF-C9C9-DE64-08CA-BB0D9B8FD4BC}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Slime\StepsSlime_11		22096
+	991849452	Enemy_Dead_Owl	.cache\0A\{0A2E9106-34E0-6B39-8A2F-52AD70702EE6}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Dead\Enemy_Dead_Switch\Enemy_Dead_Owl		54816
+	996055015	StepsGrass_12	.cache\FE\{FE28A656-8BC6-7917-F1DC-F33DE3778FA8}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_12		34500
+	999783916	StepsGrass_16	.cache\61\{611D4BE9-4769-0DA5-A4BC-BA80A705F467}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_16		28240
+	1011659621	Enemy_Hit	.cache\C4\{C41A876A-ECB1-B5F3-97AA-7A4A249EE871}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Enemies\Enemy_Hit		37952
+	1044534761	StepsGrass_15	.cache\96\{9613E0D5-3F9D-1008-6C10-0BD0EBDCB93C}.wem		\Containers\Default Work Unit\SFX_Pablo\SFX\Player\Player_Footsteps\Player_Footsteps_Switch\Player_Footsteps_Grass\StepsGrass_15		34488
 
