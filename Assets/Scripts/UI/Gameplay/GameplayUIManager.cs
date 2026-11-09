@@ -14,22 +14,7 @@ namespace FrogGame.UI
         [SerializeField] private PausePanelController pausePanel;
         [SerializeField] private OptionsPanelController optionsPanel;
 
-        [Header("Input Setup")]
-        [SerializeField] private InputActionAsset inputActions;
-
-        private InputActionMap playerMap;
-        private InputActionMap uiMap;
-
-        private void Awake()
-        {
-            if (inputActions != null)
-            {
-                playerMap = inputActions.FindActionMap("Player");
-                uiMap = inputActions.FindActionMap("UI");
-            }
-
-            SubscribeEvents();
-        }
+        private void Awake() => SubscribeEvents();
 
         private void Start() => HideAllPanels();
 
@@ -74,8 +59,6 @@ namespace FrogGame.UI
         {
             pausePanel.Show();
             optionsPanel.Hide();
-
-            SetPauseState(true);
         }
 
         private void ShowOptionsPanel()
@@ -88,24 +71,6 @@ namespace FrogGame.UI
         {
             pausePanel.Hide();
             optionsPanel.Hide();
-
-            SetPauseState(false);
-        }
-
-        private void SetPauseState(bool isPaused)
-        {
-            Time.timeScale = isPaused ? 0f : 1f;
-
-            if (isPaused)
-            {
-                playerMap?.Disable();
-                uiMap?.Enable();
-            }
-            else
-            {
-                playerMap?.Enable();
-                uiMap?.Disable();
-            }
         }
 
         #endregion
@@ -124,7 +89,13 @@ namespace FrogGame.UI
             }
         }
 
-        private void HandleContinuePressed() => HideAllPanels();
+        private void HandleContinuePressed()
+        {
+            if (gameController != null)
+            {
+                gameController.SetPauseState(false);
+            }
+        }
 
         private void HandleQuitToMenuPressed()
         {
