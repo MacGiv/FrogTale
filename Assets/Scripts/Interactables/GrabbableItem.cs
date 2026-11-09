@@ -5,6 +5,10 @@ namespace FrogGame.Gameplay
     using UnityEngine.Events;
     using FrogGame.Core;
 
+    /// <summary>
+    /// Item that can be grabbed and retrieved via tongue or direct interaction.
+    /// Objeto interactivo que puede ser sujetado y arrastrado por la lengua.
+    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class GrabbableItem : MonoBehaviour
     {
@@ -14,13 +18,13 @@ namespace FrogGame.Gameplay
             Shield,
             HeavyBlock,
             CarriableBox,
-            AbilityBow,  
+            AbilityBow,
             AbilitySneeze
         }
 
         [Header("Item Settings")]
         [SerializeField] private ItemType type = ItemType.Collectible;
-        [SerializeField] private float pullSpeed = 15f;
+        [SerializeField] private float pullSpeed = 25f;
         [SerializeField] private float stopDistance = 0.5f;
 
         [Header("Events")]
@@ -39,18 +43,16 @@ namespace FrogGame.Gameplay
             itemCollider = GetComponent<Collider2D>();
         }
 
-        public void Grab(Transform pullTarget)
+        /// <summary>
+        /// Called on tongue tip impact to initiate grab sequence and disable collisions.
+        /// </summary>
+        public void OnGrabStarted()
         {
             if (isBeingPulled) return;
 
             isBeingPulled = true;
             onGrabbed?.Invoke();
 
-            StartCoroutine(PullRoutine(pullTarget));
-        }
-
-        private IEnumerator PullRoutine(Transform pullTarget)
-        {
             if (itemCollider != null && type != ItemType.HeavyBlock)
             {
                 itemCollider.enabled = false;
@@ -60,17 +62,13 @@ namespace FrogGame.Gameplay
             {
                 transform.SetParent(null);
             }
+        }
 
-            while (pullTarget != null && Vector2.Distance(transform.position, pullTarget.position) > stopDistance)
-            {
-                transform.position = Vector2.MoveTowards(
-                    transform.position,
-                    pullTarget.position,
-                    pullSpeed * Time.deltaTime
-                );
-                yield return null;
-            }
-
+        /// <summary>
+        /// Called when the tongue finishes retracting back to the player, executing item collection logic.
+        /// </summary>
+        public void OnGrabCompleted(Transform pullTarget)
+        {
             onCollected?.Invoke();
 
             if (AudioManager.Instance != null)
@@ -129,6 +127,32 @@ namespace FrogGame.Gameplay
                     Destroy(gameObject);
                     break;
             }
+        }
+
+        /// <summary>
+        /// Legacy grab wrapper for non-tongue pull logic.
+        /// </summary>
+        public void Grab(Transform pullTarget)
+        {
+            if (isBeingPulled) return;
+
+            OnGrabStarted();
+            StartCoroutine(LegacyPullRoutine(pullTarget));
+        }
+
+        private IEnumerator LegacyPullRoutine(Transform pullTarget)
+        {
+            while (pullTarget != null && Vector2.Distance(transform.position, pullTarget.position) > stopDistance)
+            {
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    pullTarget.position,
+                    pullSpeed * Time.deltaTime
+                );
+                yield return null;
+            }
+
+            OnGrabCompleted(pullTarget);
         }
     }
 }
