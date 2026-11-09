@@ -3,16 +3,17 @@ namespace FrogGame.Gameplay
     using UnityEngine;
 
     /// <summary>
-    /// Handles holding and dropping carried objects like puzzle boxes.
+    /// Handles carrying and dropping objects with obstacle collision checks to prevent wall clipping.
     /// </summary>
     public class PlayerCarryHandler : MonoBehaviour
     {
-        [Header("Carry Settings")]
-        [SerializeField] private Transform holdPoint; // Point above frog's head
-        [SerializeField] private float dropDistance = 1.0f; // Distance in front of player
-        [SerializeField] private LayerMask obstacleLayer; // Avoid dropping inside walls
+        [Header("Settings")]
+        [SerializeField] private Transform carryPoint;
+        [SerializeField] private LayerMask obstacleLayer;
+        [SerializeField] private Vector2 dropBoxSize = new Vector2(0.5f, 0.5f);
+        [SerializeField] private float dropDistance = 0.6f;
 
-        private GrabbableItem currentCarriedBox = null;
+        private GrabbableItem currentCarriedBox;
         private PlayerMovementHandler movementHandler;
 
         public bool IsCarrying => currentCarriedBox != null;
@@ -22,74 +23,54 @@ namespace FrogGame.Gameplay
             movementHandler = GetComponent<PlayerMovementHandler>();
         }
 
-        /// <summary>
-        /// Attaches the box to the player's hold point above its head.
-        /// </summary>
         public void AttachBox(GrabbableItem box)
         {
-            if (IsCarrying || box == null) return;
+            if (box == null || box.IsLockedOnSwitch) return;
 
             currentCarriedBox = box;
-            Transform boxTransform = box.transform;
 
-            // 1. Assign hold point
-            Transform targetParent = holdPoint != null ? holdPoint : transform;
-            boxTransform.SetParent(targetParent);
-
-            // 2. Reset local position and rotation to the center of HoldPoint
-            boxTransform.localPosition = Vector3.zero;
-            boxTransform.localRotation = Quaternion.identity;
-
-            // 3. Deactivate collider
-            if (box.ItemCollider != null)
+            if (carryPoint != null)
             {
-                box.ItemCollider.enabled = false;
+                currentCarriedBox.transform.SetParent(carryPoint);
+                currentCarriedBox.transform.localPosition = Vector3.zero;
             }
-
-            // 4. Deactivate physics
-            if (box.TryGetComponent<Rigidbody2D>(out var rb))
+            else
             {
-                rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
-                rb.simulated = false; // Stop rb simulation
+                currentCarriedBox.transform.SetParent(transform);
+                currentCarriedBox.transform.localPosition = new Vector3(0f, 0.4f, 0f);
             }
         }
 
         /// <summary>
-        /// Drops the carried box immediately in front of the player's facing direction.
+        /// Attempts to drop the carried box in front of the player. 
+        /// If blocked by an obstacle/wall, drops it safely at the player's current feet position.
         /// </summary>
         public bool TryDropBox()
         {
-            if (!IsCarrying) return false;
+            if (currentCarriedBox == null) return false;
 
             Vector2 facingDir = movementHandler != null ? movementHandler.FacingDirection : Vector2.down;
-            Vector2 dropPosition = (Vector2)transform.position + (facingDir * dropDistance);
+            Vector2 targetDropPos = (Vector2)transform.position + (facingDir * dropDistance);
 
-            // Check for obstacles
-            Collider2D hitObstacle = Physics2D.OverlapCircle(dropPosition, 0.3f, obstacleLayer);
-            if (hitObstacle != null)
+            Collider2D obstacleHit = Physics2D.OverlapBox(targetDropPos, dropBoxSize, 0f, obstacleLayer);
+
+            if (obstacleHit != null)
             {
-                Debug.LogWarning("[PlayerCarryHandler] Cannot drop box inside a wall!");
-                return false;
+                targetDropPos = transform.position;
             }
 
-            // Remove from hierarchy
-            Transform boxTransform = currentCarriedBox.transform;
-            boxTransform.SetParent(null);
-            boxTransform.position = dropPosition;
+            currentCarriedBox.transform.SetParent(null);
+            currentCarriedBox.transform.position = targetDropPos;
 
-            // Reactivate collider
-            if (currentCarriedBox.ItemCollider != null)
-            {
-                currentCarriedBox.ItemCollider.enabled = true;
-            }
-
-            // Reactivate physiscs
             if (currentCarriedBox.TryGetComponent<Rigidbody2D>(out var rb))
             {
                 rb.simulated = true;
                 rb.linearVelocity = Vector2.zero;
-                rb.angularVelocity = 0f;
+            }
+
+            if (currentCarriedBox.ItemCollider != null)
+            {
+                currentCarriedBox.ItemCollider.enabled = true;
             }
 
             currentCarriedBox = null;
