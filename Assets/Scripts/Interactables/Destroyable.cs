@@ -64,10 +64,10 @@ namespace FrogGame.Gameplay
                 Instantiate(explosionVfxPrefab, transform.position, Quaternion.identity);
             }
 
-            // 2. Try dropping item
+            // 2. Intentar dropear ítem según la tabla de probabilidad
             TrySpawnLoot();
 
-            // 3. Clear tile in Tilemap if the object is part of one
+            // 3. Limpiar tile del Tilemap si el objeto forma parte de uno
             Tilemap tilemap = GetComponentInParent<Tilemap>();
             if (tilemap != null)
             {
@@ -85,11 +85,11 @@ namespace FrogGame.Gameplay
         {
             if (lootTable == null || lootTable.Count == 0) return;
 
-            // Throw to check if this destroyable drops something
+            // Tirada general para ver si este arbusto suelta algo
             float roll = Random.Range(0f, 100f);
             if (roll > overallDropChance) return;
 
-            // Item selection throw
+            // Tirada de selección ponderada entre los ítems configurados
             float totalWeight = 0f;
             foreach (var entry in lootTable)
             {
@@ -110,25 +110,6 @@ namespace FrogGame.Gameplay
                     {
                         Instantiate(entry.itemPrefab, transform.position, Quaternion.identity);
                     }
-                    break;
-                }
-            }
-        }
-
-        private void TrySpawnDrop()
-        {
-            if (droppableItems == null || droppableItems.Length == 0) return;
-
-            foreach (DropItem dropItem in droppableItems)
-            {
-                if (dropItem.Prefab == null) continue;
-
-                int randomValue = Random.Range(0, 100);
-
-                if (randomValue < dropItem.DropChance)
-                {
-                    Instantiate(dropItem.Prefab, transform.position, Quaternion.identity);
-
                     break;
                 }
             }
