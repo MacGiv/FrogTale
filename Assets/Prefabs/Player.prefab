@@ -434,6 +434,7 @@ MonoBehaviour:
   tongueAction: {fileID: 3649587331760782945, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   arrowAction: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   stunAction: {fileID: 3922459123836993811, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  pauseAction: {fileID: -333459056602748263, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!114 &6012868133231594147
 MonoBehaviour:
   m_ObjectHideFlags: 0

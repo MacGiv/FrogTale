@@ -9,11 +9,16 @@ namespace FrogGame.UI
         [Header("Input System Setup")]
         [SerializeField] private InputActionReference submitAction;
 
+        private void Awake()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         private void OnEnable()
         {
             if (submitAction != null)
             {
-                submitAction.action.performed += OnSubmitPerformed;
                 submitAction.action.Enable();
             }
         }
@@ -22,12 +27,17 @@ namespace FrogGame.UI
         {
             if (submitAction != null)
             {
-                submitAction.action.performed -= OnSubmitPerformed;
                 submitAction.action.Disable();
             }
         }
 
-        private void OnSubmitPerformed(InputAction.CallbackContext context) => LoadNextScene();
+        private void Update()
+        {
+            if (submitAction != null && submitAction.action.WasPressedThisFrame())
+            {
+                LoadNextScene();
+            }
+        }
 
         private void LoadNextScene() => SceneManager.LoadScene("MainMenu");
     }
