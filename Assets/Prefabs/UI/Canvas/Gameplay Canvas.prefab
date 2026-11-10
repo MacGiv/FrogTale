@@ -199,7 +199,6 @@ MonoBehaviour:
   gameController: {fileID: 0}
   pausePanel: {fileID: 7673994373623746044}
   optionsPanel: {fileID: 5760176026103799099}
-  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &5907704555443819080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,11 +1028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613199272075179390, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 6613199272075179390, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 7715592521344964931, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
       propertyPath: m_Name
