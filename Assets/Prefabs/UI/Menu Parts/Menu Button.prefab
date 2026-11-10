@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4243194565051628455}
   - component: {fileID: 3719269136075212954}
   - component: {fileID: 8345016776505192790}
+  - component: {fileID: 2696949788487579266}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -258,3 +259,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2696949788487579266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715592521344964931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a231bde54ed4c46408066689e732297a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.ButtonSelectedColor
+  targetImage: {fileID: 3719269136075212954}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  selectedColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
