@@ -246,7 +246,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 1a532dbee06fd484c94b0408fa7439b2, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 54c56658044370d4288119dffc2de81c, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -273,4 +273,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.ButtonSelectedColor
   targetImage: {fileID: 3719269136075212954}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
+  selectedColor: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
