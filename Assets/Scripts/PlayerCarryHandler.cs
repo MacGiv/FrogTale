@@ -3,15 +3,16 @@ namespace FrogGame.Gameplay
     using UnityEngine;
 
     /// <summary>
-    /// Handles carrying and dropping objects with obstacle collision checks to prevent wall clipping.
+    /// Handles carrying and dropping objects with obstacle and wall collision checks to prevent clipping.
     /// </summary>
     public class PlayerCarryHandler : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] private Transform carryPoint;
         [SerializeField] private LayerMask obstacleLayer;
-        [SerializeField] private Vector2 dropBoxSize = new Vector2(0.5f, 0.5f);
-        [SerializeField] private float dropDistance = 0.6f;
+        [SerializeField] private LayerMask wallLayer;
+        [SerializeField] private Vector2 dropBoxSize = new Vector2(0.6f, 0.6f);
+        [SerializeField] private float dropDistance = 0.7f;
 
         private GrabbableItem currentCarriedBox;
         private PlayerMovementHandler movementHandler;
@@ -43,20 +44,30 @@ namespace FrogGame.Gameplay
 
         /// <summary>
         /// Attempts to drop the carried box in front of the player. 
-        /// If blocked by an obstacle/wall, drops it safely at the player's current feet position.
+        /// Validates that the target position in facing direction is completely free of obstacles.
+        /// Returns false if blocked, preventing clipping or pushing player.
         /// </summary>
         public bool TryDropBox()
         {
             if (currentCarriedBox == null) return false;
 
+            LayerMask combinedMask = obstacleLayer | wallLayer;
             Vector2 facingDir = movementHandler != null ? movementHandler.FacingDirection : Vector2.down;
-            Vector2 targetDropPos = (Vector2)transform.position + (facingDir * dropDistance);
 
-            Collider2D obstacleHit = Physics2D.OverlapBox(targetDropPos, dropBoxSize, 0f, obstacleLayer);
+            if (facingDir == Vector2.zero)
+            {
+                facingDir = Vector2.down;
+            }
+
+            Vector2 targetDropPos = (Vector2)transform.position + (facingDir.normalized * dropDistance);
+
+            // Check if the drop position in front of the player overlaps any obstacles or walls
+            Collider2D obstacleHit = Physics2D.OverlapBox(targetDropPos, dropBoxSize, 0f, combinedMask);
 
             if (obstacleHit != null)
             {
-                targetDropPos = transform.position;
+                // Target spot is blocked by an obstacle or wall: cancel drop to prevent clipping or pushing the player
+                return false;
             }
 
             currentCarriedBox.transform.SetParent(null);
@@ -75,6 +86,20 @@ namespace FrogGame.Gameplay
 
             currentCarriedBox = null;
             return true;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Vector2 facingDir = Vector2.down;
+            if (movementHandler != null && movementHandler.FacingDirection != Vector2.zero)
+            {
+                facingDir = movementHandler.FacingDirection;
+            }
+
+            Vector2 targetDropPos = (Vector2)transform.position + (facingDir.normalized * dropDistance);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(targetDropPos, dropBoxSize);
         }
     }
 }
