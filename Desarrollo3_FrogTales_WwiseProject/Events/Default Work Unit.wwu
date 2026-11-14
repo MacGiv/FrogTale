@@ -232,7 +232,7 @@
 								<Action Name="" ID="{C9A3672E-70BE-40BC-BBC8-2B93E4DF863B}" ShortID="96159368">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Env_Platform" ID="{D324B405-CCE1-492E-B66A-69F636AFD6B9}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Env_Platform_Blend" ID="{A80E1C21-A4B9-4054-92E4-F7862CD99386}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -414,6 +414,36 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player_Enemy_Mask_Remove" ID="{62F7EE7E-2AF4-47BE-BBE7-744703B4A598}" WorkUnitID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="UI" ID="{A13F786E-1840-4398-A747-0A82F9126693}" ShortID="207026628">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Event Name="Play_UI_Mouseover_Button" ID="{6188D6D1-6EDB-4BF8-B414-506F8D1A5EDB}">
+							<ChildrenList>
+								<Action Name="" ID="{4D5644A3-1749-45E3-8E44-E9987B5C26AC}" ShortID="529775684">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Mouseover_Button" ID="{C032F7B2-4F68-4583-8CF8-7F57697F1D28}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_UI_Click_Button" ID="{84F4D116-FAF9-4F3D-8B6E-0D5662B0C427}">
+							<ChildrenList>
+								<Action Name="" ID="{E4738589-FC85-4E7F-8A07-19A946E15648}" ShortID="601987079">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Click_Button" ID="{A73744AC-8EBB-4F8F-9EB1-0A52EB58A145}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

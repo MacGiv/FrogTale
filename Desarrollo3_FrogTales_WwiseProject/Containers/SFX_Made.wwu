@@ -374,12 +374,18 @@
 									</ActiveSourceList>
 								</Sound>
 								<SwitchContainer Name="Player_Tongue_Hit_SWITCH" ID="{3C1C9BF7-43C4-4E5B-82FE-10A5C75850EA}" ShortID="571792992">
+									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Player_Tongue_Hit_SWITCH" ID="{9DFE2EEA-C168-4046-BEE7-DE9672EB6BDF}" WorkUnitID="{9BCD99B3-0739-410B-BF05-A5E33469C1CE}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -526,6 +532,7 @@
 										</RandomSequenceContainer>
 										<Sound Name="Player_Tongue_Hit_Rock" ID="{4CBF1AD1-724A-4C42-8E16-B79CDCFA30AA}" ShortID="476916309">
 											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>4</Value>
@@ -554,11 +561,55 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<EffectSlot Name="" ID="{A8E1435A-C6FB-4B53-B924-A4444C1F9286}" ShortID="1010972446">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="Parametric EQ (Custom)" ID="{4E5A668A-A5E0-4EFB-863E-E8C5D3C1A000}" ShortID="849043430" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																		<PropertyList>
+																			<Property Name="FrequencyBand2" Type="Real32" Value="9623.248"/>
+																			<Property Name="GainBand2" Type="Real32" Value="-1.518987"/>
+																			<Property Name="OnOffBand1" Type="bool" Value="False"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</ObjectList>
+											</ObjectLists>
 											<ActiveSourceList>
 												<ActiveSource Name="AGARRAR_PIEDRA" ID="{11A5F6AE-B665-4722-8800-D72E5394B820}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{206D32AD-3E5F-4FA2-9EB5-9AD28A89E821}" ShortID="810572382">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{3FE38406-91AF-4DCD-B852-4CE6688B1A8F}" ShortID="716216413" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
+																	<Property Name="FrequencyBand1" Type="Real32" Value="1009.613"/>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="368.6846"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="3117.011"/>
+																	<Property Name="GainBand1" Type="Real32" Value="-4.192405"/>
+																	<Property Name="GainBand2" Type="Real32" Value="-2.36962"/>
+																	<Property Name="GainBand3" Type="Real32" Value="4.435443"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
@@ -571,6 +622,26 @@
 												<ItemRef Name="Player_Tongue_Hit_Rock" ID="{4CBF1AD1-724A-4C42-8E16-B79CDCFA30AA}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Miss" ID="{3CDAF31B-AC27-4377-A384-6690D64F7A34}"/>
+												<ItemList>
+													<ItemRef Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Hit_Random" ID="{69F82629-CDA6-49C7-825F-8F540E040D1E}"/>
+												<ItemList>
+													<ItemRef Name="Player_Tongue_Hit_RANDOM" ID="{6324B478-5EDB-44FB-8F06-E4172C85D979}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Hit_Rock" ID="{1A64EB95-ED22-437B-8E76-6B641646A309}"/>
+												<ItemList>
+													<ItemRef Name="Player_Tongue_Hit_Rock" ID="{4CBF1AD1-724A-4C42-8E16-B79CDCFA30AA}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
 								<Sound Name="Player_Enemy_Mask_Remove" ID="{62F7EE7E-2AF4-47BE-BBE7-744703B4A598}" ShortID="585706819">

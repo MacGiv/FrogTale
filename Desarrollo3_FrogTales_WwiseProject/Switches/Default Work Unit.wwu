@@ -31,6 +31,13 @@
 						<Switch Name="Boss" ID="{0645E164-48DC-4436-AAC8-F62D1BDB3B20}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Player_Tongue_Hit_SWITCH" ID="{9DFE2EEA-C168-4046-BEE7-DE9672EB6BDF}">
+					<ChildrenList>
+						<Switch Name="Hit_Random" ID="{69F82629-CDA6-49C7-825F-8F540E040D1E}"/>
+						<Switch Name="Hit_Rock" ID="{1A64EB95-ED22-437B-8E76-6B641646A309}"/>
+						<Switch Name="Miss" ID="{3CDAF31B-AC27-4377-A384-6690D64F7A34}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>
