@@ -360,9 +360,10 @@ GameObject:
   - component: {fileID: 9121058244511926470}
   - component: {fileID: 4074726627394767299}
   - component: {fileID: 1603623593437131}
-  - component: {fileID: 1479032161450486169}
   - component: {fileID: 3253473108220971834}
   - component: {fileID: 278519217810397165}
+  - component: {fileID: 141681743693933888}
+  - component: {fileID: 3569756098962365395}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -682,12 +683,12 @@ MonoBehaviour:
   carryPoint: {fileID: 8451421526952349763}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 32896
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 32896
   dropBoxSize: {x: 1, y: 1}
-  dropDistance: 1
+  dropDistance: 0.7
 --- !u!114 &8395082505162536254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +746,7 @@ MonoBehaviour:
   damage: 0
   stunDuration: 2
   knockbackForce: 10
-  cooldown: 1
+  cooldown: 3
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -862,30 +863,6 @@ MonoBehaviour:
   boxSize: {x: 0.25, y: 0.65}
   detectionDistance: 0.4
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
---- !u!114 &1479032161450486169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8907015057044918926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc0a8b3182058249b2122ed2c36a475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 1
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  scalingFactor: 1
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!114 &3253473108220971834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +907,59 @@ MonoBehaviour:
   hasTongue: 1
   hasBow: 0
   hasSneeze: 0
+--- !u!114 &141681743693933888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc0a8b3182058249b2122ed2c36a475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &3569756098962365395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d514c66b1fe3bbe4ea2654d2214935c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
+  useCallbacks: 0
+  stopSoundOnDisable: 1
+  Callbacks: []
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
