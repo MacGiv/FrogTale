@@ -679,11 +679,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33952a0a430fe14a818f6ea0c1a5b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerCarryHandler
-  holdPoint: {fileID: 8451421526952349763}
-  dropDistance: 1
+  carryPoint: {fileID: 8451421526952349763}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 32768
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dropBoxSize: {x: 1, y: 1}
+  dropDistance: 1
 --- !u!114 &8395082505162536254
 MonoBehaviour:
   m_ObjectHideFlags: 0
