@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: b5a477cef83a49a479ea8503d973c2d2
+guid: 110acdf9394526a4280b14896747260e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6396574741374690862
-    second: XL_Title_Boceto_V3_0
-  - first:
-      213: 1752091287461551242
-    second: XL_Title_Boceto_V3_1
-  - first:
-      213: 7911484473326506446
-    second: XL_Title_Boceto_V3_2
-  - first:
-      213: 3482009173894948524
-    second: XL_Title_Boceto_V3_3
+      213: -423463478203488085
+    second: Title_reescalado_con_borde_Blanco_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 42, y: 54, z: 39, w: 35}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -81,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: XL_Title_Boceto_V3_0
+      name: Title_reescalado_con_borde_Blanco_0
       rect:
         serializedVersion: 2
-        x: 89
-        y: 109
-        width: 722
-        height: 1092
+        x: 41
+        y: 53
+        width: 177
+        height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e26efd636d235c850800000000000000
-      internalID: 6396574741374690862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: XL_Title_Boceto_V3_1
-      rect:
-        serializedVersion: 2
-        x: 609
-        y: 219
-        width: 542
-        height: 602
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8cd3333ebda05810800000000000000
-      internalID: 1752091287461551242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: XL_Title_Boceto_V3_2
-      rect:
-        serializedVersion: 2
-        x: 1149
-        y: 189
-        width: 572
-        height: 612
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec115ae263d3bcd60800000000000000
-      internalID: 7911484473326506446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: XL_Title_Boceto_V3_3
-      rect:
-        serializedVersion: 2
-        x: 1719
-        y: 59
-        width: 2182
-        height: 1182
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca6e8aa25e4925030800000000000000
-      internalID: 3482009173894948524
+      spriteID: ba8645ec53e8f1af0800000000000000
+      internalID: -423463478203488085
       vertices: []
       indices: 
       edges: []
@@ -214,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      XL_Title_Boceto_V3_0: 6396574741374690862
-      XL_Title_Boceto_V3_1: 1752091287461551242
-      XL_Title_Boceto_V3_2: 7911484473326506446
-      XL_Title_Boceto_V3_3: 3482009173894948524
+      Title_reescalado_con_borde_Blanco_0: -423463478203488085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
