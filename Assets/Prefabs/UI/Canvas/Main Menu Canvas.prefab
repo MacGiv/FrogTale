@@ -4717,6 +4717,7 @@ MonoBehaviour:
   - {fileID: 3271976420528330856}
   - {fileID: 6492314676726912684}
   - {fileID: 6739849567230676624}
+  slideDuration: 0.25
 --- !u!1 &6537903537998252112
 GameObject:
   m_ObjectHideFlags: 0

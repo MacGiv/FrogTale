@@ -1,6 +1,7 @@
 namespace FrogGame.UI
 {
     using System;
+    using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
     using FrogGame.Core;
@@ -18,14 +19,40 @@ namespace FrogGame.UI
         [Header("Indicators References")]
         [SerializeField] private Button[] indicators;
 
+        [Header("Carousel Settings")]
+        [SerializeField] private float slideDuration = 0.25f;
+
         public event Action OnBackPressed;
 
+        private RectTransform canvasRect;
+        private RectTransform[] pagesRects;
         private int currentPageIndex = 0;
         private bool isNavigating = false;
+        private Coroutine slideCoroutine;
 
         protected override void Awake()
         {
             base.Awake();
+
+            Canvas parentCanvas = GetComponentInParent<Canvas>();
+
+            if (parentCanvas != null)
+            {
+                canvasRect = parentCanvas.GetComponent<RectTransform>();
+            }
+
+            if (pages != null)
+            {
+                pagesRects = new RectTransform[pages.Length];
+
+                for (int i = 0; i < pages.Length; i++)
+                {
+                    if (pages[i] != null)
+                    {
+                        pagesRects[i] = pages[i].GetComponent<RectTransform>();
+                    }
+                }
+            }
 
             previousPageButton.onClick.AddListener(PreviousPage);
             nextPageButton.onClick.AddListener(NextPage);
@@ -43,6 +70,13 @@ namespace FrogGame.UI
         {
             base.Show();
 
+            if (slideCoroutine != null)
+            {
+                StopCoroutine(slideCoroutine);
+                slideCoroutine = null;
+            }
+
+            isNavigating = false;
             currentPageIndex = 0;
 
             UpdateUIPage();
@@ -52,42 +86,113 @@ namespace FrogGame.UI
 
         private void PreviousPage()
         {
-            if (pages == null || pages.Length == 0) return;
+            if (isNavigating || pages == null || pages.Length == 0) return;
 
-            currentPageIndex--;
+            int previousIndex = currentPageIndex;
+            currentPageIndex = GetWrappedIndex(currentPageIndex - 1);
 
-            if (currentPageIndex < 0)
-            {
-                currentPageIndex = pages.Length - 1;
-            }
-
-            UpdateUIPage();
+            slideCoroutine = StartCoroutine(SlidePagesRoutine(previousIndex, currentPageIndex, -1));
         }
 
         private void NextPage()
         {
-            if (pages == null || pages.Length == 0) return;
+            if (isNavigating || pages == null || pages.Length == 0) return;
 
-            currentPageIndex++;
+            int previousIndex = currentPageIndex;
+            currentPageIndex = GetWrappedIndex(currentPageIndex + 1);
 
-            if (currentPageIndex > pages.Length - 1)
-            {
-                currentPageIndex = 0;
-            }
-
-            UpdateUIPage();
+            slideCoroutine = StartCoroutine(SlidePagesRoutine(previousIndex, currentPageIndex, 1));
         }
 
         private void UpdateUIPage()
         {
+            if (pages == null || pages.Length == 0) return;
+
+            float spacing = GetCanvasWidth();
+            int prevIndex = GetWrappedIndex(currentPageIndex - 1);
+            int nextIndex = GetWrappedIndex(currentPageIndex + 1);
+
             for (int i = 0; i < pages.Length; i++)
             {
-                if (pages[i] != null)
+                if (i == currentPageIndex)
                 {
-                    pages[i].SetActive(i == currentPageIndex);
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, 0f);
+                }
+                else if (i == prevIndex)
+                {
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, -spacing);
+                }
+                else if (i == nextIndex)
+                {
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, spacing);
+                }
+                else
+                {
+                    pages[i].SetActive(false);
                 }
             }
 
+            UpdateIndicators();
+        }
+
+        private IEnumerator SlidePagesRoutine(int fromIndex, int toIndex, int direction)
+        {
+            isNavigating = true;
+            UpdateIndicators();
+
+            float spacing = GetCanvasWidth();
+            int incomingEdgeIndex = GetWrappedIndex(toIndex + direction);
+
+            if (pages.Length >= 3 && incomingEdgeIndex != fromIndex)
+            {
+                pages[incomingEdgeIndex].SetActive(true);
+                SetPagePositionX(incomingEdgeIndex, direction * spacing * 2f);
+            }
+
+            pages[fromIndex].SetActive(true);
+            pages[toIndex].SetActive(true);
+
+            float fromStartX = 0f;
+            float fromEndX = -direction * spacing;
+
+            float toStartX = direction * spacing;
+            float toEndX = 0f;
+
+            float edgeStartX = direction * spacing * 2f;
+            float edgeEndX = direction * spacing;
+
+            float elapsed = 0f;
+
+            while (elapsed < slideDuration)
+            {
+                elapsed += Time.deltaTime;
+
+                float time = Mathf.Clamp01(elapsed / slideDuration);
+                float smoothT = time * time * (3f - 2f * time);
+
+                SetPagePositionX(fromIndex, Mathf.Lerp(fromStartX, fromEndX, smoothT));
+                SetPagePositionX(toIndex, Mathf.Lerp(toStartX, toEndX, smoothT));
+
+                if (pages.Length >= 3 && incomingEdgeIndex != fromIndex)
+                {
+                    SetPagePositionX(incomingEdgeIndex, Mathf.Lerp(edgeStartX, edgeEndX, smoothT));
+                }
+
+                yield return null;
+            }
+
+            UpdateUIPage();
+            isNavigating = false;
+        }
+
+        private void UpdateIndicators()
+        {
             for (int i = 0; i < indicators.Length; i++)
             {
                 if (indicators[i] != null)
@@ -95,6 +200,36 @@ namespace FrogGame.UI
                     indicators[i].interactable = (i == currentPageIndex);
                 }
             }
+        }
+
+        private float GetCanvasWidth() => canvasRect != null ? canvasRect.rect.width : Screen.width;
+
+        private void SetPagePositionX(int index, float posX)
+        {
+            if (pagesRects != null && pagesRects[index] != null)
+            {
+                Vector2 pos = pagesRects[index].anchoredPosition;
+                pos.x = posX;
+
+                pagesRects[index].anchoredPosition = pos;
+            }
+        }
+
+        private int GetWrappedIndex(int index)
+        {
+            int total = pages.Length;
+
+            if (index < 0)
+            {
+                return index + total;
+            }
+
+            if (index >= total)
+            {
+                return index - total;
+            }
+
+            return index;
         }
 
         #endregion
