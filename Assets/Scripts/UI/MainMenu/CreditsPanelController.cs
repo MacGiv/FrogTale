@@ -15,6 +15,9 @@ namespace FrogGame.UI
         [Header("Pages References")]
         [SerializeField] private GameObject[] pages;
 
+        [Header("Indicators References")]
+        [SerializeField] private Button[] indicators;
+
         public event Action OnBackPressed;
 
         private int currentPageIndex = 0;
@@ -41,21 +44,11 @@ namespace FrogGame.UI
             base.Show();
 
             currentPageIndex = 0;
-            UpdatePageVisibility();
+
+            UpdateUIPage();
         }
 
         #region Pages Navigation Logic
-
-        private void UpdatePageVisibility()
-        {
-            for (int i = 0; i < pages.Length; i++)
-            {
-                if (pages[i] != null)
-                {
-                    pages[i].SetActive(i == currentPageIndex);
-                }
-            }
-        }
 
         private void PreviousPage()
         {
@@ -68,16 +61,40 @@ namespace FrogGame.UI
                 currentPageIndex = pages.Length - 1;
             }
 
-            UpdatePageVisibility();
+            UpdateUIPage();
         }
 
         private void NextPage()
         {
             if (pages == null || pages.Length == 0) return;
 
-            currentPageIndex = (currentPageIndex + 1) % pages.Length;
+            currentPageIndex++;
 
-            UpdatePageVisibility();
+            if (currentPageIndex > pages.Length - 1)
+            {
+                currentPageIndex = 0;
+            }
+
+            UpdateUIPage();
+        }
+
+        private void UpdateUIPage()
+        {
+            for (int i = 0; i < pages.Length; i++)
+            {
+                if (pages[i] != null)
+                {
+                    pages[i].SetActive(i == currentPageIndex);
+                }
+            }
+
+            for (int i = 0; i < indicators.Length; i++)
+            {
+                if (indicators[i] != null)
+                {
+                    indicators[i].interactable = (i == currentPageIndex);
+                }
+            }
         }
 
         #endregion
