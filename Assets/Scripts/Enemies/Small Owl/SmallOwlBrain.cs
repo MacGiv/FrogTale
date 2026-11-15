@@ -9,7 +9,7 @@ namespace FrogGame.Enemies
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class SmallOwlBrain : MonoBehaviour, IDamageable, IStunnable
+    public class SmallOwlBrain : MonoBehaviour, IDamageable, IStunnable, IKnockbackable
     {
         [Header("Stats")]
         [SerializeField] private int maxHealth = 2;
@@ -35,6 +35,8 @@ namespace FrogGame.Enemies
 
         private Rigidbody2D rb;
         private int currentHealth;
+        private float knockbackTimer = 0f;
+        private const float KNOCKBACK_DECELERATION = 30f;
 
         public FiniteStateMachine FSM { get; private set; }
         public Rigidbody2D Rb => rb;
@@ -85,6 +87,17 @@ namespace FrogGame.Enemies
 
         private void FixedUpdate()
         {
+            if (knockbackTimer > 0f)
+            {
+                knockbackTimer -= Time.fixedDeltaTime;
+                rb.linearVelocity = Vector2.MoveTowards(
+                    rb.linearVelocity,
+                    Vector2.zero,
+                    KNOCKBACK_DECELERATION * Time.fixedDeltaTime
+                );
+                return;
+            }
+
             FSM.CurrentState.PhysicsUpdate();
         }
 
@@ -108,7 +121,7 @@ namespace FrogGame.Enemies
 
         private void HandleFlip()
         {
-            if (visualsTransform == null) return;
+            if (visualsTransform == null || knockbackTimer > 0f) return;
 
             if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
             {
@@ -151,6 +164,12 @@ namespace FrogGame.Enemies
         {
             StunnedState.SetStunDuration(duration);
             FSM.ChangeState(StunnedState);
+        }
+
+        public void ApplyKnockback(Vector2 direction, float force, float duration = 0.15f)
+        {
+            knockbackTimer = duration;
+            rb.linearVelocity = direction.normalized * force;
         }
 
         private void OnDrawGizmosSelected()
