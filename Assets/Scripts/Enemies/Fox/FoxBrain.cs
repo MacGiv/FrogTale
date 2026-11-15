@@ -1,6 +1,7 @@
 namespace FrogGame.Enemies
 {
     using UnityEngine;
+    using UnityEngine.Tilemaps;
     using FrogGame.Core;
 
     /// <summary>
@@ -9,7 +10,7 @@ namespace FrogGame.Enemies
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class FoxBrain : MonoBehaviour, IDamageable, IStunnable
+    public class FoxBrain : MonoBehaviour, IDamageable, IStunnable, IKnockbackable
     {
         [Header("Stats")]
         [SerializeField] private int maxHealth = 3;
@@ -21,6 +22,11 @@ namespace FrogGame.Enemies
         [SerializeField] private float attackRange = 1f;
         [SerializeField] private float attackCooldown = 1.5f;
         [SerializeField] private LayerMask playerLayer;
+
+        [Header("Environment Avoidance")]
+        [SerializeField] private LayerMask waterLayer;
+        [SerializeField] private float waterCheckDistance = 0.6f;
+        [SerializeField] private float waterCheckRadius = 0.25f;
 
         [Header("Patrol Settings")]
         [SerializeField] private Transform[] waypoints;
@@ -35,6 +41,11 @@ namespace FrogGame.Enemies
 
         private Rigidbody2D rb;
         private int currentHealth;
+        private float knockbackTimer = 0f;
+        private const float KNOCKBACK_DECELERATION = 30f;
+
+        private Grid currentGrid;
+        private Tilemap waterTilemap;
 
         public FiniteStateMachine FSM { get; private set; }
         public Rigidbody2D Rb => rb;
@@ -75,6 +86,7 @@ namespace FrogGame.Enemies
 
         private void Start()
         {
+            InitializeWaterReferences();
             FSM.Initialize(PatrolState);
         }
 
@@ -87,12 +99,96 @@ namespace FrogGame.Enemies
 
         private void FixedUpdate()
         {
+            if (knockbackTimer > 0f)
+            {
+                knockbackTimer -= Time.fixedDeltaTime;
+                rb.linearVelocity = Vector2.MoveTowards(
+                    rb.linearVelocity,
+                    Vector2.zero,
+                    KNOCKBACK_DECELERATION * Time.fixedDeltaTime
+                );
+                return;
+            }
+
             FSM.CurrentState.PhysicsUpdate();
+        }
+
+        private void InitializeWaterReferences()
+        {
+            currentGrid = FindFirstObjectByType<Grid>();
+            if (currentGrid == null) return;
+
+            Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+            foreach (Tilemap tilemap in allTilemaps)
+            {
+                int tilemapLayer = 1 << tilemap.gameObject.layer;
+                if ((tilemapLayer & waterLayer) != 0)
+                {
+                    waterTilemap = tilemap;
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks whether moving in the specified direction enters water colliders or water tiles.
+        /// </summary>
+        public bool IsWaterInDirection(Vector2 direction)
+        {
+            if (direction == Vector2.zero) return false;
+
+            Vector2 checkPos = (Vector2)transform.position + (direction.normalized * waterCheckDistance);
+
+            if (Physics2D.OverlapCircle(checkPos, waterCheckRadius, waterLayer) != null)
+            {
+                return true;
+            }
+
+            if (currentGrid != null && waterTilemap != null)
+            {
+                Vector3Int cell = currentGrid.WorldToCell(checkPos);
+                if (waterTilemap.HasTile(cell))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns a safe normalized movement vector that avoids stepping into water, sliding along shorelines if possible.
+        /// </summary>
+        public Vector2 GetSafeMoveDirection(Vector2 desiredDirection)
+        {
+            if (desiredDirection == Vector2.zero) return Vector2.zero;
+
+            Vector2 normalized = desiredDirection.normalized;
+            if (!IsWaterInDirection(normalized))
+            {
+                return normalized;
+            }
+
+            // Try sliding horizontally along the water edge
+            Vector2 dirX = new Vector2(normalized.x, 0f);
+            if (Mathf.Abs(dirX.x) > 0.05f && !IsWaterInDirection(dirX.normalized))
+            {
+                return dirX.normalized;
+            }
+
+            // Try sliding vertically along the water edge
+            Vector2 dirY = new Vector2(0f, normalized.y);
+            if (Mathf.Abs(dirY.y) > 0.05f && !IsWaterInDirection(dirY.normalized))
+            {
+                return dirY.normalized;
+            }
+
+            return Vector2.zero;
         }
 
         private void HandleFlip()
         {
-            if (visualsTransform == null) return;
+            if (visualsTransform == null || knockbackTimer > 0f) return;
 
             if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
             {
@@ -143,6 +239,12 @@ namespace FrogGame.Enemies
             FSM.ChangeState(StunnedState);
         }
 
+        public void ApplyKnockback(Vector2 direction, float force, float duration = 0.15f)
+        {
+            knockbackTimer = duration;
+            rb.linearVelocity = direction.normalized * force;
+        }
+
         private void Die()
         {
             if (AudioManager.Instance != null)
@@ -162,6 +264,9 @@ namespace FrogGame.Enemies
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackRange);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position + Vector3.down * waterCheckDistance, waterCheckRadius);
         }
     }
 }

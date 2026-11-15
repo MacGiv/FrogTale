@@ -17,6 +17,10 @@ namespace FrogGame.Gameplay
         [SerializeField] private float maxLifetime = 3f;
         [SerializeField] private GameObject pickupArrowPrefab;
 
+        [Header("Knockback Settings")]
+        [SerializeField] private float knockbackForce = 6f;
+        [SerializeField] private float knockbackDuration = 0.15f;
+
         [Header("Collision Layers")]
         [SerializeField] private LayerMask obstacleLayer;
         [SerializeField] private LayerMask enemyLayer;
@@ -80,6 +84,15 @@ namespace FrogGame.Gameplay
                 if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlayEnemyArrowHit(gameObject);
+                }
+
+                if (collision.TryGetComponent<IKnockbackable>(out var knockbackable))
+                {
+                    Vector2 knockbackDir = rb.linearVelocity != Vector2.zero
+                        ? rb.linearVelocity.normalized
+                        : (Vector2)(collision.transform.position - transform.position).normalized;
+
+                    knockbackable.ApplyKnockback(knockbackDir, knockbackForce, knockbackDuration);
                 }
 
                 IDamageable damageable = collision.GetComponent<IDamageable>();

@@ -6,24 +6,36 @@ namespace FrogGame.UI
     using FrogGame.Gameplay;
 
     /// <summary>
-    /// Displays health and arrow ammo updates on the HUD UI.
+    /// Displays health, arrow ammo, unlocked abilities, and LoL-style radial skill cooldowns on the HUD UI.
     /// </summary>
     public class PlayerHUD : MonoBehaviour
     {
         [Header("Health UI References")]
         [SerializeField] private Slider healthSlider;
 
-        [Header("Shield UI Refeences")]
+        [Header("Shield UI References")]
         [SerializeField] private Image shieldIcon;
 
         [Header("Arrow UI")]
+        [SerializeField] private GameObject arrowHudContainer;
         [SerializeField] private TextMeshProUGUI arrowText;
+
+        [Header("Stun / Sneeze UI")]
+        [SerializeField] private GameObject stunHudContainer;
+        [SerializeField] private Image stunCooldownOverlay;
+        [SerializeField] private TextMeshProUGUI stunCooldownText;
+
+        private float stunCooldownRemaining = 0f;
+        private float stunTotalCooldown = 1f;
 
         private void OnEnable()
         {
             PlayerHealthSystem.OnHealthChanged += UpdateHealthUI;
             PlayerHealthSystem.OnShieldChanged += UpdateShieldUI;
             PlayerAmmoSystem.OnArrowCountChanged += UpdateArrowUI;
+            PlayerAbilityTracker.OnBowUnlocked += UpdateBowVisibility;
+            PlayerAbilityTracker.OnSneezeUnlocked += UpdateSneezeVisibility;
+            PlayerSneezeHandler.OnSneezeTriggered += HandleStunTriggered;
         }
 
         private void OnDisable()
@@ -31,6 +43,43 @@ namespace FrogGame.UI
             PlayerHealthSystem.OnHealthChanged -= UpdateHealthUI;
             PlayerHealthSystem.OnShieldChanged -= UpdateShieldUI;
             PlayerAmmoSystem.OnArrowCountChanged -= UpdateArrowUI;
+            PlayerAbilityTracker.OnBowUnlocked -= UpdateBowVisibility;
+            PlayerAbilityTracker.OnSneezeUnlocked -= UpdateSneezeVisibility;
+            PlayerSneezeHandler.OnSneezeTriggered -= HandleStunTriggered;
+        }
+
+        private void Start()
+        {
+            PlayerAbilityTracker tracker = FindFirstObjectByType<PlayerAbilityTracker>();
+            UpdateBowVisibility(tracker != null && tracker.HasBow);
+            UpdateSneezeVisibility(tracker != null && tracker.HasSneeze);
+            ResetStunCooldownVisuals();
+        }
+
+        private void Update()
+        {
+            if (stunCooldownRemaining > 0f)
+            {
+                stunCooldownRemaining -= Time.deltaTime;
+
+                if (stunCooldownRemaining <= 0f)
+                {
+                    ResetStunCooldownVisuals();
+                }
+                else
+                {
+                    if (stunCooldownOverlay != null)
+                    {
+                        stunCooldownOverlay.fillAmount = Mathf.Clamp01(stunCooldownRemaining / stunTotalCooldown);
+                    }
+
+                    if (stunCooldownText != null)
+                    {
+                        stunCooldownText.gameObject.SetActive(true);
+                        stunCooldownText.text = stunCooldownRemaining.ToString("F1");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -64,6 +113,53 @@ namespace FrogGame.UI
             if (arrowText != null)
             {
                 arrowText.text = currentArrows.ToString();
+            }
+        }
+
+        private void UpdateBowVisibility(bool isUnlocked)
+        {
+            if (arrowHudContainer != null)
+            {
+                arrowHudContainer.SetActive(isUnlocked);
+            }
+        }
+
+        private void UpdateSneezeVisibility(bool isUnlocked)
+        {
+            if (stunHudContainer != null)
+            {
+                stunHudContainer.SetActive(isUnlocked);
+            }
+
+            if (isUnlocked)
+            {
+                ResetStunCooldownVisuals();
+            }
+        }
+
+        private void HandleStunTriggered(float remaining, float total)
+        {
+            stunTotalCooldown = Mathf.Max(0.01f, total);
+            stunCooldownRemaining = remaining;
+
+            if (stunCooldownOverlay != null)
+            {
+                stunCooldownOverlay.fillAmount = 1f;
+            }
+        }
+
+        private void ResetStunCooldownVisuals()
+        {
+            stunCooldownRemaining = 0f;
+
+            if (stunCooldownOverlay != null)
+            {
+                stunCooldownOverlay.fillAmount = 0f;
+            }
+
+            if (stunCooldownText != null)
+            {
+                stunCooldownText.gameObject.SetActive(false);
             }
         }
     }
