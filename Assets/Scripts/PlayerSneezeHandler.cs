@@ -2,7 +2,6 @@ namespace FrogGame.Gameplay
 {
     using System;
     using UnityEngine;
-    using UnityEngine.UI; // Required for Canvas UI Image
     using FrogGame.Core;
 
     /// <summary>
@@ -23,7 +22,6 @@ namespace FrogGame.Gameplay
 
         [Header("Visual & Feedback References")]
         [SerializeField] private GameObject sneezeParticle;
-        [SerializeField] private Image readyIndicator; // Updated to UI Image for HUD Canvas
 
         private float lastSneezeTime = -999f;
         private PlayerMovementHandler movementHandler;
@@ -37,11 +35,6 @@ namespace FrogGame.Gameplay
         private void Awake()
         {
             movementHandler = GetComponent<PlayerMovementHandler>();
-        }
-
-        private void Update()
-        {
-            UpdateIndicator();
         }
 
         /// <summary>
@@ -120,14 +113,6 @@ namespace FrogGame.Gameplay
             }
 
             return true;
-        }
-
-        private void UpdateIndicator()
-        {
-            if (readyIndicator == null) return;
-
-            // Change UI Image color based on cooldown state
-            readyIndicator.color = CanSneeze ? Color.green : Color.red;
         }
 
         private void OnDrawGizmosSelected()
