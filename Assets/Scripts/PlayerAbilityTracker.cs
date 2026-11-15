@@ -20,6 +20,12 @@ namespace FrogGame.Gameplay
         public static event Action<bool> OnBowUnlocked;
         public static event Action<bool> OnSneezeUnlocked;
 
+        private void Start()
+        {
+            OnBowUnlocked?.Invoke(hasBow);
+            OnSneezeUnlocked?.Invoke(hasSneeze);
+        }
+
         public void UnlockBow()
         {
             hasBow = true;
