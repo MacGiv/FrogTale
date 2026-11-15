@@ -2,7 +2,6 @@ namespace FrogGame.Core
 {
     using System;
     using UnityEngine;
-    using UnityEngine.InputSystem;
     using UnityEngine.SceneManagement;
     using FrogGame.Gameplay;
 
@@ -11,15 +10,11 @@ namespace FrogGame.Core
     /// </summary>
     public class GameController : MonoBehaviour
     {
-        [Header("UI Canvas")]
-        [SerializeField] private GameObject pauseCanvas;
+        [Header("Input References")]
+        [SerializeField] private PlayerInputHandler playerInputHandler;
 
         [Header("Restart Settings")]
         [SerializeField] private float deathRestartDelay = 1f;
-
-        [Header("System Input Action References")]
-        [SerializeField] private InputActionReference pauseAction;
-        [SerializeField] private InputActionReference restartAction;
 
         public bool IsPaused { get; private set; }
 
@@ -29,16 +24,9 @@ namespace FrogGame.Core
         {
             PlayerHealthSystem.OnPlayerDied += HandlePlayerDied;
 
-            if (pauseAction != null)
+            if (playerInputHandler != null)
             {
-                pauseAction.action.Enable();
-                pauseAction.action.performed += OnPausePerformed;
-            }
-
-            if (restartAction != null)
-            {
-                restartAction.action.Enable();
-                restartAction.action.performed += OnRestartPerformed;
+                playerInputHandler.OnPausePressed += TogglePause;
             }
         }
 
@@ -46,28 +34,32 @@ namespace FrogGame.Core
         {
             PlayerHealthSystem.OnPlayerDied -= HandlePlayerDied;
 
-            if (pauseAction != null)
+            if (playerInputHandler != null)
             {
-                pauseAction.action.performed -= OnPausePerformed;
-                pauseAction.action.Disable();
-            }
-
-            if (restartAction != null)
-            {
-                restartAction.action.performed -= OnRestartPerformed;
-                restartAction.action.Disable();
+                playerInputHandler.OnPausePressed -= TogglePause;
             }
         }
 
-        private void OnPausePerformed(InputAction.CallbackContext context)
+        public void TogglePause()
         {
-            IsPaused = !IsPaused;
+            SetPauseState(!IsPaused);
+        }
+
+        public void SetPauseState(bool paused)
+        {
+            IsPaused = paused;
+            Time.timeScale = IsPaused ? 0f : 1f;
+
+            if (IsPaused)
+            {
+                playerInputHandler?.DisableInput();
+            }
+            else
+            {
+                playerInputHandler?.EnableInput();
+            }
+
             OnPauseToggled?.Invoke(IsPaused);
-        }
-
-        private void OnRestartPerformed(InputAction.CallbackContext context)
-        {
-            RestartScene();
         }
 
         private void HandlePlayerDied()
@@ -79,16 +71,6 @@ namespace FrogGame.Core
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        public void QuitGame()
-        {
-            Debug.Log("[GameController] Quitting Application...");
-            Application.Quit();
-
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
         }
     }
 }

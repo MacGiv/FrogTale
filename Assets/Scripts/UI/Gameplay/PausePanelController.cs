@@ -32,6 +32,13 @@ namespace FrogGame.UI
             quitToMenuButton.onClick.RemoveListener(HandleQuitToMenuClicked);
         }
 
+        public override void Show()
+        {
+            base.Show();
+
+            Focus();
+        }
+
         private void HandleContinueClicked() => OnContinuePressed?.Invoke();
 
         private void HandleOptionsClicked() => OnOptionsPressed?.Invoke();

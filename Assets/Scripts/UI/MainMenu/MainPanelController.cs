@@ -28,12 +28,6 @@ namespace FrogGame.UI
             exitButton.onClick.AddListener(HandleExitClicked);
         }
 
-        private void Start()
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-
         private void OnDestroy()
         {
             playButton.onClick.RemoveListener(HandlePlayClicked);
