@@ -49,8 +49,9 @@ namespace FrogGame.Enemies
             Transform targetWaypoint = brain.Waypoints[currentWaypointIndex];
             if (targetWaypoint == null) return;
 
-            Vector2 dir = ((Vector2)targetWaypoint.position - (Vector2)brain.transform.position).normalized;
-            brain.Rb.linearVelocity = dir * brain.PatrolSpeed;
+            Vector2 rawDir = ((Vector2)targetWaypoint.position - (Vector2)brain.transform.position).normalized;
+            Vector2 safeDir = brain.GetSafeMoveDirection(rawDir);
+            brain.Rb.linearVelocity = safeDir * brain.PatrolSpeed;
         }
 
         public void Exit()
