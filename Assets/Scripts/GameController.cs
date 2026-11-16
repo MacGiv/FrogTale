@@ -17,6 +17,7 @@ namespace FrogGame.Core
         [SerializeField] private float deathRestartDelay = 1f;
 
         public bool IsPaused { get; private set; }
+        public bool IsPauseLocked { get; set; }
 
         public event Action<bool> OnPauseToggled;
 
@@ -42,6 +43,8 @@ namespace FrogGame.Core
 
         public void TogglePause()
         {
+            if (IsPauseLocked) return;
+
             SetPauseState(!IsPaused);
         }
 
