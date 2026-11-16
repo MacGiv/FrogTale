@@ -257,6 +257,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  waterCheckDistance: 0.6
+  waterCheckRadius: 0.25
   waypoints: []
   visualsTransform: {fileID: 9205648006076042569}
   spriteFacesLeftByDefault: 0
