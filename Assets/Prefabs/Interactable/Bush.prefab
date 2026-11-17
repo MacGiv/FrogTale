@@ -96,10 +96,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   explosionVfxPrefab: {fileID: 7526341450088874782, guid: ceb217c3d66912748a9f7eb9fbe6cc51, type: 3}
-  overallDropChance: 60
-  lootTable:
-  - itemPrefab: {fileID: 5228230958259665518, guid: bb32f77c8be41b043ab0a4006fbb11ff, type: 3}
-    dropChance: 15
+  isDroper: 0
+  droppableItems: []
 --- !u!1 &7725351491852228295
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,8 +175,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2012188897
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2097626738, guid: c420f2cb16704124fa67eda2b66c86de, type: 3}
