@@ -139,9 +139,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: -750558851
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ee488c03f115bc94e829608b00d126e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -230,9 +230,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 13
+  m_SortingLayerID: -1079636369
+  m_SortingLayer: 7
+  m_SortingOrder: 12
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 882f9014a52476f4f900360e2d8ef7f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -449,9 +449,9 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingLayerID: -1079636369
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -658,7 +658,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   sneezeParticle: {fileID: 3004018478875197302, guid: 09eefc6cdc22e5645aac046b23bed5d5, type: 3}
-  readyIndicator: {fileID: 0}
 --- !u!114 &4138766253333921927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,9 +737,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: -1079636369
+  m_SortingLayer: 7
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4636258348838621186, guid: e03bfd0f8dcd51546a98fb9c8c9daa21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
