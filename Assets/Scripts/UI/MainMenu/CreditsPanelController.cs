@@ -1,127 +1,235 @@
 namespace FrogGame.UI
 {
     using System;
+    using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
-    using UnityEngine.InputSystem;
     using FrogGame.Core;
 
     public class CreditsPanelController : UIPanel
     {
         [Header("Button References")]
+        [SerializeField] private Button previousPageButton;
+        [SerializeField] private Button nextPageButton;
         [SerializeField] private Button backButton;
 
         [Header("Pages References")]
         [SerializeField] private GameObject[] pages;
 
-        [Header("Input Navigation")]
-        [SerializeField] private InputActionReference navigateAction;
+        [Header("Indicators References")]
+        [SerializeField] private Button[] indicators;
+
+        [Header("Carousel Settings")]
+        [SerializeField] private float slideDuration = 0.25f;
 
         public event Action OnBackPressed;
 
+        private RectTransform canvasRect;
+        private RectTransform[] pagesRects;
         private int currentPageIndex = 0;
         private bool isNavigating = false;
+        private Coroutine slideCoroutine;
 
         protected override void Awake()
         {
             base.Awake();
 
+            Canvas parentCanvas = GetComponentInParent<Canvas>();
+
+            if (parentCanvas != null)
+            {
+                canvasRect = parentCanvas.GetComponent<RectTransform>();
+            }
+
+            if (pages != null)
+            {
+                pagesRects = new RectTransform[pages.Length];
+
+                for (int i = 0; i < pages.Length; i++)
+                {
+                    if (pages[i] != null)
+                    {
+                        pagesRects[i] = pages[i].GetComponent<RectTransform>();
+                    }
+                }
+            }
+
+            previousPageButton.onClick.AddListener(PreviousPage);
+            nextPageButton.onClick.AddListener(NextPage);
             backButton.onClick.AddListener(HandleBackClicked);
         }
 
-        private void OnDestroy() => backButton.onClick.RemoveListener(HandleBackClicked);
-
-        private void OnEnable()
+        private void OnDestroy()
         {
-            if (navigateAction != null)
-            {
-                navigateAction.action.Enable();
-            }
-        }
-
-        private void OnDisable()
-        {
-            if (navigateAction != null)
-            {
-                navigateAction.action.Disable();
-            }
-        }
-
-        private void Update()
-        {
-            if (CanvasGroup == null || CanvasGroup.alpha < 0.9f) return;
-
-            if (navigateAction != null)
-            {
-                Vector2 navInput = navigateAction.action.ReadValue<Vector2>();
-
-                if (navInput.x > 0.5f)
-                {
-                    if (!isNavigating)
-                    {
-                        NextPage();
-
-                        isNavigating = true;
-                    }
-                }
-                else if (navInput.x < -0.5f)
-                {
-                    if (!isNavigating)
-                    {
-                        PreviousPage();
-
-                        isNavigating = true;
-                    }
-                }
-                else
-                {
-                    isNavigating = false;
-                }
-            }
+            previousPageButton.onClick.RemoveListener(PreviousPage);
+            nextPageButton.onClick.RemoveListener(NextPage);
+            backButton.onClick.RemoveListener(HandleBackClicked);
         }
 
         public override void Show()
         {
             base.Show();
 
-            currentPageIndex = 0;
-            UpdatePageVisibility();
-        }
-
-        #region Navigation Logic
-
-        public void NextPage()
-        {
-            if (pages == null || pages.Length == 0) return;
-
-            currentPageIndex = (currentPageIndex + 1) % pages.Length;
-
-            UpdatePageVisibility();
-        }
-
-        public void PreviousPage()
-        {
-            if (pages == null || pages.Length == 0) return;
-
-            currentPageIndex--;
-
-            if (currentPageIndex < 0)
+            if (slideCoroutine != null)
             {
-                currentPageIndex = pages.Length - 1;
+                StopCoroutine(slideCoroutine);
+                slideCoroutine = null;
             }
 
-            UpdatePageVisibility();
+            isNavigating = false;
+            currentPageIndex = 0;
+
+            UpdateUIPage();
         }
 
-        private void UpdatePageVisibility()
+        #region Pages Navigation Logic
+
+        private void PreviousPage()
         {
+            if (isNavigating || pages == null || pages.Length == 0) return;
+
+            int previousIndex = currentPageIndex;
+            currentPageIndex = GetWrappedIndex(currentPageIndex - 1);
+
+            slideCoroutine = StartCoroutine(SlidePagesRoutine(previousIndex, currentPageIndex, -1));
+        }
+
+        private void NextPage()
+        {
+            if (isNavigating || pages == null || pages.Length == 0) return;
+
+            int previousIndex = currentPageIndex;
+            currentPageIndex = GetWrappedIndex(currentPageIndex + 1);
+
+            slideCoroutine = StartCoroutine(SlidePagesRoutine(previousIndex, currentPageIndex, 1));
+        }
+
+        private void UpdateUIPage()
+        {
+            if (pages == null || pages.Length == 0) return;
+
+            float spacing = GetCanvasWidth();
+            int prevIndex = GetWrappedIndex(currentPageIndex - 1);
+            int nextIndex = GetWrappedIndex(currentPageIndex + 1);
+
             for (int i = 0; i < pages.Length; i++)
             {
-                if (pages[i] != null)
+                if (i == currentPageIndex)
                 {
-                    pages[i].SetActive(i == currentPageIndex);
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, 0f);
+                }
+                else if (i == prevIndex)
+                {
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, -spacing);
+                }
+                else if (i == nextIndex)
+                {
+                    pages[i].SetActive(true);
+
+                    SetPagePositionX(i, spacing);
+                }
+                else
+                {
+                    pages[i].SetActive(false);
                 }
             }
+
+            UpdateIndicators();
+        }
+
+        private IEnumerator SlidePagesRoutine(int fromIndex, int toIndex, int direction)
+        {
+            isNavigating = true;
+            UpdateIndicators();
+
+            float spacing = GetCanvasWidth();
+            int incomingEdgeIndex = GetWrappedIndex(toIndex + direction);
+
+            if (pages.Length >= 3 && incomingEdgeIndex != fromIndex)
+            {
+                pages[incomingEdgeIndex].SetActive(true);
+                SetPagePositionX(incomingEdgeIndex, direction * spacing * 2f);
+            }
+
+            pages[fromIndex].SetActive(true);
+            pages[toIndex].SetActive(true);
+
+            float fromStartX = 0f;
+            float fromEndX = -direction * spacing;
+
+            float toStartX = direction * spacing;
+            float toEndX = 0f;
+
+            float edgeStartX = direction * spacing * 2f;
+            float edgeEndX = direction * spacing;
+
+            float elapsed = 0f;
+
+            while (elapsed < slideDuration)
+            {
+                elapsed += Time.deltaTime;
+
+                float time = Mathf.Clamp01(elapsed / slideDuration);
+                float smoothT = time * time * (3f - 2f * time);
+
+                SetPagePositionX(fromIndex, Mathf.Lerp(fromStartX, fromEndX, smoothT));
+                SetPagePositionX(toIndex, Mathf.Lerp(toStartX, toEndX, smoothT));
+
+                if (pages.Length >= 3 && incomingEdgeIndex != fromIndex)
+                {
+                    SetPagePositionX(incomingEdgeIndex, Mathf.Lerp(edgeStartX, edgeEndX, smoothT));
+                }
+
+                yield return null;
+            }
+
+            UpdateUIPage();
+            isNavigating = false;
+        }
+
+        private void UpdateIndicators()
+        {
+            for (int i = 0; i < indicators.Length; i++)
+            {
+                if (indicators[i] != null)
+                {
+                    indicators[i].interactable = (i == currentPageIndex);
+                }
+            }
+        }
+
+        private float GetCanvasWidth() => canvasRect != null ? canvasRect.rect.width : Screen.width;
+
+        private void SetPagePositionX(int index, float posX)
+        {
+            if (pagesRects != null && pagesRects[index] != null)
+            {
+                Vector2 pos = pagesRects[index].anchoredPosition;
+                pos.x = posX;
+
+                pagesRects[index].anchoredPosition = pos;
+            }
+        }
+
+        private int GetWrappedIndex(int index)
+        {
+            int total = pages.Length;
+
+            if (index < 0)
+            {
+                return index + total;
+            }
+
+            if (index >= total)
+            {
+                return index - total;
+            }
+
+            return index;
         }
 
         #endregion

@@ -4,8 +4,7 @@ namespace FrogGame.Gameplay
     using UnityEngine;
 
     /// <summary>
-    /// Controls tongue extension, raycasting impact timing, and attached item retrieval.
-    /// Controla la extensión de la lengua, el timing de impacto del raycast y el retorno de objetos acoplados.
+    /// Controls tongue rendering, raycasting, and object interaction (including grabbables and enemy shields).
     /// </summary>
     [RequireComponent(typeof(LineRenderer))]
     public class TongueController : MonoBehaviour
@@ -18,7 +17,7 @@ namespace FrogGame.Gameplay
         [Header("Layer Masks")]
         [SerializeField] private LayerMask grappleLayer;
         [SerializeField] private LayerMask grabbableLayer;
-        [SerializeField] private LayerMask shieldLayer;
+        [SerializeField] private LayerMask shieldLayer; // Enemy shield layer
         [SerializeField] private LayerMask wallLayer;
 
         [Header("References & Visuals")]
@@ -37,7 +36,7 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Shoots tongue out, triggers object grab on impact, and retracts attached item back to player.
+        /// Shoots the tongue out and retracts it. Calls callback on completion.
         /// </summary>
         public IEnumerator ShootTongueRoutine(Vector2 direction, System.Action<TongueHitResult, Vector2> onComplete)
         {
@@ -75,7 +74,7 @@ namespace FrogGame.Gameplay
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // Phase 1: Extend Tongue (La lengua viaja hacia el objetivo)
+            // Phase 1: Extend Tongue
             float currentDist = 0f;
             float totalDist = Vector2.Distance(origin, hitPosition);
 
@@ -92,7 +91,7 @@ namespace FrogGame.Gameplay
 
             UpdateTongueVisuals(origin, hitPosition, angle);
 
-            // IMPACTO: Engancha el objeto recién al llegar a la punta
+            // Phase 1.5: Impact - Initiate grab if object is not locked on a switch
             GrabbableItem grabbedItem = null;
 
             if (hitResult == TongueHitResult.Grabbable && hitCollider != null)
@@ -103,13 +102,18 @@ namespace FrogGame.Gameplay
                     grabbedItem = hitCollider.GetComponentInParent<GrabbableItem>();
                 }
 
-                if (grabbedItem != null)
+                if (grabbedItem != null && !grabbedItem.IsLockedOnSwitch)
                 {
                     grabbedItem.OnGrabStarted();
                 }
+                else
+                {
+                    grabbedItem = null;
+                    hitResult = TongueHitResult.None;
+                }
             }
 
-            // Phase 2: Retract Tongue (Retrae la lengua trayendo el objeto pegado a la punta)
+            // Phase 2: Retract Tongue (Only if not grappling)
             if (hitResult != TongueHitResult.Grapple)
             {
                 while (currentDist > 0f)
@@ -129,7 +133,6 @@ namespace FrogGame.Gameplay
                 }
             }
 
-            // CONSUMACIÓN: Entrega el objeto al jugador al terminar la retracción
             if (grabbedItem != null)
             {
                 grabbedItem.OnGrabCompleted(transform);

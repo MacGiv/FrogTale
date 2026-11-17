@@ -16,7 +16,7 @@ namespace FrogGame.Enemies
                 brain.AlertAnimator.gameObject.SetActive(true);
                 brain.AlertAnimator.Play("Alert");
             }
-            
+
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlayEnemyCombatAlertFox(brain.gameObject);
@@ -45,8 +45,9 @@ namespace FrogGame.Enemies
         {
             if (brain.TargetPlayer == null) return;
 
-            Vector2 dir = ((Vector2)brain.TargetPlayer.position - (Vector2)brain.transform.position).normalized;
-            brain.Rb.linearVelocity = dir * brain.ChaseSpeed;
+            Vector2 rawDir = ((Vector2)brain.TargetPlayer.position - (Vector2)brain.transform.position).normalized;
+            Vector2 safeDir = brain.GetSafeMoveDirection(rawDir);
+            brain.Rb.linearVelocity = safeDir * brain.ChaseSpeed;
         }
 
         public void Exit()
