@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.10.0] - 2026-11-17
+
+### New
+
+- Carriable stones now snap to the center of floor switches upon contact and lock in place, preventing accidental re-grabbing with the tongue during puzzles.
+- Knockback impact physics added when hitting Fox and Small Owl enemies with arrows.
+- 360-degree radial cooldown overlay and countdown timer added to the Stun/Sneeze HUD icon.
+- Animated mucus expansion intro sequence when opening the pause menu, with input locking during the transition to prevent button spam.
+- Smooth horizontal carousel transitions and clickable page indicators for the Credits screen, along with refreshed team and partner logos.
+- Layered parallax background, updated stone frog statue animation, and ambient rain overlay effect on the Main Menu.
+
+### Changes
+
+- Dropping carried stones is now blocked when facing walls or obstacles to prevent clipping out of bounds.
+- Arrow counter and Stun/Sneeze ability icons remain hidden on the HUD until unlocked during gameplay progression, and the legacy world-space ready indicator was removed.
+- Relocated the updated game logo to the Splash Screen and refreshed pressed/selected button visuals and menu typography.
+- Standardized sprite rendering layers across all characters, props, and environments to prevent overlapping visual glitches.
+- Updated shop doors to a 2x2 footprint with proper collision alignment and organized shop interior and exterior visuals.
+
+### Bug Fixes
+
+- FROG-12 Implemented stone locking when placed on top of a floor switch.
+- FROG-17 Fixed wall clipping when dropping carried stones near obstacles.
+- FROG-21 Fixed missing tiles in the Meseta level scene.
+- FROG-25 Updated shop spritesheet and collision so the player can no longer walk over the counter.
+- FROG-27 Fixed Fox and Shielded Fox chase AI so they detect water edges instead of walking across water.
+- FROG-33 Added boundaries and collisions in the Mangrove level to prevent the player from walking off-camera.
+- FROG-35 Implemented dynamic HUD visibility so Stun and Arrow icons appear only when unlocked.
+- FROG-36 Fixed exit door collision in the shop where the player would get stuck when leaving.
+- FROG-38 Fixed Mangrove zone transitions where the player could clip through obstacles while switching rooms.
+- FROG-39 Fixed Mangrove room transition edge detection causing obstacle clipping.
+- FROG-43 Adjusted platform alignment in the Meseta level so the player no longer falls off misaligned edges.
+- FROG-46 Fixed Mangrove room camera boundaries so levels no longer appear cut in half at screen edges.
+- FROG-47 Added starting boundary walls in the Mangrove level to prevent accidental falls into water upon spawning.
+- FROG-48 Fixed stone rendering layer so carried and dropped stones always display above ground obstacles.
+
 ## [0.9.0] - 2026-11-10
 
 ### New
