@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4691580683511888490}
   - component: {fileID: 8592171782816357281}
   - component: {fileID: 890881481410423863}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shopkeeper NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7680767042985793823}
   - component: {fileID: 7516107682248128883}
   - component: {fileID: 4268573255042369627}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sprite_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 662130571845748498}
   - component: {fileID: 120985640711489079}
   - component: {fileID: 1356252667320452994}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sprite_Vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
