@@ -153,6 +153,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5166347551355941271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6769130746222634285}
+  m_Layer: 8
+  m_Name: TallGrassDetectorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6769130746222634285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166347551355941271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 939356276976503626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5779661112466472930
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +304,7 @@ GameObject:
   - component: {fileID: 278519217810397165}
   - component: {fileID: 141681743693933888}
   - component: {fileID: 3569756098962365395}
+  - component: {fileID: 6404451420294413117}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -298,6 +330,8 @@ Transform:
   - {fileID: 2473404711069442025}
   - {fileID: 8451421526952349763}
   - {fileID: 8541942503707674416}
+  - {fileID: 6787589997471889207}
+  - {fileID: 6769130746222634285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &984263636307533334
@@ -866,6 +900,24 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!114 &6404451420294413117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee047c5818be1bb4e84da900625a78e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerTallGrassDetector
+  tallGrassLayer:
+    serializedVersion: 2
+    m_Bits: 524288
+  detectionPoint: {fileID: 6769130746222634285}
+  movementThreshold: 0.01
+  grassEffectAnimator: {fileID: 3360973532838947145}
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,3 +949,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 939356276976503626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5827116355784029140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 939356276976503626}
+    m_Modifications:
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_Name
+      value: GrassMovingFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+--- !u!95 &3360973532838947145 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9113738552259828381, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+  m_PrefabInstance: {fileID: 5827116355784029140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6787589997471889207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+  m_PrefabInstance: {fileID: 5827116355784029140}
+  m_PrefabAsset: {fileID: 0}

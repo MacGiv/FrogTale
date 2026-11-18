@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7582451681736024943}
   - component: {fileID: 7616919768703794703}
   - component: {fileID: 6017156439810855394}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: TallGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562593715321469830}
   - component: {fileID: 5565371390048705071}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
