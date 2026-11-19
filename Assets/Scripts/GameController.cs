@@ -21,6 +21,15 @@ namespace FrogGame.Core
 
         public event Action<bool> OnPauseToggled;
 
+        private void Start()
+        {
+            if (playerInputHandler != null)
+            {
+                playerInputHandler.EnableInput();
+                playerInputHandler.DisableUIInput();
+            }
+        }
+
         private void OnEnable()
         {
             PlayerHealthSystem.OnPlayerDied += HandlePlayerDied;
@@ -55,11 +64,13 @@ namespace FrogGame.Core
 
             if (IsPaused)
             {
-                playerInputHandler?.DisableInput();
+                playerInputHandler.EnableUIInput();
+                playerInputHandler.DisableInput();
             }
             else
             {
-                playerInputHandler?.EnableInput();
+                playerInputHandler.DisableUIInput();
+                playerInputHandler.EnableInput();
             }
 
             OnPauseToggled?.Invoke(IsPaused);
