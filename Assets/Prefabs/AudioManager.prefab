@@ -203,6 +203,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: a9f3382fa05f1ac44a5bd122ea74d3b2, type: 2}
+  playUIClickButton:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 25e87491d939e3d4f920665c000f1c0c, type: 2}
   playTestSound:
     idInternal: 0
     valueGuidInternal: 

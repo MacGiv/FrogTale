@@ -5,7 +5,7 @@ namespace FrogGame.UI
     using UnityEngine.EventSystems;
 
     [RequireComponent(typeof(Button))]
-    public class ButtonSelectedColor : MonoBehaviour, ISelectHandler, IDeselectHandler
+    public class UIButton : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
         [Header("Target Image")]
         [SerializeField] private Image targetImage;
@@ -21,6 +21,14 @@ namespace FrogGame.UI
                 targetImage = GetComponent<Image>();
             }
 
+            if (targetImage != null)
+            {
+                targetImage.color = normalColor;
+            }
+        }
+
+        private void OnDisable()
+        {
             if (targetImage != null)
             {
                 targetImage.color = normalColor;
@@ -43,11 +51,11 @@ namespace FrogGame.UI
             }
         }
 
-        private void OnDisable()
+        public void OnSubmit(BaseEventData eventData)
         {
-            if (targetImage != null)
+            if (AudioManager.Instance != null)
             {
-                targetImage.color = normalColor;
+                AudioManager.Instance.PlayUIClickButton();
             }
         }
     }
