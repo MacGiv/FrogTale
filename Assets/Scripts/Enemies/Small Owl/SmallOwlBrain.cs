@@ -153,6 +153,7 @@ namespace FrogGame.Enemies
             {
                 if (AudioManager.Instance != null)
                 {
+                    AudioManager.Instance.SetEnemyDeadOwl(gameObject);
                     AudioManager.Instance.PlayEnemyDead(gameObject);
                 }
 

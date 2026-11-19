@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53fc667bbe76f743aaf08c20f7fd441, type: 3}
+  m_Name: 23E12A14-31F9-465E-BB2C-C4CD878F880D
+  m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseSwitchReference
+  objectName: Boss
+  id: 1560169506
+  guid: 23E12A14-31F9-465E-BB2C-C4CD878F880D
+  WwiseSwitchGroupReference: {fileID: 11400000, guid: 487e35c5c2264d646a8989d000ee7275, type: 2}

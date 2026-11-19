@@ -151,6 +151,24 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 45e4477fcaa685f46b72a7991b58c596, type: 2}
+  enemyDeadBoss:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2f753e9ac6236ff4ab4472ddd3e704d3, type: 2}
+  enemyDeadFox:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 904096ccd97b3f149a08c2f4030bb35c, type: 2}
+  enemyDeadOwl:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8e8f1641fdfe9e147be3a3652c450c6a, type: 2}
   playEnvDoorsOpen:
     idInternal: 0
     valueGuidInternal: 

@@ -38,6 +38,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playUIHoverButton;
     [SerializeField] private AK.Wwise.Event playUIStartMenu;
 
+    [Header("Enemy Switches")]
+    [SerializeField] private AK.Wwise.Switch enemyDeadBoss;
+    [SerializeField] private AK.Wwise.Switch enemyDeadFox;
+    [SerializeField] private AK.Wwise.Switch enemyDeadOwl;
+
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
 
@@ -74,6 +79,14 @@ public class AudioManager : MonoBehaviour
             akEvent.Post(emitter != null ? emitter : gameObject);
         }
     }
+
+    public void SetSwitch(AK.Wwise.Switch akSwitch, GameObject emitter)
+    {
+        if (akSwitch != null && akSwitch.IsValid() && emitter != null)
+        {
+            akSwitch.SetValue(emitter);
+        }
+    }
     #endregion
 
     #region Play Methods
@@ -104,5 +117,11 @@ public class AudioManager : MonoBehaviour
     public void PlayUIStartMenu(GameObject emitter = null) => PostEvent(playUIStartMenu, emitter);
 
     public void PlayTestSound(GameObject emitter = null) => PostEvent(playTestSound, emitter);
+    #endregion
+
+    #region Switch Methods
+    public void SetEnemyDeadBoss(GameObject emitter) => SetSwitch(enemyDeadBoss, emitter);
+    public void SetEnemyDeadFox(GameObject emitter) => SetSwitch(enemyDeadFox, emitter);
+    public void SetEnemyDeadOwl(GameObject emitter) => SetSwitch(enemyDeadOwl, emitter);
     #endregion
 }
