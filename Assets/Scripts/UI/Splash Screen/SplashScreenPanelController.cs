@@ -36,6 +36,8 @@ namespace FrogGame.UI
         {
             if (submitAction != null && submitAction.action.WasPressedThisFrame())
             {
+                AudioManager.Instance.PlayUIStartMenu();
+
                 LoadNextScene();
             }
         }
