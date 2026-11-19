@@ -2,6 +2,7 @@ namespace FrogGame.UI
 {
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using FrogGame.Core;
 
     public class MainMenuManager : MonoBehaviour
     {
@@ -71,10 +72,7 @@ namespace FrogGame.UI
 
         #region Event Handlers
 
-        private void HandlePlayPressed()
-        {
-            SceneManager.LoadScene("GameplayTest_Artist_Meseta");
-        }
+        private void HandlePlayPressed() => SceneManager.LoadScene(SceneNames.PLATEAU);
 
         private void HandleExitPressed()
         {
