@@ -163,7 +163,7 @@ namespace FrogGame.UI
         private void HandleQuitToMenuPressed()
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(SceneNames.MAIN_MENU);
         }
 
         #endregion

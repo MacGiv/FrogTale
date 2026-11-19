@@ -25,7 +25,7 @@ TagManager:
   - Ground
   - EnemyShield
   - Platforms
-  - 
+  - TallGrass
   - 
   - 
   - 
@@ -48,14 +48,8 @@ TagManager:
   - name: Ground
     uniqueID: 711346111
     locked: 0
-  - name: Shadow
-    uniqueID: 3544408445
-    locked: 0
   - name: Obstacles
     uniqueID: 256505979
-    locked: 0
-  - name: Decorations
-    uniqueID: 308713431
     locked: 0
   - name: Interactables
     uniqueID: 2282778399
