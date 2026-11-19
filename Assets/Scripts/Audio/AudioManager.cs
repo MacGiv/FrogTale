@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("UI Events")]
     [SerializeField] private AK.Wwise.Event playUIClickButton;
+    [SerializeField] private AK.Wwise.Event playUIHoverButton;
 
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
@@ -98,6 +99,7 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerTongueShot(GameObject emitter = null) => PostEvent(playPlayerTongueShot, emitter);
 
     public void PlayUIClickButton(GameObject emitter = null) => PostEvent(playUIClickButton, emitter);
+    public void PlayUIHoverButton(GameObject emitter = null) => PostEvent(playUIHoverButton, emitter);
 
     public void PlayTestSound(GameObject emitter = null) => PostEvent(playTestSound, emitter);
     #endregion

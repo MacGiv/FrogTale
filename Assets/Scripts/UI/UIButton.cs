@@ -41,6 +41,11 @@ namespace FrogGame.UI
             {
                 targetImage.color = selectedColor;
             }
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayUIHoverButton();
+            }
         }
 
         public void OnDeselect(BaseEventData eventData)
