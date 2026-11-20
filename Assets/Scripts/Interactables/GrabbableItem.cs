@@ -124,8 +124,14 @@ namespace FrogGame.Gameplay
                     {
                         if (pullTarget != null && pullTarget.TryGetComponent<PlayerHealthSystem>(out var healthSystem))
                         {
+                            if (AudioManager.Instance != null)
+                            {
+                                AudioManager.Instance.PlayPlayerEnemyMaskRemove();
+                            }
+
                             healthSystem.SetShieldState(true);
                         }
+
                         Destroy(gameObject);
                     }
                     break;

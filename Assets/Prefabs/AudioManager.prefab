@@ -191,14 +191,18 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 861ec0b611994264eb3f12765154c72b, type: 2}
-  playPlayerFootsteps:
+  playPlayerEnemyMaskRemove:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 8f3b309280dccd9418d11b9d4275e9bc, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 36c58bc0bb8558946b1ce4773ba50fdc, type: 2}
   playPlayerFallWater:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f66d61353243a5e4a84d0ac4bf435ec7, type: 2}
+  playPlayerFootsteps:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f3b309280dccd9418d11b9d4275e9bc, type: 2}
   playPlayerTongueHit:
     idInternal: 0
     valueGuidInternal: 
