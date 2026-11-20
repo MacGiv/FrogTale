@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 141681743693933888}
   - component: {fileID: 3569756098962365395}
   - component: {fileID: 6404451420294413117}
+  - component: {fileID: 2623179612302005995}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -919,6 +920,23 @@ MonoBehaviour:
   detectionPoint: {fileID: 6769130746222634285}
   movementThreshold: 0.01
   grassEffectAnimator: {fileID: 3360973532838947145}
+--- !u!114 &2623179612302005995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0cdaf65124fda478384f7c97a7786b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerFootstepHandler
+  feetPoint: {fileID: 6769130746222634285}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 65536
+  minStepInterval: 0.12
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
