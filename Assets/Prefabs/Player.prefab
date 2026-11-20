@@ -435,9 +435,9 @@ MonoBehaviour:
   shieldLayer:
     serializedVersion: 2
     m_Bits: 131072
-  wallLayer:
+  obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   tongueOrigin: {fileID: 4559666176104124744}
   tongueTip: {fileID: 9147826235726030823}
 --- !u!120 &1655920308539956457
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerGrappleCollisionDetector
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 32896
+    m_Bits: 32768
   boxSize: {x: 0.25, y: 0.65}
   detectionDistance: 0.4
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
@@ -933,10 +933,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerFootstepHandler
   feetPoint: {fileID: 6769130746222634285}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 65536
-  minStepInterval: 0.12
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0

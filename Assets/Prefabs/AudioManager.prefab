@@ -203,10 +203,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: d0322df22715ddc40acdf333412c378b, type: 2}
-  playPlayerTongueShot:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a9f3382fa05f1ac44a5bd122ea74d3b2, type: 2}
   playUIClickButton:
     idInternal: 0
     valueGuidInternal: 
@@ -273,6 +269,24 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 847259a8ccfc26445934e7156b3d26f6, type: 2}
+  playerTongueHitRandom:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: da2a5e3819eae9249aa1129f278e9ef1, type: 2}
+  playerTongueHitRock:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4eb05cbd8ba8f204491af0248b9f3147, type: 2}
+  playerTongueShot:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fc3c81a44e499c34ab3ada6fd009c515, type: 2}
   playTestSound:
     idInternal: 0
     valueGuidInternal: 

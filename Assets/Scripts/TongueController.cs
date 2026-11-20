@@ -18,7 +18,7 @@ namespace FrogGame.Gameplay
         [SerializeField] private LayerMask grappleLayer;
         [SerializeField] private LayerMask grabbableLayer;
         [SerializeField] private LayerMask shieldLayer; // Enemy shield layer
-        [SerializeField] private LayerMask wallLayer;
+        [SerializeField] private LayerMask obstaclesLayer;
 
         [Header("References & Visuals")]
         [SerializeField] private Transform tongueOrigin;
@@ -48,7 +48,7 @@ namespace FrogGame.Gameplay
             Vector2 hitPosition = targetPoint;
             Collider2D hitCollider = null;
 
-            LayerMask combinedMask = grappleLayer | grabbableLayer | shieldLayer | wallLayer;
+            LayerMask combinedMask = grappleLayer | grabbableLayer | shieldLayer | obstaclesLayer;
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, combinedMask);
 
             if (hit.collider != null)
@@ -56,11 +56,6 @@ namespace FrogGame.Gameplay
                 hitPosition = hit.point;
                 hitCollider = hit.collider;
                 int hitLayer = 1 << hit.collider.gameObject.layer;
-
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayPlayerTongueHit(gameObject);
-                }
 
                 if ((hitLayer & grappleLayer) != 0)
                 {
@@ -70,6 +65,12 @@ namespace FrogGame.Gameplay
                 {
                     hitResult = TongueHitResult.Grabbable;
                 }
+            }
+
+            // Play tongue hit sound
+            if (AudioManager.Instance != null)
+            {
+                TriggerTongueImpactAudio(hitCollider);
             }
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -140,6 +141,27 @@ namespace FrogGame.Gameplay
 
             SetVisualsActive(false);
             onComplete?.Invoke(hitResult, hitPosition);
+        }
+
+        private void TriggerTongueImpactAudio(Collider2D hitCollider)
+        {
+            if (hitCollider != null)
+            {
+                if (hitCollider.CompareTag("Rock"))
+                {
+                    AudioManager.Instance.SetPlayerTongueHitRock(gameObject);
+                }
+                else
+                {
+                    AudioManager.Instance.SetPlayerTongueHitRandom(gameObject);
+                }
+            }
+            else
+            {
+                AudioManager.Instance.SetPlayerTongueShot(gameObject);
+            }
+
+            AudioManager.Instance.PlayPlayerTongueHit(gameObject);
         }
 
         private void UpdateTongueVisuals(Vector2 origin, Vector2 tipPos, float angle)
