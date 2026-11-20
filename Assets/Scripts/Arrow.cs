@@ -82,11 +82,6 @@ namespace FrogGame.Gameplay
             {
                 hasHit = true;
 
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayEnemyArrowHit(gameObject);
-                }
-
                 if (collision.TryGetComponent<IKnockbackable>(out var knockbackable))
                 {
                     Vector2 knockbackDir = rb.linearVelocity != Vector2.zero

@@ -131,6 +131,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: fe98ab6b634cc864f9d706c096fe9fe4, type: 2}
+  playEnemyAttack:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7d1aac38bbe73964fbe630ab9bdc37e3, type: 2}
   playEnemyBoogerHit:
     idInternal: 0
     valueGuidInternal: 

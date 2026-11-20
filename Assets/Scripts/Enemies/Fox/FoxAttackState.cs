@@ -47,6 +47,11 @@ namespace FrogGame.Enemies
 
                 if (brain.AlertAnimator != null)
                 {
+                    if (AudioManager.Instance)
+                    {
+                        AudioManager.Instance.PlayEnemyAttack(brain.gameObject);
+                    }
+
                     brain.AttackAnimator.gameObject.SetActive(true);
                     brain.AttackAnimator.Play("FoxScratch");
                 }

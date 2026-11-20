@@ -112,6 +112,12 @@ namespace FrogGame.Enemies
 
                     if (AttackAnimator != null)
                     {
+
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnemyAttack(gameObject);
+                        }
+
                         AttackAnimator.gameObject.SetActive(true);
                         AttackAnimator.Play("SmallOwlScratch", -1, 0f);
                     }
