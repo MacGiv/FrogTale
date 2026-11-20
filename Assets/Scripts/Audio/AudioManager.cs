@@ -29,8 +29,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playPlayerArrowHit;
     [SerializeField] private AK.Wwise.Event playPlayerBowShot;
     [SerializeField] private AK.Wwise.Event playPlayerDamage;
-    [SerializeField] private AK.Wwise.Event playPlayerFootsteps;
+    [SerializeField] private AK.Wwise.Event playPlayerEnemyMaskRemove;
     [SerializeField] private AK.Wwise.Event playPlayerFallWater;
+    [SerializeField] private AK.Wwise.Event playPlayerFootsteps;
     [SerializeField] private AK.Wwise.Event playPlayerTongueHit;
 
     [Header("UI Events")]
@@ -123,8 +124,9 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerArrowHit(GameObject emitter = null) => PostEvent(playPlayerArrowHit, emitter);
     public void PlayPlayerBowShot(GameObject emitter = null) => PostEvent(playPlayerBowShot, emitter);
     public void PlayPlayerDamage(GameObject emitter = null) => PostEvent(playPlayerDamage, emitter);
-    public void PlayPlayerFootsteps(GameObject emitter = null) => PostEvent(playPlayerFootsteps, emitter);
+    public void PlayPlayerEnemyMaskRemove(GameObject emitter = null) => PostEvent(playPlayerEnemyMaskRemove, emitter);
     public void PlayPlayerFallWater(GameObject emitter = null) => PostEvent(playPlayerFallWater, emitter);
+    public void PlayPlayerFootsteps(GameObject emitter = null) => PostEvent(playPlayerFootsteps, emitter);
     public void PlayPlayerTongueHit(GameObject emitter = null) => PostEvent(playPlayerTongueHit, emitter);
 
     public void PlayUIClickButton(GameObject emitter = null) => PostEvent(playUIClickButton, emitter);
