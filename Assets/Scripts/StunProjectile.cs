@@ -52,11 +52,6 @@ namespace FrogGame.Gameplay
             // 1. Check obstacle collision / Choque contra pared u obstáculo
             if ((colLayer & obstacleLayer) != 0)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayPlayerBoogerHit(gameObject);
-                }
-
                 Destroy(gameObject);
                 return;
             }

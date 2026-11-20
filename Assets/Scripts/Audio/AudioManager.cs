@@ -24,9 +24,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playEnvRockPushButton;
 
     [Header("Player Events")]
-    [SerializeField] private AK.Wwise.Event playPlayerBoogerHit;
-    [SerializeField] private AK.Wwise.Event playPlayerBoogerShot;
     [SerializeField] private AK.Wwise.Event playPlayerArrowHit;
+    [SerializeField] private AK.Wwise.Event playPlayerBoogerShot;
     [SerializeField] private AK.Wwise.Event playPlayerBowShot;
     [SerializeField] private AK.Wwise.Event playPlayerDamage;
     [SerializeField] private AK.Wwise.Event playPlayerEnemyMaskRemove;
@@ -119,9 +118,8 @@ public class AudioManager : MonoBehaviour
     public void PlayEnvRockDrop(GameObject emitter = null) => PostEvent(playEnvRockDrop, emitter);
     public void PlayEnvRockPushButton(GameObject emitter = null) => PostEvent(playEnvRockPushButton, emitter);
 
-    public void PlayPlayerBoogerHit(GameObject emitter = null) => PostEvent(playPlayerBoogerHit, emitter);
-    public void PlayPlayerBoogerShot(GameObject emitter = null) => PostEvent(playPlayerBoogerShot, emitter);
     public void PlayPlayerArrowHit(GameObject emitter = null) => PostEvent(playPlayerArrowHit, emitter);
+    public void PlayPlayerBoogerShot(GameObject emitter = null) => PostEvent(playPlayerBoogerShot, emitter);
     public void PlayPlayerBowShot(GameObject emitter = null) => PostEvent(playPlayerBowShot, emitter);
     public void PlayPlayerDamage(GameObject emitter = null) => PostEvent(playPlayerDamage, emitter);
     public void PlayPlayerEnemyMaskRemove(GameObject emitter = null) => PostEvent(playPlayerEnemyMaskRemove, emitter);
