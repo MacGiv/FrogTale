@@ -191,6 +191,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 861ec0b611994264eb3f12765154c72b, type: 2}
+  playPlayerFootsteps:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f3b309280dccd9418d11b9d4275e9bc, type: 2}
   playPlayerFallWater:
     idInternal: 0
     valueGuidInternal: 
@@ -251,6 +255,24 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 698aac7a917bd744c951b0459cbb9439, type: 2}
+  playerFootstepsConcrete:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c45a14ae0e10d0e4fbdb24ca87b65824, type: 2}
+  playerFootstepsGrassLarge:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2c6dc025ec2d3614e95f5e981806a619, type: 2}
+  playerFootstepsGrassShort:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 847259a8ccfc26445934e7156b3d26f6, type: 2}
   playTestSound:
     idInternal: 0
     valueGuidInternal: 

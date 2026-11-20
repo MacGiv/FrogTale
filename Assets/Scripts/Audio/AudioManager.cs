@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playPlayerArrowHit;
     [SerializeField] private AK.Wwise.Event playPlayerBowShot;
     [SerializeField] private AK.Wwise.Event playPlayerDamage;
+    [SerializeField] private AK.Wwise.Event playPlayerFootsteps;
     [SerializeField] private AK.Wwise.Event playPlayerFallWater;
     [SerializeField] private AK.Wwise.Event playPlayerTongueHit;
     [SerializeField] private AK.Wwise.Event playPlayerTongueShot;
@@ -47,6 +48,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Switch arrowHitGrass;
     [SerializeField] private AK.Wwise.Switch arrowHitMetal;
     [SerializeField] private AK.Wwise.Switch arrowHitWood;
+
+    [Header("Player Footsteps Switches")]
+    [SerializeField] private AK.Wwise.Switch playerFootstepsConcrete;
+    [SerializeField] private AK.Wwise.Switch playerFootstepsGrassLarge;
+    [SerializeField] private AK.Wwise.Switch playerFootstepsGrassShort;
 
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
@@ -113,6 +119,7 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerArrowHit(GameObject emitter = null) => PostEvent(playPlayerArrowHit, emitter);
     public void PlayPlayerBowShot(GameObject emitter = null) => PostEvent(playPlayerBowShot, emitter);
     public void PlayPlayerDamage(GameObject emitter = null) => PostEvent(playPlayerDamage, emitter);
+    public void PlayPlayerFootsteps(GameObject emitter = null) => PostEvent(playPlayerFootsteps, emitter);
     public void PlayPlayerFallWater(GameObject emitter = null) => PostEvent(playPlayerFallWater, emitter);
     public void PlayPlayerTongueHit(GameObject emitter = null) => PostEvent(playPlayerTongueHit, emitter);
     public void PlayPlayerTongueShot(GameObject emitter = null) => PostEvent(playPlayerTongueShot, emitter);
@@ -132,5 +139,9 @@ public class AudioManager : MonoBehaviour
     public void SetArrowHitGrass(GameObject emitter) => SetSwitch(arrowHitGrass, emitter);
     public void SetArrowHitMetal(GameObject emitter) => SetSwitch(arrowHitMetal, emitter);
     public void SetArrowHitWood(GameObject emitter) => SetSwitch(arrowHitWood, emitter);
+
+    public void SetPlayerFootstepsConcrete(GameObject emitter) => SetSwitch(playerFootstepsConcrete, emitter);
+    public void SetPlayerFootstepsGrassLarge(GameObject emitter) => SetSwitch(playerFootstepsGrassLarge, emitter);
+    public void SetPlayerFootstepsGrassShort(GameObject emitter) => SetSwitch(playerFootstepsGrassShort, emitter);
     #endregion
 }
