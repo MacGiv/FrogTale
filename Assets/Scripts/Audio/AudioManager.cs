@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
     [Header("Player Events")]
     [SerializeField] private AK.Wwise.Event playPlayerBoogerHit;
     [SerializeField] private AK.Wwise.Event playPlayerBoogerShot;
-    [SerializeField] private AK.Wwise.Event playPlayerBowHit;
+    [SerializeField] private AK.Wwise.Event playPlayerArrowHit;
     [SerializeField] private AK.Wwise.Event playPlayerBowShot;
     [SerializeField] private AK.Wwise.Event playPlayerDamage;
     [SerializeField] private AK.Wwise.Event playPlayerFallWater;
@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Switch enemyDeadBoss;
     [SerializeField] private AK.Wwise.Switch enemyDeadFox;
     [SerializeField] private AK.Wwise.Switch enemyDeadOwl;
+
+    [Header("Arrow Hit Switches")]
+    [SerializeField] private AK.Wwise.Switch arrowHitGrass;
+    [SerializeField] private AK.Wwise.Switch arrowHitMetal;
+    [SerializeField] private AK.Wwise.Switch arrowHitWood;
 
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
@@ -105,7 +110,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPlayerBoogerHit(GameObject emitter = null) => PostEvent(playPlayerBoogerHit, emitter);
     public void PlayPlayerBoogerShot(GameObject emitter = null) => PostEvent(playPlayerBoogerShot, emitter);
-    public void PlayPlayerBowHit(GameObject emitter = null) => PostEvent(playPlayerBowHit, emitter);
+    public void PlayPlayerArrowHit(GameObject emitter = null) => PostEvent(playPlayerArrowHit, emitter);
     public void PlayPlayerBowShot(GameObject emitter = null) => PostEvent(playPlayerBowShot, emitter);
     public void PlayPlayerDamage(GameObject emitter = null) => PostEvent(playPlayerDamage, emitter);
     public void PlayPlayerFallWater(GameObject emitter = null) => PostEvent(playPlayerFallWater, emitter);
@@ -123,5 +128,9 @@ public class AudioManager : MonoBehaviour
     public void SetEnemyDeadBoss(GameObject emitter) => SetSwitch(enemyDeadBoss, emitter);
     public void SetEnemyDeadFox(GameObject emitter) => SetSwitch(enemyDeadFox, emitter);
     public void SetEnemyDeadOwl(GameObject emitter) => SetSwitch(enemyDeadOwl, emitter);
+
+    public void SetArrowHitGrass(GameObject emitter) => SetSwitch(arrowHitGrass, emitter);
+    public void SetArrowHitMetal(GameObject emitter) => SetSwitch(arrowHitMetal, emitter);
+    public void SetArrowHitWood(GameObject emitter) => SetSwitch(arrowHitWood, emitter);
     #endregion
 }
