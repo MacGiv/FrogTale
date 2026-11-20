@@ -151,24 +151,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 45e4477fcaa685f46b72a7991b58c596, type: 2}
-  enemyDeadBoss:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 2f753e9ac6236ff4ab4472ddd3e704d3, type: 2}
-  enemyDeadFox:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 904096ccd97b3f149a08c2f4030bb35c, type: 2}
-  enemyDeadOwl:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 8e8f1641fdfe9e147be3a3652c450c6a, type: 2}
   playEnvDoorsOpen:
     idInternal: 0
     valueGuidInternal: 
@@ -197,7 +179,7 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 0f5e1cc725c8b4f4398e8d4c20c2d0a5, type: 2}
-  playPlayerBowHit:
+  playPlayerArrowHit:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 942bc17a934100f4a8313fd978e222e3, type: 2}
@@ -233,6 +215,42 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 50916e44ee86b1249afe82802ad52aaf, type: 2}
+  enemyDeadBoss:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2f753e9ac6236ff4ab4472ddd3e704d3, type: 2}
+  enemyDeadFox:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 904096ccd97b3f149a08c2f4030bb35c, type: 2}
+  enemyDeadOwl:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8e8f1641fdfe9e147be3a3652c450c6a, type: 2}
+  arrowHitGrass:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 92d1ecece68c7174a832ca05a12d01d6, type: 2}
+  arrowHitMetal:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 938743c02e2363f40922dfcada5851be, type: 2}
+  arrowHitWood:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 698aac7a917bd744c951b0459cbb9439, type: 2}
   playTestSound:
     idInternal: 0
     valueGuidInternal: 
