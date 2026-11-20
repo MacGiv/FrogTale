@@ -12,6 +12,7 @@ namespace FrogGame.Gameplay
         public event Action OnArrowReleased;
         public event Action OnTongueExtended;
         public event Action OnSneezeImpact;
+        public event Action OnFootstep;
 
         // Methods called directly by Unity Animation Events
 
@@ -28,6 +29,11 @@ namespace FrogGame.Gameplay
         public void AnimEvent_OnSneezeImpact()
         {
             OnSneezeImpact?.Invoke();
+        }
+
+        public void AnimEvent_OnFootstep()
+        {
+            OnFootstep?.Invoke();
         }
     }
 }
