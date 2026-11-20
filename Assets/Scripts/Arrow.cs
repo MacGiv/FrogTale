@@ -15,6 +15,7 @@ namespace FrogGame.Gameplay
         [SerializeField] private float speed = 12f;
         [SerializeField] private int damage = 1;
         [SerializeField] private float maxLifetime = 3f;
+        [SerializeField] private float destroyAudioDelay = 2f;
         [SerializeField] private GameObject pickupArrowPrefab;
 
         [Header("Knockback Settings")]
@@ -24,14 +25,18 @@ namespace FrogGame.Gameplay
         [Header("Collision Layers")]
         [SerializeField] private LayerMask obstacleLayer;
         [SerializeField] private LayerMask enemyLayer;
-        [SerializeField] private LayerMask shieldLayer; // Capa exclusiva para escudos de enemigos
+        [SerializeField] private LayerMask shieldLayer;
 
         private Rigidbody2D rb;
+        private Collider2D col;
+        private SpriteRenderer spriteRenderer;
         private bool hasHit;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            col = GetComponent<Collider2D>();
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Start()
@@ -65,13 +70,9 @@ namespace FrogGame.Gameplay
             {
                 hasHit = true;
 
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayPlayerBowHit(gameObject);
-                }
-
+                PlayImpactAudio(collision, colLayer);
                 SpawnPickup();
-                Destroy(gameObject);
+                DisableAndDelayedDestroy();
 
                 return;
             }
@@ -102,7 +103,7 @@ namespace FrogGame.Gameplay
                     damageable.TakeDamage(damage);
                 }
 
-                Destroy(gameObject);
+                DisableAndDelayedDestroy();
             }
         }
 
@@ -112,6 +113,58 @@ namespace FrogGame.Gameplay
             {
                 Instantiate(pickupArrowPrefab, transform.position, Quaternion.identity);
             }
+        }
+
+        private void PlayImpactAudio(Collider2D collision, int colLayer)
+        {
+            if (AudioManager.Instance == null) return;
+
+            SurfaceType hitSurface = SurfaceType.Wood;
+
+            if ((colLayer & shieldLayer) != 0)
+            {
+                hitSurface = SurfaceType.Metal;
+            }
+            else if (SurfaceDetectorManager.Instance != null)
+            {
+                Vector2 impactPoint = collision.ClosestPoint(transform.position);
+                hitSurface = SurfaceDetectorManager.Instance.GetSurfaceFromCollider(collision, impactPoint, rb.linearVelocity);
+            }
+
+            switch (hitSurface)
+            {
+                case SurfaceType.Grass:
+
+                    AudioManager.Instance.SetArrowHitGrass(gameObject);
+
+                    break;
+                case SurfaceType.Metal:
+
+                    AudioManager.Instance.SetArrowHitMetal(gameObject);
+
+                    break;
+                case SurfaceType.Wood:
+
+                    AudioManager.Instance.SetArrowHitWood(gameObject);
+
+                    break;
+            }
+
+            AudioManager.Instance.PlayPlayerArrowHit(gameObject);
+        }
+
+        /// <summary>
+        /// Disables visuals and physics immediately while keeping the GameObject alive briefly so Wwise finishes playing the emitter audio.
+        /// </summary>
+        private void DisableAndDelayedDestroy()
+        {
+            if (col != null) col.enabled = false;
+            if (spriteRenderer != null) spriteRenderer.enabled = false;
+
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+
+            Destroy(gameObject, destroyAudioDelay);
         }
     }
 }
