@@ -32,7 +32,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playPlayerFootsteps;
     [SerializeField] private AK.Wwise.Event playPlayerFallWater;
     [SerializeField] private AK.Wwise.Event playPlayerTongueHit;
-    [SerializeField] private AK.Wwise.Event playPlayerTongueShot;
 
     [Header("UI Events")]
     [SerializeField] private AK.Wwise.Event playUIClickButton;
@@ -53,6 +52,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Switch playerFootstepsConcrete;
     [SerializeField] private AK.Wwise.Switch playerFootstepsGrassLarge;
     [SerializeField] private AK.Wwise.Switch playerFootstepsGrassShort;
+
+    [Header("Player Tongue Hit Switches")]
+    [SerializeField] private AK.Wwise.Switch playerTongueHitRandom;
+    [SerializeField] private AK.Wwise.Switch playerTongueHitRock;
+    [SerializeField] private AK.Wwise.Switch playerTongueShot;
 
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
@@ -122,7 +126,6 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerFootsteps(GameObject emitter = null) => PostEvent(playPlayerFootsteps, emitter);
     public void PlayPlayerFallWater(GameObject emitter = null) => PostEvent(playPlayerFallWater, emitter);
     public void PlayPlayerTongueHit(GameObject emitter = null) => PostEvent(playPlayerTongueHit, emitter);
-    public void PlayPlayerTongueShot(GameObject emitter = null) => PostEvent(playPlayerTongueShot, emitter);
 
     public void PlayUIClickButton(GameObject emitter = null) => PostEvent(playUIClickButton, emitter);
     public void PlayUIHoverButton(GameObject emitter = null) => PostEvent(playUIHoverButton, emitter);
@@ -143,5 +146,9 @@ public class AudioManager : MonoBehaviour
     public void SetPlayerFootstepsConcrete(GameObject emitter) => SetSwitch(playerFootstepsConcrete, emitter);
     public void SetPlayerFootstepsGrassLarge(GameObject emitter) => SetSwitch(playerFootstepsGrassLarge, emitter);
     public void SetPlayerFootstepsGrassShort(GameObject emitter) => SetSwitch(playerFootstepsGrassShort, emitter);
+
+    public void SetPlayerTongueHitRandom(GameObject emitter) => SetSwitch(playerTongueHitRandom, emitter);
+    public void SetPlayerTongueHitRock(GameObject emitter) => SetSwitch(playerTongueHitRock, emitter);
+    public void SetPlayerTongueShot(GameObject emitter) => SetSwitch(playerTongueShot, emitter);
     #endregion
 }
