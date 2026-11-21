@@ -5,7 +5,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Detects standing surface layer (Ground, Water, or Moving Platform) using a Box Gizmo positioned at the player's feet.
-    /// Preserves ground-based respawn coordinates when standing on moving platforms.
+    /// Preserves ground-based respawn coordinates when standing on moving platforms and synchronizes with trigger platforms.
     /// </summary>
     public class PlayerWaterDetector : MonoBehaviour
     {
@@ -26,6 +26,7 @@ namespace FrogGame.Gameplay
 
         private Vector3Int currentCell;
         private Vector3 lastSafeTileCenter;
+        private MovingPlatform lastBoardedTriggerPlatform;
 
         public Vector3 LastSafeTileCenter => lastSafeTileCenter;
 
@@ -37,7 +38,7 @@ namespace FrogGame.Gameplay
 
             if (currentGrid != null)
             {
-                currentCell = currentGrid.WorldToCell(transform.position);
+                currentCell = currentGrid.WorldToCell(GetFeetPosition());
                 lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
             }
             else
@@ -46,7 +47,26 @@ namespace FrogGame.Gameplay
             }
         }
 
+        /// <summary>
+        /// Returns the world-space position of the player's feet detection box.
+        /// </summary>
         public Vector2 GetFeetPosition() => (Vector2)transform.position + feetOffset;
+
+        /// <summary>
+        /// Updates the safe respawn tile to the nearest valid ground tile around a world reference point (such as a platform waypoint).
+        /// </summary>
+        public void UpdateSafeRespawnNear(Vector3 worldReferencePos)
+        {
+            if (currentGrid != null && TryFindNearestGroundTile(worldReferencePos, out Vector3 nearestGroundCenter))
+            {
+                currentCell = currentGrid.WorldToCell(nearestGroundCenter);
+                lastSafeTileCenter = nearestGroundCenter;
+            }
+            else
+            {
+                lastSafeTileCenter = worldReferencePos;
+            }
+        }
 
         private void Update()
         {
@@ -63,6 +83,12 @@ namespace FrogGame.Gameplay
             Collider2D platformHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, platformLayer);
             if (platformHit != null)
             {
+                MovingPlatform platform = platformHit.GetComponentInParent<MovingPlatform>();
+                if (platform != null && platform.Mode == MovingPlatform.PlatformMode.OnTrigger)
+                {
+                    lastBoardedTriggerPlatform = platform;
+                }
+
                 return;
             }
 
@@ -88,12 +114,13 @@ namespace FrogGame.Gameplay
                     waterCenter = currentGrid.GetCellCenterWorld(waterCell);
                 }
 
-                brain.DrownState.SetTargetPositions(waterCenter, lastSafeTileCenter);
+                Vector3 respawnPos = ResolveSafeRespawnPosition();
+                brain.DrownState.SetTargetPositions(waterCenter, respawnPos);
                 brain.FSM.ChangeState(brain.DrownState);
                 return;
             }
 
-            // 3. Check for water tilemap tiles and update ground safe point
+            // 3. Check for water tilemap tiles and update ground safe point using feet position
             if (currentGrid != null)
             {
                 Vector3Int feetCellPos = currentGrid.WorldToCell(feetPos);
@@ -101,22 +128,96 @@ namespace FrogGame.Gameplay
                 if (waterTilemap != null && waterTilemap.HasTile(feetCellPos))
                 {
                     Vector3 waterCenter = currentGrid.GetCellCenterWorld(feetCellPos);
-                    brain.DrownState.SetTargetPositions(waterCenter, lastSafeTileCenter);
+                    Vector3 respawnPos = ResolveSafeRespawnPosition();
+                    brain.DrownState.SetTargetPositions(waterCenter, respawnPos);
                     brain.FSM.ChangeState(brain.DrownState);
                     return;
                 }
 
-                Vector3Int playerCenterCell = currentGrid.WorldToCell(transform.position);
-
-                if (playerCenterCell != currentCell)
+                if (groundTilemap != null && groundTilemap.HasTile(feetCellPos))
                 {
-                    if (groundTilemap != null && groundTilemap.HasTile(playerCenterCell))
+                    // Player stepped back onto solid ground; clear boarded trigger platform tracking
+                    lastBoardedTriggerPlatform = null;
+
+                    if (feetCellPos != currentCell)
                     {
-                        currentCell = playerCenterCell;
+                        currentCell = feetCellPos;
                         lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Ensures that if the player drowned after riding an OnTrigger platform to a new shore without stepping off,
+        /// the respawn point matches the platform's reset shore instead of the previous departure shore.
+        /// </summary>
+        private Vector3 ResolveSafeRespawnPosition()
+        {
+            if (lastBoardedTriggerPlatform != null && lastBoardedTriggerPlatform.Mode == MovingPlatform.PlatformMode.OnTrigger)
+            {
+                Vector3 platformOrigin = lastBoardedTriggerPlatform.CurrentOrigin;
+                Vector3 platformOpposite = lastBoardedTriggerPlatform.TargetPosition;
+
+                float distToOrigin = Vector3.Distance(lastSafeTileCenter, platformOrigin);
+                float distToOpposite = Vector3.Distance(lastSafeTileCenter, platformOpposite);
+
+                if (distToOrigin > distToOpposite)
+                {
+                    UpdateSafeRespawnNear(platformOrigin);
+                }
+
+                lastBoardedTriggerPlatform = null;
+            }
+
+            return lastSafeTileCenter;
+        }
+
+        /// <summary>
+        /// Searches expanding grid rings around a world position to find the closest walkable ground tile free of water.
+        /// </summary>
+        private bool TryFindNearestGroundTile(Vector3 worldPos, out Vector3 groundCenter)
+        {
+            groundCenter = worldPos;
+            if (currentGrid == null || groundTilemap == null) return false;
+
+            Vector3Int centerCell = currentGrid.WorldToCell(worldPos);
+            float bestDistSqr = float.MaxValue;
+            bool found = false;
+
+            const int maxSearchRadius = 4;
+
+            for (int r = 0; r <= maxSearchRadius; r++)
+            {
+                for (int dx = -r; dx <= r; dx++)
+                {
+                    for (int dy = -r; dy <= r; dy++)
+                    {
+                        if (Mathf.Abs(dx) != r && Mathf.Abs(dy) != r) continue;
+
+                        Vector3Int candidateCell = new Vector3Int(centerCell.x + dx, centerCell.y + dy, centerCell.z);
+                        bool hasGround = groundTilemap.HasTile(candidateCell);
+                        bool hasWater = waterTilemap != null && waterTilemap.HasTile(candidateCell);
+
+                        if (hasGround && !hasWater)
+                        {
+                            Vector3 candidateCenter = currentGrid.GetCellCenterWorld(candidateCell);
+                            float distSqr = (candidateCenter - worldPos).sqrMagnitude;
+
+                            if (distSqr < bestDistSqr)
+                            {
+                                bestDistSqr = distSqr;
+                                groundCenter = candidateCenter;
+                                found = true;
+                            }
+                        }
+                    }
+                }
+
+                if (found) return true;
+            }
+
+            return false;
         }
 
         private void InitializeGridReferences()
