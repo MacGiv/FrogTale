@@ -76,6 +76,9 @@ namespace FrogGame.UI
 
         private void ShowOptionsPanel()
         {
+            Cursor.visible = true; // This is here temporarily to test the sound sliders.
+            Cursor.lockState = CursorLockMode.None; // This is here temporarily to test the sound sliders.
+
             pausePanel.Hide();
             optionsPanel.Show();
         }
