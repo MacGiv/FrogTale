@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playEnvItemsPickup;
     [SerializeField] private AK.Wwise.Event playEnvRockDrop;
     [SerializeField] private AK.Wwise.Event playEnvRockPushButton;
+    [SerializeField] private AK.Wwise.Event playEnvPlatform;
+    [SerializeField] private AK.Wwise.Event stopEnvPlatform;
+    [SerializeField] private AK.Wwise.Event playEnvPlatformPlayer;
 
     [Header("Player Events")]
     [SerializeField] private AK.Wwise.Event playPlayerArrowHit;
@@ -117,6 +120,9 @@ public class AudioManager : MonoBehaviour
     public void PlayEnvItemsPickup(GameObject emitter = null) => PostEvent(playEnvItemsPickup, emitter);
     public void PlayEnvRockDrop(GameObject emitter = null) => PostEvent(playEnvRockDrop, emitter);
     public void PlayEnvRockPushButton(GameObject emitter = null) => PostEvent(playEnvRockPushButton, emitter);
+    public void PlayEnvPlatform(GameObject emitter = null) => PostEvent(playEnvPlatform, emitter);
+    public void StopEnvPlatform(GameObject emitter = null) => PostEvent(stopEnvPlatform, emitter);
+    public void PlayEnvPlatformPlayer(GameObject emitter = null) => PostEvent(playEnvPlatformPlayer, emitter);
 
     public void PlayPlayerArrowHit(GameObject emitter = null) => PostEvent(playPlayerArrowHit, emitter);
     public void PlayPlayerBoogerShot(GameObject emitter = null) => PostEvent(playPlayerBoogerShot, emitter);
