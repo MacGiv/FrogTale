@@ -152,33 +152,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door_Closed
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a071a15afe0a0043bf82d2159de1ce9
-      internalID: 934165300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Interactuables_Spritesheet_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -196,11 +174,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactuables_Spritesheet_5
+      name: bush
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -222,33 +200,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door_Open
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 306f57eeccf548d478994e5ffad84d7f
-      internalID: 1538961895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactuables_Spritesheet_8
+      name: leaves
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -266,13 +222,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactuables_Spritesheet_11
+      name: door_pointLeft_closed
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 16
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,7 +244,139 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactuables_Spritesheet_12
+      name: switch
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555f6d670faebe046af900e9bdcb63d7
+      internalID: 1090189652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_pointDown_closed
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61c310d3e26fa1459c3b6ea4d2f12e3
+      internalID: -530194112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_pointDown_open
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fbb25727197aa4eac86fddf6a5f6b0
+      internalID: -476817174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_pointLeft_open
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 16
+        width: 3
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8509be46d201c48a0a2aede9419767
+      internalID: 249567078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: switch_pressed
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b94ebfb010e5a4094243b34e41414d
+      internalID: -1418204316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_pointLeft_closed_top
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a89014b343f8e438e8d1e2aaf25c74
+      internalID: -1470959939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door_pointLeft_closed_bot
       rect:
         serializedVersion: 2
         x: 16
@@ -303,8 +391,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 555f6d670faebe046af900e9bdcb63d7
-      internalID: 1090189652
+      spriteID: 252b5fa37157fa749b619cab2e6e9b1b
+      internalID: 990174018
       vertices: []
       indices: 
       edges: []
@@ -323,22 +411,25 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":6.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Door_Closed: 934165300
-      Door_Open: 1538961895
-      Interactuables_Spritesheet_1: -150496080
-      Interactuables_Spritesheet_10: 1601208300
-      Interactuables_Spritesheet_11: 1527369437
-      Interactuables_Spritesheet_12: 1090189652
       Interactuables_Spritesheet_2: -1840561688
-      Interactuables_Spritesheet_3: -1062527826
-      Interactuables_Spritesheet_4: 773518617
-      Interactuables_Spritesheet_5: 2097626738
-      Interactuables_Spritesheet_7: -2019622657
-      Interactuables_Spritesheet_8: -1035286487
-      Interactuables_Spritesheet_9: 1359753371
-      d: 934165300
+      bush: 2097626738
+      door_pointDown_closed: -530194112
+      door_pointDown_closed_botLeft: -1062527826
+      door_pointDown_closed_botRight: 773518617
+      door_pointDown_closed_topRight: -150496080
+      door_pointDown_open: -476817174
+      door_pointDown_open_right: -2019622657
+      door_pointLeft_closed: 1527369437
+      door_pointLeft_closed_bo: -1738174420
+      door_pointLeft_closed_bot: 990174018
+      door_pointLeft_closed_top: -1470959939
+      door_pointLeft_open: 249567078
+      door_pointLeft_open_bot: 1601208300
+      leaves: -1035286487
+      switch: 1090189652
+      switch_pressed: -1418204316
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

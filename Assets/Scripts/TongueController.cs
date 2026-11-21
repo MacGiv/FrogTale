@@ -4,7 +4,7 @@ namespace FrogGame.Gameplay
     using UnityEngine;
 
     /// <summary>
-    /// Controls tongue rendering, raycasting, and object interaction (including grabbables and enemy shields).
+    /// Controls tongue rendering, dynamic sorting order when shooting upward, raycasting, and object interaction (including grabbables and enemy shields).
     /// </summary>
     [RequireComponent(typeof(LineRenderer))]
     public class TongueController : MonoBehaviour
@@ -23,8 +23,10 @@ namespace FrogGame.Gameplay
         [Header("References & Visuals")]
         [SerializeField] private Transform tongueOrigin;
         [SerializeField] private Transform tongueTip;
+        [SerializeField] private SpriteRenderer playerSpriteRenderer;
 
         private LineRenderer lineRenderer;
+        private SpriteRenderer[] tipSpriteRenderers;
 
         public enum TongueHitResult { None, Grapple, Grabbable }
 
@@ -32,7 +34,37 @@ namespace FrogGame.Gameplay
         {
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.positionCount = 2;
+
+            if (tongueTip != null)
+            {
+                tipSpriteRenderers = tongueTip.GetComponentsInChildren<SpriteRenderer>(true);
+            }
+
+            ResolvePlayerSpriteRenderer();
             SetVisualsActive(false);
+        }
+
+        private void ResolvePlayerSpriteRenderer()
+        {
+            if (playerSpriteRenderer != null) return;
+
+            // Prefer the SpriteRenderer attached to the player's Animator to avoid grabbing shadow or FX child renderers
+            Animator playerAnimator = GetComponentInParent<Animator>();
+            if (playerAnimator != null && playerAnimator.TryGetComponent<SpriteRenderer>(out var animRenderer))
+            {
+                playerSpriteRenderer = animRenderer;
+                return;
+            }
+
+            if (transform.root != null)
+            {
+                Animator rootAnimator = transform.root.GetComponentInChildren<Animator>(true);
+                if (rootAnimator != null && rootAnimator.TryGetComponent<SpriteRenderer>(out var rootAnimRenderer))
+                {
+                    playerSpriteRenderer = rootAnimRenderer;
+                    return;
+                }
+            }
         }
 
         /// <summary>
@@ -40,6 +72,7 @@ namespace FrogGame.Gameplay
         /// </summary>
         public IEnumerator ShootTongueRoutine(Vector2 direction, System.Action<TongueHitResult, Vector2> onComplete)
         {
+            UpdateTongueSortingOrder(direction);
             SetVisualsActive(true);
 
             Vector2 origin = tongueOrigin != null ? (Vector2)tongueOrigin.position : (Vector2)transform.position;
@@ -162,6 +195,39 @@ namespace FrogGame.Gameplay
             }
 
             AudioManager.Instance.PlayPlayerTongueHit(gameObject);
+        }
+        
+        /// <summary>
+        /// Places the tongue behind the player sprite when shooting upward, and in front for all other directions,
+        /// preserving the player's standardized Sorting Layer.
+        /// </summary>
+        private void UpdateTongueSortingOrder(Vector2 direction)
+        {
+            if (playerSpriteRenderer == null)
+            {
+                ResolvePlayerSpriteRenderer();
+                if (playerSpriteRenderer == null) return;
+            }
+
+            bool isShootingUp = direction.y > 0.1f && Mathf.Abs(direction.y) >= Mathf.Abs(direction.x);
+            int targetSortingOrder = isShootingUp
+                ? playerSpriteRenderer.sortingOrder - 1
+                : playerSpriteRenderer.sortingOrder + 1;
+
+            lineRenderer.sortingLayerID = playerSpriteRenderer.sortingLayerID;
+            lineRenderer.sortingOrder = targetSortingOrder;
+
+            if (tipSpriteRenderers != null)
+            {
+                for (int i = 0; i < tipSpriteRenderers.Length; i++)
+                {
+                    if (tipSpriteRenderers[i] != null)
+                    {
+                        tipSpriteRenderers[i].sortingLayerID = playerSpriteRenderer.sortingLayerID;
+                        tipSpriteRenderers[i].sortingOrder = targetSortingOrder;
+                    }
+                }
+            }
         }
 
         private void UpdateTongueVisuals(Vector2 origin, Vector2 tipPos, float angle)

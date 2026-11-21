@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4559666176104124744}
+- component: {fileID: 4559666176104124744}
   m_Layer: 8
   m_Name: TongueOrigin
   m_TagString: Untagged
@@ -39,7 +39,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8451421526952349763}
+- component: {fileID: 8451421526952349763}
   m_Layer: 8
   m_Name: HoldPoint
   m_TagString: Untagged
@@ -70,8 +70,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8541942503707674416}
-  - component: {fileID: 8126359537818529175}
+- component: {fileID: 8541942503707674416}
+- component: {fileID: 8126359537818529175}
   m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+- {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,7 +161,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6769130746222634285}
+- component: {fileID: 6769130746222634285}
   m_Layer: 8
   m_Name: TallGrassDetectorPoint
   m_TagString: Untagged
@@ -192,8 +192,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9147826235726030823}
-  - component: {fileID: 154559491949067195}
+- component: {fileID: 9147826235726030823}
+- component: {fileID: 154559491949067195}
   m_Layer: 8
   m_Name: TongueTip
   m_TagString: Untagged
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+- {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -324,13 +324,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4559666176104124744}
-  - {fileID: 9147826235726030823}
-  - {fileID: 2473404711069442025}
-  - {fileID: 8451421526952349763}
-  - {fileID: 8541942503707674416}
-  - {fileID: 6787589997471889207}
-  - {fileID: 6769130746222634285}
+- {fileID: 4559666176104124744}
+- {fileID: 9147826235726030823}
+- {fileID: 2473404711069442025}
+- {fileID: 8451421526952349763}
+- {fileID: 8541942503707674416}
+- {fileID: 6787589997471889207}
+- {fileID: 6769130746222634285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &984263636307533334
@@ -438,6 +438,7 @@ MonoBehaviour:
     m_Bits: 0
   tongueOrigin: {fileID: 4559666176104124744}
   tongueTip: {fileID: 9147826235726030823}
+  playerSpriteRenderer: {fileID: 4074726627394767299}
 --- !u!120 &1655920308539956457
 LineRenderer:
   serializedVersion: 3
@@ -464,7 +465,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7bc642543e27a14cb67c822864b883f, type: 2}
+- {fileID: 2100000, guid: c7bc642543e27a14cb67c822864b883f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,15 +489,15 @@ LineRenderer:
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+- {x: 0, y: 0, z: 0}
+- {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 3
+- serializedVersion: 3
         time: 0
         value: 1
         inSlope: 0
@@ -752,7 +753,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+- {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -881,7 +882,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2473404711069442025}
+- component: {fileID: 2473404711069442025}
   m_Layer: 8
   m_Name: ArrowSpawnPoint
   m_TagString: Untagged
@@ -912,51 +913,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 939356276976503626}
     m_Modifications:
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_Name
       value: GrassMovingFX
       objectReference: {fileID: 0}
-    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+- target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
