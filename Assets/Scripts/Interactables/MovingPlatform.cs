@@ -33,6 +33,7 @@ namespace FrogGame.Gameplay
         private bool isPlayerOnPlatform = false;
         private bool isMoving = false;
         private bool isWaiting = false;
+        private bool isMovingAudioPlaying = false;
 
         private void Awake()
         {
@@ -49,6 +50,7 @@ namespace FrogGame.Gameplay
         private void OnDisable()
         {
             PlayerDrownState.OnPlayerDrowned -= HandlePlayerDrowned;
+            StopMovementAudio();
         }
 
         private void Start()
@@ -85,6 +87,15 @@ namespace FrogGame.Gameplay
             transform.position = currentOrigin;
             rb.position = currentOrigin;
             lastPlatformPosition = currentOrigin;
+
+            if (isMoving)
+            {
+                StartMovementAudio();
+            }
+            else
+            {
+                StopMovementAudio();
+            }
         }
 
         private void FixedUpdate()
@@ -137,6 +148,12 @@ namespace FrogGame.Gameplay
                     if (distanceToCenter <= centerTileRadius)
                     {
                         isMoving = true;
+                        StartMovementAudio();
+
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnvPlatformPlayer(gameObject);
+                        }
                     }
                 }
             }
@@ -154,6 +171,7 @@ namespace FrogGame.Gameplay
         private IEnumerator WaitAndSwitchTarget()
         {
             isWaiting = true;
+            StopMovementAudio();
 
             if (mode == PlatformMode.OnTrigger)
             {
@@ -166,6 +184,29 @@ namespace FrogGame.Gameplay
             currentOrigin = targetPosition;
             targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
             isWaiting = false;
+
+            if (isMoving)
+            {
+                StartMovementAudio();
+            }
+        }
+
+        private void StartMovementAudio()
+        {
+            if (!isMovingAudioPlaying && AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvPlatform(gameObject);
+                isMovingAudioPlaying = true;
+            }
+        }
+
+        private void StopMovementAudio()
+        {
+            if (isMovingAudioPlaying && AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopEnvPlatform(gameObject);
+                isMovingAudioPlaying = false;
+            }
         }
 
         private void OnDrawGizmos()
