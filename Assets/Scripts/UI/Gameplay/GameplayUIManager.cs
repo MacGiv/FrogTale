@@ -104,12 +104,21 @@ namespace FrogGame.UI
 
             if (isPaused)
             {
-                AudioManager.Instance.PlayPlayerBoogerShot();
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBoogerShot();
+                    MusicManager.Instance.PauseMusic();
+                }
 
                 pauseIntroCoroutine = StartCoroutine(PlayPauseIntroRoutine());
             }
             else
             {
+                if (AudioManager.Instance != null)
+                {
+                    MusicManager.Instance.ResumeMusic();
+                }
+
                 if (gameController != null)
                 {
                     gameController.IsPauseLocked = false;

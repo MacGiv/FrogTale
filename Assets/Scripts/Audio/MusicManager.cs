@@ -28,6 +28,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AK.Wwise.State shopState;
 
     private uint musicPlayingId = 0u;
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -74,14 +75,42 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    #region Play / Stop
+    #region Play / Stop / Pause
     public void PlayMusic()
     {
+        if (isPaused)
+        {
+            ResumeMusic();
+            return;
+        }
+
         if (musicPlayingId != 0u) return;
 
         if (playMX != null && playMX.IsValid())
         {
             musicPlayingId = playMX.Post(gameObject);
+        }
+    }
+
+    public void PauseMusic(int fadeOutMs = 100)
+    {
+        if (musicPlayingId == 0u || isPaused) return;
+
+        if (playMX != null && playMX.IsValid())
+        {
+            playMX.ExecuteAction(gameObject, AkActionOnEventType.AkActionOnEventType_Pause, fadeOutMs, AkCurveInterpolation.AkCurveInterpolation_Linear);
+            isPaused = true;
+        }
+    }
+
+    public void ResumeMusic(int fadeInMs = 100)
+    {
+        if (musicPlayingId == 0u || !isPaused) return;
+
+        if (playMX != null && playMX.IsValid())
+        {
+            playMX.ExecuteAction(gameObject, AkActionOnEventType.AkActionOnEventType_Resume, fadeInMs, AkCurveInterpolation.AkCurveInterpolation_Linear);
+            isPaused = false;
         }
     }
 
@@ -91,6 +120,7 @@ public class MusicManager : MonoBehaviour
         {
             playMX.Stop(gameObject);
             musicPlayingId = 0u;
+            isPaused = false;
         }
     }
     #endregion
