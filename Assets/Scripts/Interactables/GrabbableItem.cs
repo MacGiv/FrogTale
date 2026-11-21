@@ -118,11 +118,6 @@ namespace FrogGame.Gameplay
 
             onCollected?.Invoke();
 
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayEnvItemsPickup(gameObject);
-            }
-
             if (pullTarget != null && TryGetComponent<IPickupable>(out var pickupable))
             {
                 pickupable.Collect(pullTarget.gameObject);
@@ -138,13 +133,24 @@ namespace FrogGame.Gameplay
                     {
                         if (pullTarget != null && pullTarget.TryGetComponent<PlayerHealthSystem>(out var healthSystem))
                         {
+                            if (AudioManager.Instance != null)
+                            {
+                                AudioManager.Instance.PlayPlayerEnemyMaskRemove();
+                            }
+
                             healthSystem.SetShieldState(true);
                         }
+
                         Destroy(gameObject);
                     }
                     break;
 
                 case ItemType.HeavyBlock:
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                    }
+
                     if (itemCollider != null) itemCollider.enabled = true;
                     SetGroundedPhysics();
                     isBeingPulled = false;
@@ -165,6 +171,11 @@ namespace FrogGame.Gameplay
                 case ItemType.AbilityBow:
                     if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainBow))
                     {
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                        }
+
                         brainBow.AbilityTracker?.UnlockBow();
                         brainBow.AmmoSystem?.AddArrows(10);
                     }
@@ -174,6 +185,11 @@ namespace FrogGame.Gameplay
                 case ItemType.AbilitySneeze:
                     if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainSneeze))
                     {
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                        }
+
                         brainSneeze.AbilityTracker?.UnlockSneeze();
                     }
                     Destroy(gameObject);

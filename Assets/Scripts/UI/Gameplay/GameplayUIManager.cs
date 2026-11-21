@@ -76,6 +76,9 @@ namespace FrogGame.UI
 
         private void ShowOptionsPanel()
         {
+            Cursor.visible = true; // This is here temporarily to test the sound sliders.
+            Cursor.lockState = CursorLockMode.None; // This is here temporarily to test the sound sliders.
+
             pausePanel.Hide();
             optionsPanel.Show();
         }
@@ -101,10 +104,21 @@ namespace FrogGame.UI
 
             if (isPaused)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBoogerShot();
+                    MusicManager.Instance.PauseMusic();
+                }
+
                 pauseIntroCoroutine = StartCoroutine(PlayPauseIntroRoutine());
             }
             else
             {
+                if (AudioManager.Instance != null)
+                {
+                    MusicManager.Instance.ResumeMusic();
+                }
+
                 if (gameController != null)
                 {
                     gameController.IsPauseLocked = false;

@@ -11,9 +11,9 @@
 						<State Name="None" ID="{55368312-928D-4D19-B610-7A2D17EDFB23}"/>
 						<State Name="BossFight" ID="{7D286F55-F7E1-4A49-86A6-68826711BA56}"/>
 						<State Name="Dungeon" ID="{7CD1E8C6-C42A-4EBE-9852-5114583AB901}"/>
-						<State Name="Gameplay" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}"/>
+						<State Name="Plateau" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}"/>
 						<State Name="Menu" ID="{BB563EA7-E767-4B1C-B3D6-A97F15057A4B}"/>
-						<State Name="Overworld" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}"/>
+						<State Name="Mangrove" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}"/>
 						<State Name="Shop" ID="{CAF97380-AD58-414B-833D-276004819F38}"/>
 					</ChildrenList>
 				</StateGroup>

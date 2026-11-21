@@ -1,4 +1,3 @@
-
 namespace FrogGame.Gameplay
 {
     using System;
@@ -11,6 +10,9 @@ namespace FrogGame.Gameplay
     /// </summary>
     public class PlayerInputHandler : MonoBehaviour
     {
+        [Header("Input Action Asset")]
+        [SerializeField] private InputActionAsset uiInputActions;
+
         [Header("Input Action References")]
         [SerializeField] private InputActionReference moveAction;
         [SerializeField] private InputActionReference tongueAction;
@@ -26,6 +28,15 @@ namespace FrogGame.Gameplay
         public event Action OnPausePressed;
 
         private bool isInputEnabled = true;
+        private InputActionMap uiActionMap;
+
+        private void Awake()
+        {
+            if (uiInputActions != null)
+            {
+                uiActionMap = uiInputActions.FindActionMap("UI");
+            }
+        }
 
         private void OnEnable()
         {
@@ -86,6 +97,16 @@ namespace FrogGame.Gameplay
 
             ResetInputs();
         }
+
+        /// <summary>
+        /// Enables the UI Action Map.
+        /// </summary>
+        public void EnableUIInput() => uiActionMap?.Enable();
+
+        /// <summary>
+        /// Disables the UI Action Map.
+        /// </summary>
+        public void DisableUIInput() => uiActionMap?.Disable();
 
         /// <summary>
         /// Resets all directional and button state values to default.

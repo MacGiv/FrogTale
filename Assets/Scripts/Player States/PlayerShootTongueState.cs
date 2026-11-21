@@ -20,8 +20,14 @@ namespace FrogGame.Gameplay
 
             if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
             {
-                brain.CarryHandler.TryDropBox();
+                bool rockDrop = brain.CarryHandler.TryDropBox();
+
                 brain.FSM.ChangeState(brain.IdleState);
+
+                if (AudioManager.Instance != null && rockDrop)
+                {
+                    AudioManager.Instance.PlayEnvRockDrop(brain.gameObject);
+                }
 
                 return;
             }
@@ -39,11 +45,6 @@ namespace FrogGame.Gameplay
             if (hasShotTongue) return;
 
             hasShotTongue = true;
-
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayPlayerTongueShot(brain.gameObject);
-            }
 
             Vector2 direction = brain.MovementHandler.FacingDirection;
             tongueCoroutine = brain.StartCoroutine(brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete));

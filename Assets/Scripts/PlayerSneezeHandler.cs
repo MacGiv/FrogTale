@@ -70,7 +70,7 @@ namespace FrogGame.Gameplay
             {
                 if (AudioManager.Instance != null)
                 {
-                    AudioManager.Instance.PlayPlayerBoogerHit(hit.gameObject);
+                    AudioManager.Instance.PlayEnemyBoogerHit(gameObject);
                 }
 
                 // 1. Apply Damage

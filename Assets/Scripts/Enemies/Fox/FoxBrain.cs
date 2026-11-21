@@ -249,6 +249,7 @@ namespace FrogGame.Enemies
         {
             if (AudioManager.Instance != null)
             {
+                AudioManager.Instance.SetEnemyDeadFox(gameObject);
                 AudioManager.Instance.PlayEnemyDead(gameObject);
             }
 

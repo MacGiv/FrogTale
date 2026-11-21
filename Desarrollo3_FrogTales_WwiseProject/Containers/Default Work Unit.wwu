@@ -4,7 +4,8 @@
 		<WorkUnit Name="Default Work Unit" ID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Standalone">
 			<ChildrenList>
 				<WorkUnit Name="Music" ID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}" PersistMode="Reference"/>
-				<WorkUnit Name="SFX" ID="{AB9B15D0-1C1A-4E6C-8977-5F955B1262F5}" PersistMode="Reference"/>
+				<WorkUnit Name="SFX_Made" ID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}" PersistMode="Reference"/>
+				<WorkUnit Name="SFX_Pablo" ID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

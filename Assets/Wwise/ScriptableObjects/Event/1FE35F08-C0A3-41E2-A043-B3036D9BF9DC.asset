@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b354e3eb4ebb3439ba266a0adafd43, type: 3}
   m_Name: 1FE35F08-C0A3-41E2-A043-B3036D9BF9DC
   m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
-  objectName: Play_Player_Bow_Hit
-  id: 2956601346
+  objectName: Play_Player_Arrow_Hit
+  id: 3850900273
   guid: 1FE35F08-C0A3-41E2-A043-B3036D9BF9DC
   IsInUserDefinedSoundBank: 1
