@@ -20,8 +20,14 @@ namespace FrogGame.Gameplay
 
             if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
             {
-                brain.CarryHandler.TryDropBox();
+                bool rockDrop = brain.CarryHandler.TryDropBox();
+
                 brain.FSM.ChangeState(brain.IdleState);
+
+                if (AudioManager.Instance != null && rockDrop)
+                {
+                    AudioManager.Instance.PlayEnvRockDrop(brain.gameObject);
+                }
 
                 return;
             }
