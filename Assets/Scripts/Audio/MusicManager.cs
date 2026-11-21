@@ -9,11 +9,12 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Event playMX;
 
     [Header("Location / Context States")]
-    [SerializeField] private AK.Wwise.State gameplayState;
-    [SerializeField] private AK.Wwise.State shopState;
-    [SerializeField] private AK.Wwise.State menuState;
-    [SerializeField] private AK.Wwise.State dungeonState;
     [SerializeField] private AK.Wwise.State bossFightState;
+    [SerializeField] private AK.Wwise.State dungeonState;
+    [SerializeField] private AK.Wwise.State mangroveState;
+    [SerializeField] private AK.Wwise.State menuState;
+    [SerializeField] private AK.Wwise.State plateauState;
+    [SerializeField] private AK.Wwise.State shopState;
 
     // ID numérico de reproducción (0 representa una instancia no válida o inactiva)
     private uint musicPlayingId = 0u;
@@ -30,12 +31,8 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
+        SetMenu();
         PlayMusic();
-
-        if (gameplayState != null && gameplayState.IsValid())
-        {
-            SetGameplay();
-        }
     }
 
     #region Play / Stop
@@ -79,10 +76,11 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void SetGameplay() => SetState(gameplayState);
-    public void SetShop() => SetState(shopState);
-    public void SetMenu() => SetState(menuState);
-    public void SetDungeon() => SetState(dungeonState);
     public void SetBossFight() => SetState(bossFightState);
+    public void SetDungeon() => SetState(dungeonState);
+    public void SetMangrove() => SetState(mangroveState);
+    public void SetMenu() => SetState(menuState);
+    public void SetPlateau() => SetState(plateauState);
+    public void SetShop() => SetState(shopState);
     #endregion
 }

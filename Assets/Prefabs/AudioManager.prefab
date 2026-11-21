@@ -48,7 +48,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ae407f4de7e19b84eaba1292fcce7588, type: 2}
-  gameplayState:
+  bossFightState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b6e3ad315b6c984408a9e4fa8b7ab609, type: 2}
+  dungeonState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3b9c2466f22afcb43b399815c2ff8da7, type: 2}
+  mangroveState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6ab2141d434da4a409b11cc71cc8801b, type: 2}
+  menuState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 04dca2a19f8e92e428a4a1fdbd17d88a, type: 2}
+  plateauState:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
@@ -60,24 +84,6 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b7c3ef088d6146c4fabe96c7ecfe7638, type: 2}
-  menuState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 04dca2a19f8e92e428a4a1fdbd17d88a, type: 2}
-  dungeonState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 3b9c2466f22afcb43b399815c2ff8da7, type: 2}
-  bossFightState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: b6e3ad315b6c984408a9e4fa8b7ab609, type: 2}
 --- !u!1 &2221066544426684449
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +305,3 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: fc3c81a44e499c34ab3ada6fd009c515, type: 2}
-  playTestSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
