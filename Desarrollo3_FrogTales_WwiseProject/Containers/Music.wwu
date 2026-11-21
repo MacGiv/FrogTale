@@ -51,7 +51,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicPlaylistContainer Name="Gameplay" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" ShortID="253799901">
+						<MusicPlaylistContainer Name="Plateau" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" ShortID="253799901">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="2"/>
 								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
@@ -84,7 +84,7 @@
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Segment">
-															<ObjectRef Name="Gameplay" ID="{9231F580-4640-425D-8EC6-EB5590284C65}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+															<ObjectRef Name="Plateau" ID="{9231F580-4640-425D-8EC6-EB5590284C65}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
 														</Reference>
 													</ReferenceList>
 												</MusicPlaylistItem>
@@ -113,7 +113,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicSegment Name="Gameplay" ID="{9231F580-4640-425D-8EC6-EB5590284C65}" ShortID="917536796">
+								<MusicSegment Name="Plateau" ID="{9231F580-4640-425D-8EC6-EB5590284C65}" ShortID="917536796">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="91484.0565784017"/>
 										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
@@ -133,7 +133,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Gameplay_MX" ID="{A16F0E51-A1EC-4646-BFA9-E4696583A5FF}" ShortID="459060937">
+										<MusicTrack Name="Plateau_MX" ID="{A16F0E51-A1EC-4646-BFA9-E4696583A5FF}" ShortID="459060937">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
@@ -291,7 +291,7 @@
 								</Reference>
 							</ReferenceList>
 						</MusicPlaylistContainer>
-						<MusicPlaylistContainer Name="Overworld" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" ShortID="1015971072">
+						<MusicPlaylistContainer Name="Mangrove" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" ShortID="1015971072">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="2"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -664,7 +664,7 @@
 							<MultiSwitchEntry Name="" ID="{F1E45F5A-7015-4DF0-8C82-A8118AF22341}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
-										<ObjectRef Name="Gameplay" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+										<ObjectRef Name="Plateau" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
 									</Reference>
 								</ReferenceList>
 								<ObjectLists>
@@ -672,7 +672,7 @@
 										<PluginInnerObject Name="" ID="{601FE45B-BB1C-45E5-97DA-F894983DE302}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
-													<ObjectRef Name="Gameplay" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+													<ObjectRef Name="Plateau" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
 												</Reference>
 											</ReferenceList>
 										</PluginInnerObject>
@@ -700,7 +700,7 @@
 							<MultiSwitchEntry Name="" ID="{1D54A157-BF4F-4251-BC12-D09B1DC7318E}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
-										<ObjectRef Name="Overworld" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+										<ObjectRef Name="Mangrove" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
 									</Reference>
 								</ReferenceList>
 								<ObjectLists>
@@ -708,7 +708,7 @@
 										<PluginInnerObject Name="" ID="{5145477E-62C7-4F47-B996-A757A456F819}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
-													<ObjectRef Name="Overworld" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+													<ObjectRef Name="Mangrove" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
 												</Reference>
 											</ReferenceList>
 										</PluginInnerObject>

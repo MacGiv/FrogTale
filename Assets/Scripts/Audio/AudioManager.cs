@@ -61,9 +61,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AK.Wwise.Switch playerTongueHitRock;
     [SerializeField] private AK.Wwise.Switch playerTongueShot;
 
-    [Header("Testing")]
-    [SerializeField] private AK.Wwise.Event playTestSound;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -136,8 +133,6 @@ public class AudioManager : MonoBehaviour
     public void PlayUIClickButton(GameObject emitter = null) => PostEvent(playUIClickButton, emitter);
     public void PlayUIHoverButton(GameObject emitter = null) => PostEvent(playUIHoverButton, emitter);
     public void PlayUIStartMenu(GameObject emitter = null) => PostEvent(playUIStartMenu, emitter);
-
-    public void PlayTestSound(GameObject emitter = null) => PostEvent(playTestSound, emitter);
     #endregion
 
     #region Switch Methods

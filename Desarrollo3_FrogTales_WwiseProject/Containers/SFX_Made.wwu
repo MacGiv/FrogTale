@@ -911,7 +911,20 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="UI_Click_Button" ID="{A73744AC-8EBB-4F8F-9EB1-0A52EB58A145}" ShortID="914421976">
+								<Sound Name="UI_Click_Button" ID="{3D2068C1-CDA6-4529-8F33-8B377FF44723}" ShortID="35182131">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{380FA3DA-4777-4464-B394-046EC3E43D6D}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -921,11 +934,11 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{708847C5-B068-43DE-9597-BC4C09EAFA09}">
+										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{21FC1BD7-0EC1-4CC5-ABF3-CA07B0C601C8}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.16933"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -935,15 +948,35 @@
 											<Language>SFX</Language>
 											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="819493186"/>
+												<MediaID ID="335759465"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="PlayerVox" ID="{936C4E26-D04A-40AB-8635-FB707582F636}">
+											<Language>SFX</Language>
+											<AudioFile>PlayerVox.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="101349570"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{708847C5-B068-43DE-9597-BC4C09EAFA09}" Platform="Linked"/>
+										<ActiveSource Name="PlayerVox" ID="{936C4E26-D04A-40AB-8635-FB707582F636}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Mouseover_Button" ID="{C032F7B2-4F68-4583-8CF8-7F57697F1D28}" ShortID="675164779">
+								<Sound Name="UI_Mouseover_Button" ID="{E5E532BE-0BBF-4D4D-8E15-849D72AF853B}" ShortID="10372291">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{38C33EC2-5FB9-4C21-BE5C-0ADA3AE86DEF}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -953,11 +986,11 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{317C483F-C14E-45BB-9C84-C78D4AAACC99}">
+										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{40B5D914-BEBE-4F9A-BEFF-9F73B13AFAB1}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.31067"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -967,15 +1000,35 @@
 											<Language>SFX</Language>
 											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="420685761"/>
+												<MediaID ID="335759465"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="PlayerVox" ID="{0BEEA258-DB70-43D0-BA0C-73B96EA9BEAD}">
+											<Language>SFX</Language>
+											<AudioFile>PlayerVox.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="101349570"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{317C483F-C14E-45BB-9C84-C78D4AAACC99}" Platform="Linked"/>
+										<ActiveSource Name="PlayerVox" ID="{0BEEA258-DB70-43D0-BA0C-73B96EA9BEAD}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="UI_Start_Menu" ID="{1A09DE1F-2587-4693-8D6B-F75BAAB32D0A}" ShortID="421021095">
+								<Sound Name="UI_Start_Menu" ID="{8B2BE569-36FA-421B-9959-40D3C9C20183}" ShortID="70088141">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A0AB8A13-4934-47B1-8E4B-E67F4FE53986}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -985,11 +1038,11 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{302C61F6-CBAA-450A-879E-0BFDAB9A098E}">
+										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{1477576A-0E01-4013-8AC6-64150328B671}">
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.31067"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -999,12 +1052,19 @@
 											<Language>SFX</Language>
 											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="420685761"/>
+												<MediaID ID="335759465"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="PlayerVox" ID="{67B06FCD-BF5E-4FF1-B6FE-8489FBBF6F61}">
+											<Language>SFX</Language>
+											<AudioFile>PlayerVox.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="101349570"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{302C61F6-CBAA-450A-879E-0BFDAB9A098E}" Platform="Linked"/>
+										<ActiveSource Name="PlayerVox" ID="{67B06FCD-BF5E-4FF1-B6FE-8489FBBF6F61}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
