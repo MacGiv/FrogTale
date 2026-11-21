@@ -36,13 +36,13 @@
 										</Property>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>6</Value>
+												<Value>14</Value>
 											</ValueList>
 										</Property>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>2</Value>
+												<Value>-3</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -297,6 +297,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<SwitchContainer Name="Player_Arrow_Hit" ID="{5824EAC5-0A6D-43D9-A021-0416CE4EDE2C}" ShortID="751344081">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -359,7 +366,7 @@
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>5</Value>
+														<Value>7</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -372,45 +379,23 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{73BA5BAE-1AAE-4F93-BC57-4D7BE8355510}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
-														</Reference>
-													</ReferenceList>
+												<AudioFileSource Name="Arrow_Hit_Helmet" ID="{4A4A8903-02EE-47D1-A1AF-D95C4FA101B6}">
 													<Language>SFX</Language>
-													<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+													<AudioFile>Arrow_Hit_Helmet.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="335759465"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="SFX_FLECHA_METAL" ID="{EC712225-692B-44D3-8B3D-AD6D5D8C0857}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.20884"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.64473"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>SFX_FLECHA_METAL.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="157965559"/>
+														<MediaID ID="925695144"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="SFX_FLECHA_METAL" ID="{EC712225-692B-44D3-8B3D-AD6D5D8C0857}" Platform="Linked"/>
+												<ActiveSource Name="Arrow_Hit_Helmet" ID="{4A4A8903-02EE-47D1-A1AF-D95C4FA101B6}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}" ShortID="1050650305">
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>2</Value>
+														<Value>5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -494,6 +479,18 @@
 									</GroupingInfo>
 								</SwitchContainer>
 								<Sound Name="Player_Booger_Shot" ID="{F9D919F0-22A3-40A3-AEAA-F26EFA3E8736}" ShortID="983067704">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>26</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -540,13 +537,6 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Player_Bow_Shot" ID="{3FBA8C73-147B-4657-8F20-6E5693686FA3}" ShortID="185388181">
-									<PropertyList>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -592,7 +582,22 @@
 								</Sound>
 								<SwitchContainer Name="Player_Tongue_Hit_SWITCH" ID="{3C1C9BF7-43C4-4E5B-82FE-10A5C75850EA}" ShortID="571792992">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>40</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>110</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -606,57 +611,6 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}" ShortID="1061881348">
-											<PropertyList>
-												<Property Name="Highpass" Type="int16">
-													<ValueList>
-														<Value>32</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
-														</Reference>
-													</ReferenceList>
-													<Language>SFX</Language>
-													<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="335759465"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}">
-													<PropertyList>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimBegin" Type="Real64" Value="0.38798"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.92622"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>LENGUA_SIN_AGARRE.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="838428872"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 										<RandomSequenceContainer Name="Player_Tongue_Hit_RANDOM" ID="{6324B478-5EDB-44FB-8F06-E4172C85D979}" ShortID="1007689716">
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
@@ -752,7 +706,7 @@
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>4</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -786,9 +740,16 @@
 																<Custom>
 																	<Effect Name="Parametric EQ (Custom)" ID="{4E5A668A-A5E0-4EFB-863E-E8C5D3C1A000}" ShortID="849043430" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 																		<PropertyList>
-																			<Property Name="FrequencyBand2" Type="Real32" Value="9623.248"/>
-																			<Property Name="GainBand2" Type="Real32" Value="-1.518987"/>
-																			<Property Name="OnOffBand1" Type="bool" Value="False"/>
+																			<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																			<Property Name="FilterTypeBand2" Type="int32" Value="5"/>
+																			<Property Name="FrequencyBand1" Type="Real32" Value="874.2889"/>
+																			<Property Name="FrequencyBand2" Type="Real32" Value="1773.972"/>
+																			<Property Name="FrequencyBand3" Type="Real32" Value="279.3116"/>
+																			<Property Name="GainBand1" Type="Real32" Value="-3.244275"/>
+																			<Property Name="GainBand2" Type="Real32" Value="6.61832"/>
+																			<Property Name="GainBand3" Type="Real32" Value="-8.642458"/>
+																			<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																			<Property Name="QFactorBand3" Type="Real32" Value="0.8"/>
 																		</PropertyList>
 																	</Effect>
 																</Custom>
@@ -799,6 +760,89 @@
 											</ObjectLists>
 											<ActiveSourceList>
 												<ActiveSource Name="AGARRAR_PIEDRA" ID="{11A5F6AE-B665-4722-8800-D72E5394B820}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}" ShortID="1061881348">
+											<PropertyList>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+														</Reference>
+													</ReferenceList>
+													<Language>SFX</Language>
+													<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="335759465"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="0.38798"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.92622"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>LENGUA_SIN_AGARRE.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="838428872"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<EffectSlot Name="" ID="{D6A95F23-F03D-4555-B52F-C7C1040DB036}" ShortID="492282980">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="Parametric EQ (Custom)" ID="{C2FDDCC5-1883-4C4E-B0C0-92E09073696F}" ShortID="823752759" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																		<PropertyList>
+																			<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																			<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
+																			<Property Name="FrequencyBand1" Type="Real32" Value="1002.165"/>
+																			<Property Name="FrequencyBand2" Type="Real32" Value="419.6425"/>
+																			<Property Name="FrequencyBand3" Type="Real32" Value="2542.124"/>
+																			<Property Name="GainBand1" Type="Real32" Value="-2.27933"/>
+																			<Property Name="GainBand2" Type="Real32" Value="-2.547486"/>
+																			<Property Name="GainBand3" Type="Real32" Value="8"/>
+																			<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																			<Property Name="QFactorBand2" Type="Real32" Value="0.9"/>
+																		</PropertyList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</ObjectList>
+											</ObjectLists>
+											<ActiveSourceList>
+												<ActiveSource Name="LENGUA_SIN_AGARRE" ID="{E673BB39-3196-46D9-8B40-29C037C868A1}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -812,12 +856,12 @@
 																<PropertyList>
 																	<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
 																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
-																	<Property Name="FrequencyBand1" Type="Real32" Value="1009.613"/>
+																	<Property Name="FrequencyBand1" Type="Real32" Value="1034.122"/>
 																	<Property Name="FrequencyBand2" Type="Real32" Value="368.6846"/>
-																	<Property Name="FrequencyBand3" Type="Real32" Value="3117.011"/>
-																	<Property Name="GainBand1" Type="Real32" Value="-4.192405"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="2393.311"/>
+																	<Property Name="GainBand1" Type="Real32" Value="-3.358779"/>
 																	<Property Name="GainBand2" Type="Real32" Value="-2.36962"/>
-																	<Property Name="GainBand3" Type="Real32" Value="4.435443"/>
+																	<Property Name="GainBand3" Type="Real32" Value="9.787709"/>
 																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
 																</PropertyList>
 															</Effect>
@@ -863,9 +907,24 @@
 								</SwitchContainer>
 								<Sound Name="Player_Enemy_Mask_Remove" ID="{62F7EE7E-2AF4-47BE-BBE7-744703B4A598}" ShortID="585706819">
 									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>27</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-200</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>5</Value>
+												<Value>2</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -890,9 +949,16 @@
 												<MediaID ID="243081135"/>
 											</MediaIDList>
 										</AudioFileSource>
+										<AudioFileSource Name="Put_mask" ID="{DAFC2131-1962-4542-9958-35F01F4DD7DC}">
+											<Language>SFX</Language>
+											<AudioFile>Put_mask.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="406645546"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="SFX_SACAR_MASCARA" ID="{FA7E655D-A3A8-4B9F-B053-38BBF988AD8A}" Platform="Linked"/>
+										<ActiveSource Name="Put_mask" ID="{DAFC2131-1962-4542-9958-35F01F4DD7DC}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
