@@ -4,6 +4,16 @@ using FrogGame.Core;
 
 public class MusicManager : MonoBehaviour
 {
+    public enum MusicOption
+    {
+        BossFight,
+        Dungeon,
+        Mangrove,
+        Menu,
+        Plateau,
+        Shop
+    }
+
     public static MusicManager Instance { get; private set; }
 
     [Header("Music Event")]
@@ -91,6 +101,43 @@ public class MusicManager : MonoBehaviour
         if (targetState != null && targetState.IsValid())
         {
             targetState.SetValue();
+        }
+    }
+
+    public void SetMusic(MusicOption musciOption)
+    {
+        switch (musciOption)
+        {
+            case MusicOption.BossFight:
+
+                SetBossFight();
+
+                break;
+            case MusicOption.Dungeon:
+
+                SetDungeon();
+
+                break;
+            case MusicOption.Mangrove:
+
+                SetMangrove();
+
+                break;
+            case MusicOption.Menu:
+
+                SetMenu();
+
+                break;
+            case MusicOption.Plateau:
+
+                SetPlateau();
+
+                break;
+            case MusicOption.Shop:
+
+                SetShop();
+
+                break;
         }
     }
 
