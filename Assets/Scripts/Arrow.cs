@@ -70,7 +70,13 @@ namespace FrogGame.Gameplay
             {
                 hasHit = true;
 
-                PlayImpactAudio(collision, colLayer);
+                bool isDestroyable = collision.GetComponent<Destroyable>() != null;
+
+                if (!isDestroyable)
+                {
+                    PlayImpactAudio(collision, colLayer);
+                }
+
                 SpawnPickup();
                 DisableAndDelayedDestroy();
 

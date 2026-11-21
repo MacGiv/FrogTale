@@ -39,11 +39,6 @@ namespace FrogGame.Gameplay
         {
             if (((1 << collision.gameObject.layer) & arrowLayer) != 0)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayEnvRockDrop(gameObject);
-                }
-
                 if (explosionVfxPrefab != null)
                 {
                     Instantiate(explosionVfxPrefab, transform.position, Quaternion.identity);
@@ -60,6 +55,12 @@ namespace FrogGame.Gameplay
                 if (isDroper)
                 {
                     TrySpawnDrop();
+                }
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.SetArrowHitGrass(gameObject);
+                    AudioManager.Instance.PlayPlayerArrowHit(gameObject);
                 }
 
                 Destroy(gameObject);
