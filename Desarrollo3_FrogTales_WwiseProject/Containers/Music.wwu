@@ -57,11 +57,6 @@
 								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 								<Property Name="Tempo" Type="Real64" Value="157"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-9</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -120,7 +115,7 @@
 										<Property Name="Tempo" Type="Real64" Value="157"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-21</Value>
+												<Value>-25</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -268,6 +263,9 @@
 								<Reference Name="PlaylistRoot">
 									<Custom>
 										<MusicPlaylistItem Name="" ID="{B6243751-E25E-463E-8301-64F549F5A888}" ShortID="611734791">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{CCE94EA3-FDBD-4BBF-8C05-670B88DE6854}" ShortID="566742400">
 													<PropertyList>
@@ -310,6 +308,11 @@
 										<Property Name="PlaybackSpeed" Type="Real64">
 											<ValueList>
 												<Value>0.25</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -472,9 +475,13 @@
 								<Reference Name="PlaylistRoot">
 									<Custom>
 										<MusicPlaylistItem Name="" ID="{064F4184-CD58-4AC6-AE70-92DAA1CFB1A5}" ShortID="721807258">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{8F6605A0-C4EB-4703-805B-2EAF1AB31DE7}" ShortID="273428301">
 													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<ReferenceList>
@@ -514,6 +521,11 @@
 										<Property Name="PlaybackSpeed" Type="Real64">
 											<ValueList>
 												<Value>0.75</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-25</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -724,6 +736,11 @@
 												<Value>0.25</Value>
 											</ValueList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-25</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -884,9 +901,13 @@
 								<Reference Name="PlaylistRoot">
 									<Custom>
 										<MusicPlaylistItem Name="" ID="{455D5ECA-458D-4211-8099-D156DC148D0F}" ShortID="537404888">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{AA23D536-AEBB-46BF-9F47-A670E6165FE9}" ShortID="117352696">
 													<PropertyList>
+														<Property Name="LoopCount" Type="int16" Value="0"/>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<ReferenceList>
@@ -926,6 +947,11 @@
 										<Property Name="PlaybackSpeed" Type="Real64">
 											<ValueList>
 												<Value>1.5</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-25</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1072,7 +1098,11 @@
 								</Reference>
 								<Reference Name="PlaylistRoot">
 									<Custom>
-										<MusicPlaylistItem Name="" ID="{19596400-2B9E-4ABB-9D9A-C00B7D2FC6F3}" ShortID="886640418"/>
+										<MusicPlaylistItem Name="" ID="{19596400-2B9E-4ABB-9D9A-C00B7D2FC6F3}" ShortID="886640418">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+											</PropertyList>
+										</MusicPlaylistItem>
 									</Custom>
 								</Reference>
 								<Reference Name="TransitionRoot">

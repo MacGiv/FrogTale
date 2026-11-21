@@ -1,5 +1,6 @@
 using UnityEngine;
-using AK.Wwise;
+using UnityEngine.SceneManagement;
+using FrogGame.Core;
 
 public class MusicManager : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AK.Wwise.State plateauState;
     [SerializeField] private AK.Wwise.State shopState;
 
-    // ID numérico de reproducción (0 representa una instancia no válida o inactiva)
     private uint musicPlayingId = 0u;
 
     private void Awake()
@@ -29,31 +29,49 @@ public class MusicManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        SetMenu();
-        PlayMusic();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case SceneNames.MAIN_MENU:
+
+                SetMenu();
+                PlayMusic();
+
+                break;
+            case SceneNames.PLATEAU:
+
+                SetPlateau();
+                PlayMusic();
+
+                break;
+            case SceneNames.MANGROVE:
+
+                SetMangrove();
+                PlayMusic();
+
+                break;
+        }
     }
 
     #region Play / Stop
     public void PlayMusic()
     {
-        // Si la música ya tiene un ID de reproducción activo (> 0), evitamos volver a dispararla
-        if (musicPlayingId != 0u)
-        {
-            Debug.LogWarning($"[MusicManager] Se intentó disparar PlayMusic(), pero la música ya está activa (ID: {musicPlayingId}).", gameObject);
-            return;
-        }
+        if (musicPlayingId != 0u) return;
 
         if (playMX != null && playMX.IsValid())
         {
-            // Post() devuelve un uint > 0 si el evento se ejecutó correctamente
             musicPlayingId = playMX.Post(gameObject);
-
-            if (musicPlayingId != 0u)
-            {
-                Debug.Log($"[MusicManager] Música iniciada con Playing ID: {musicPlayingId}");
-            }
         }
     }
 

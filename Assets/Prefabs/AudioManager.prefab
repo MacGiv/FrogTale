@@ -84,6 +84,15 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b7c3ef088d6146c4fabe96c7ecfe7638, type: 2}
+  sceneMusicEntries:
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
 --- !u!1 &2221066544426684449
 GameObject:
   m_ObjectHideFlags: 0
