@@ -1138,7 +1138,7 @@
 							</PluginInnerObject>
 						</ObjectList>
 						<ObjectList Name="Entries">
-							<MultiSwitchEntry Name="" ID="{EC1DC258-7764-4CB0-83B4-B4D82FD7F3A1}">
+							<MultiSwitchEntry Name="" ID="{4173C79B-9AE5-4999-AA77-CA2B747E21B2}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="BossFight" ID="{106A6E88-E019-4FF6-A0D8-D20F89F31976}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1146,7 +1146,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{DA53CD90-4CF0-4E45-836C-C49F0FF4ECF2}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{49051A4B-8418-4887-95FB-8C9260565376}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="BossFight" ID="{7D286F55-F7E1-4A49-86A6-68826711BA56}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
@@ -1156,7 +1156,7 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
-							<MultiSwitchEntry Name="" ID="{978543D5-E34F-4861-8A03-1FC57F0575EE}">
+							<MultiSwitchEntry Name="" ID="{F6186922-D1D3-48E4-93EC-B08356EFDEC9}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="Dungeon" ID="{ABA04361-BA41-4DE4-999C-E89C18D748FF}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1164,7 +1164,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{1871F507-E879-4E4F-B9D6-B6A4AA81C7B4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{9505D626-090D-49E5-881A-D870B7562FBB}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Dungeon" ID="{7CD1E8C6-C42A-4EBE-9852-5114583AB901}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
@@ -1174,7 +1174,7 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
-							<MultiSwitchEntry Name="" ID="{F1E45F5A-7015-4DF0-8C82-A8118AF22341}">
+							<MultiSwitchEntry Name="" ID="{897D7F42-1C87-4134-9D68-4BA3127C6084}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="Plateau" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1182,7 +1182,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{601FE45B-BB1C-45E5-97DA-F894983DE302}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{FC96C6B7-99AC-4ADC-9983-72A2C39A4697}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Plateau" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
@@ -1192,7 +1192,7 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
-							<MultiSwitchEntry Name="" ID="{A28C99A6-8A6C-46C0-A6FA-F23326AC2346}">
+							<MultiSwitchEntry Name="" ID="{864E941D-7B00-405E-A9D8-F3B14AD196F7}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="Menu" ID="{C5212177-19FA-46A2-95BC-3C1FDF24F3DC}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1200,7 +1200,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{B9B88DCA-9415-425C-924C-E707A1B40869}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{3E430E02-3483-46F6-B0B6-8A466524D5B5}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Menu" ID="{BB563EA7-E767-4B1C-B3D6-A97F15057A4B}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
@@ -1210,7 +1210,7 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
-							<MultiSwitchEntry Name="" ID="{1D54A157-BF4F-4251-BC12-D09B1DC7318E}">
+							<MultiSwitchEntry Name="" ID="{3D0F4CF0-D49C-4214-AFB1-1D99CF9A52C9}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="Mangrove" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1218,7 +1218,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{5145477E-62C7-4F47-B996-A757A456F819}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{1DD9C61D-994F-4C1E-A3D3-EEC3173D9B70}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Mangrove" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
@@ -1228,7 +1228,7 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
-							<MultiSwitchEntry Name="" ID="{D14F71EA-6A22-4729-A3A0-9437B5F9C8EA}">
+							<MultiSwitchEntry Name="" ID="{C10B385F-FF8A-4014-98D3-65AEE6A3CB0B}">
 								<ReferenceList>
 									<Reference Name="AudioNode">
 										<ObjectRef Name="Shop" ID="{C3F60251-0A77-4A1D-9719-272FFC889C0F}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
@@ -1236,7 +1236,7 @@
 								</ReferenceList>
 								<ObjectLists>
 									<ObjectList Name="EntryPath">
-										<PluginInnerObject Name="" ID="{DCE8B774-21E9-42F0-A097-F52D37A65451}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+										<PluginInnerObject Name="" ID="{0F9F6C71-84B2-4B00-AAFE-54F00A745687}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
 											<ReferenceList>
 												<Reference Name="EntryPathObject">
 													<ObjectRef Name="Shop" ID="{CAF97380-AD58-414B-833D-276004819F38}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
