@@ -72,12 +72,7 @@ namespace FrogGame.Gameplay
 
             currentCarriedBox.transform.SetParent(null);
             currentCarriedBox.transform.position = targetDropPos;
-
-            if (currentCarriedBox.TryGetComponent<Rigidbody2D>(out var rb))
-            {
-                rb.simulated = true;
-                rb.linearVelocity = Vector2.zero;
-            }
+            currentCarriedBox.SetGroundedPhysics();
 
             if (currentCarriedBox.ItemCollider != null)
             {
