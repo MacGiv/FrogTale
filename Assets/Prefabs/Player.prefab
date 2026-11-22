@@ -438,6 +438,7 @@ MonoBehaviour:
     m_Bits: 0
   tongueOrigin: {fileID: 4559666176104124744}
   tongueTip: {fileID: 9147826235726030823}
+  playerSpriteRenderer: {fileID: 0}
 --- !u!120 &1655920308539956457
 LineRenderer:
   serializedVersion: 3
@@ -582,7 +583,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.050819278}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -592,7 +593,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.69500446, y: 0.87795436}
+  m_Size: {x: 0.6, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &808932101003858372
 MonoBehaviour:
