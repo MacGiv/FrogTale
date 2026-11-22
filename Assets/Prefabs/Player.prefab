@@ -692,7 +692,10 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  sneezeParticle: {fileID: 3004018478875197302, guid: 09eefc6cdc22e5645aac046b23bed5d5, type: 3}
+  sneezeVfxPrefab: {fileID: 175865138835448796, guid: 9e22accbd170ed941ab925528637e4a1, type: 3}
+  sneezeSpawnPoint: {fileID: 0}
+  spawnForwardOffset: 1
+  rotateVfxWithDirection: 1
 --- !u!114 &4138766253333921927
 MonoBehaviour:
   m_ObjectHideFlags: 0
