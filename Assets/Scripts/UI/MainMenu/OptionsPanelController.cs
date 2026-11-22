@@ -11,11 +11,11 @@ namespace FrogGame.UI
         [SerializeField] private AK.Wwise.RTPC musicVolumeRTPC;
         [SerializeField] private AK.Wwise.RTPC sfxVolumeRTPC;
 
-        [Header("UI Sliders (Opcional)")]
-        [SerializeField] private Slider musicSlider;
-        [SerializeField] private Slider sfxSlider;
-
         [Header("Button References")]
+        [SerializeField] private Button decreaseMusicVolumeButton;
+        [SerializeField] private Button increaseMusicVolumeButton;
+        [SerializeField] private Button decreaseSfxVolumeButton;
+        [SerializeField] private Button increaseSfxVolumeButton;
         [SerializeField] private Button backButton;
 
         private const string MUSIC_KEY = "MusicVolume";
@@ -35,27 +35,12 @@ namespace FrogGame.UI
             float savedMusic = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
             float savedSFX = PlayerPrefs.GetFloat(SFX_KEY, 1f);
 
-            if (musicSlider != null)
-            {
-                musicSlider.value = savedMusic;
-                musicSlider.onValueChanged.AddListener(SetMusicVolume);
-            }
-
-            if (sfxSlider != null)
-            {
-                sfxSlider.value = savedSFX;
-                sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-            }
-
             SetMusicVolume(savedMusic);
             SetSFXVolume(savedSFX);
         }
 
         private void OnDestroy()
         {
-            musicSlider.onValueChanged.RemoveListener(SetMusicVolume);
-            sfxSlider.onValueChanged.RemoveListener(SetSFXVolume);
-
             backButton.onClick.RemoveListener(HandleBackClicked);
         }
 
