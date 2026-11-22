@@ -1,40 +1,46 @@
 fileFormatVersion: 2
-guid: e98855b226d909b4ebeba2b2a6eb4815
+guid: 173a62444f80a2149bf5d9146a4d4e37
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3373781416596095984
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_0
+      213: -2569114303026615299
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_0
   - first:
-      213: 917156255849337258
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_1
+      213: 3708026457335227633
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_1
   - first:
-      213: -7150975002083116451
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_2
+      213: 1903166096851815057
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_2
   - first:
-      213: -306267247158942217
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_3
+      213: 3070120573626527497
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_3
   - first:
-      213: 1881629447607899537
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_4
+      213: -857482053968482128
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_4
   - first:
-      213: -6355915701025979547
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_5
+      213: -1797899275248916421
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_5
   - first:
-      213: 5155724040161820631
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_6
+      213: -3280615088814278934
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_6
   - first:
-      213: 2871603552720093053
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_7
+      213: -4784658355553601738
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_7
   - first:
-      213: 3051027196916162960
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_8
+      213: 3648556473128814933
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_8
   - first:
-      213: -2250473737271657858
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_9
+      213: -3232178668086970438
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_9
   - first:
-      213: -3669637179865590799
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_10
+      213: -729870727883824127
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_10
+  - first:
+      213: -6124671674886586728
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_11
+  - first:
+      213: 4984506464349058861
+    second: Logo_IC_pixelado_para_fondo_oscuro_1_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,10 +84,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +111,7 @@ TextureImporter:
     maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -143,23 +149,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LogoIC_Fondo_Oscuro_Sin-Slogan_11
+      name: Logo_IC_pixelado_para_fondo_oscuro_1_0
       rect:
         serializedVersion: 2
-        x: 121
-        y: 126
-        width: 782
-        height: 261
+        x: 120
+        y: 64
+        width: 776
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f890513ed710aee4bb0dd25c9633e138
-      internalID: 1598088848
+      spriteID: dfb29b4372ca85cd0800000000000000
+      internalID: -2569114303026615299
       vertices: []
       indices: 
       edges: []
@@ -168,7 +174,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 6ee91deeb7f6fac4db624d3210419466
     internalID: 0
     vertices: []
     indices: 
@@ -178,18 +184,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LogoIC_Fondo_Oscuro_Sin-Slogan_0: -3373781416596095984
-      LogoIC_Fondo_Oscuro_Sin-Slogan_1: 917156255849337258
-      LogoIC_Fondo_Oscuro_Sin-Slogan_10: -3669637179865590799
-      LogoIC_Fondo_Oscuro_Sin-Slogan_11: 1598088848
-      LogoIC_Fondo_Oscuro_Sin-Slogan_2: -7150975002083116451
-      LogoIC_Fondo_Oscuro_Sin-Slogan_3: -306267247158942217
-      LogoIC_Fondo_Oscuro_Sin-Slogan_4: 1881629447607899537
-      LogoIC_Fondo_Oscuro_Sin-Slogan_5: -6355915701025979547
-      LogoIC_Fondo_Oscuro_Sin-Slogan_6: 5155724040161820631
-      LogoIC_Fondo_Oscuro_Sin-Slogan_7: 2871603552720093053
-      LogoIC_Fondo_Oscuro_Sin-Slogan_8: 3051027196916162960
-      LogoIC_Fondo_Oscuro_Sin-Slogan_9: -2250473737271657858
+      Logo_IC_pixelado_para_fondo_oscuro_1_0: -2569114303026615299
+      Logo_IC_pixelado_para_fondo_oscuro_1_1: 3708026457335227633
+      Logo_IC_pixelado_para_fondo_oscuro_1_10: -729870727883824127
+      Logo_IC_pixelado_para_fondo_oscuro_1_11: -6124671674886586728
+      Logo_IC_pixelado_para_fondo_oscuro_1_12: 4984506464349058861
+      Logo_IC_pixelado_para_fondo_oscuro_1_13: -2069298561
+      Logo_IC_pixelado_para_fondo_oscuro_1_2: 1903166096851815057
+      Logo_IC_pixelado_para_fondo_oscuro_1_3: 3070120573626527497
+      Logo_IC_pixelado_para_fondo_oscuro_1_4: -857482053968482128
+      Logo_IC_pixelado_para_fondo_oscuro_1_5: -1797899275248916421
+      Logo_IC_pixelado_para_fondo_oscuro_1_6: -3280615088814278934
+      Logo_IC_pixelado_para_fondo_oscuro_1_7: -4784658355553601738
+      Logo_IC_pixelado_para_fondo_oscuro_1_8: 3648556473128814933
+      Logo_IC_pixelado_para_fondo_oscuro_1_9: -3232178668086970438
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
