@@ -1,12 +1,13 @@
 namespace FrogGame.World
 {
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Events;
     using FrogGame.Gameplay;
 
     /// <summary>
     /// Pressure plate that triggers events when stepped on by player or pushable blocks.
-    /// Snaps and locks grabbable items/stones to its center upon contact.
+    /// Locks at most one grabbable item/stone to its center so a second stone cannot soft-lock multi-switch doors.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class FloorSwitch : MonoBehaviour
@@ -25,8 +26,12 @@ namespace FrogGame.World
         [SerializeField] private Sprite pressedSprite;
         [SerializeField] private Sprite unpressedSprite;
 
-        private int occupantsCount = 0;
-        public bool IsPressed => occupantsCount > 0;
+        private readonly HashSet<Collider2D> activeOccupants = new HashSet<Collider2D>();
+        private GrabbableItem lockedItem;
+        private bool isPressedState = false;
+
+        public bool HasLockedItem => lockedItem != null;
+        public bool IsPressed => isPressedState;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -41,43 +46,64 @@ namespace FrogGame.World
         private void HandleCollision(Collider2D collision)
         {
             int colLayer = 1 << collision.gameObject.layer;
+            if ((colLayer & triggerLayers) == 0) return;
 
-            if ((colLayer & triggerLayers) != 0)
+            GrabbableItem grabbable = collision.GetComponent<GrabbableItem>();
+            if (grabbable == null)
             {
-                GrabbableItem grabbable = collision.GetComponent<GrabbableItem>();
-                if (grabbable == null)
-                {
-                    grabbable = collision.GetComponentInParent<GrabbableItem>();
-                }
+                grabbable = collision.GetComponentInParent<GrabbableItem>();
+            }
 
-                if (grabbable != null && lockStonesOnCenter && !grabbable.IsLockedOnSwitch && !grabbable.IsBeingPulled)
+            if (grabbable != null)
+            {
+                // Ignore stones currently flying back on the player's tongue
+                if (grabbable.IsBeingPulled) return;
+
+                // Lock ONLY if this switch has no locked stone yet and this stone isn't locked elsewhere
+                if (lockStonesOnCenter && !grabbable.IsLockedOnSwitch && lockedItem == null)
                 {
+                    lockedItem = grabbable;
                     grabbable.LockToSwitch(transform.position);
                 }
 
-                if (occupantsCount == 0)
+                // If another stone is already locked on this switch, do NOT lock this second stone
+                if (lockedItem != null && lockedItem != grabbable)
                 {
-                    occupantsCount = 1;
-                    OnSwitchPressed();
+                    return;
                 }
             }
+
+            activeOccupants.Add(collision);
+            EvaluateSwitchState();
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
+            int colLayer = 1 << collision.gameObject.layer;
+            if ((colLayer & triggerLayers) == 0) return;
+
+            activeOccupants.Remove(collision);
+
             if (stayPressed) return;
 
-            int colLayer = 1 << collision.gameObject.layer;
+            EvaluateSwitchState();
+        }
 
-            if ((colLayer & triggerLayers) != 0)
+        private void EvaluateSwitchState()
+        {
+            activeOccupants.RemoveWhere(col => col == null || !col.enabled || !col.gameObject.activeInHierarchy);
+
+            bool shouldBePressed = lockedItem != null || activeOccupants.Count > 0;
+
+            if (shouldBePressed && !isPressedState)
             {
-                occupantsCount--;
-                occupantsCount = Mathf.Max(0, occupantsCount);
-
-                if (occupantsCount == 0)
-                {
-                    OnSwitchReleased();
-                }
+                isPressedState = true;
+                OnSwitchPressed();
+            }
+            else if (!shouldBePressed && isPressedState && !stayPressed)
+            {
+                isPressedState = false;
+                OnSwitchReleased();
             }
         }
 
