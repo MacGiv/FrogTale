@@ -36,13 +36,19 @@ namespace FrogGame.Gameplay
 
         public void Enter()
         {
-            // Notify active platforms and level managers that the player has drowned
-            OnPlayerDrowned?.Invoke();
-
             if (brain.InputHandler != null)
             {
                 brain.InputHandler.DisableInput();
             }
+
+            brain.MovementHandler.Stop();
+
+            // Snap player to water center BEFORE notifying platforms so trigger exits cleanly
+            brain.transform.position = waterTileCenter;
+            Physics2D.SyncTransforms();
+
+            // Notify active platforms and level managers that the player has drowned
+            OnPlayerDrowned?.Invoke();
 
             if (AudioManager.Instance != null)
             {
@@ -50,8 +56,6 @@ namespace FrogGame.Gameplay
             }
 
             brain.Animator.Play("Drown");
-            brain.MovementHandler.Stop();
-            brain.transform.position = waterTileCenter;
 
             drownCoroutine = brain.StartCoroutine(DrownSequenceRoutine());
         }
@@ -83,6 +87,7 @@ namespace FrogGame.Gameplay
             yield return new WaitForSeconds(DROWN_DURATION);
 
             brain.transform.SetPositionAndRotation(safeRespawnPosition, Quaternion.identity);
+            Physics2D.SyncTransforms();
 
             // Apply damage after appearing in safe zone
             if (brain.HealthSystem != null)

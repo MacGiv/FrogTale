@@ -4,7 +4,7 @@ namespace FrogGame.World
 
     /// <summary>
     /// Interactive puzzle door supporting 2x2 downward doors (with 1x2 top frame when open)
-    /// and 2x1 side doors (2 rows x 1 column).
+    /// and 2x1 side doors (2 rows x 1 column), elevating open frame sorting order above the player.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class Door : MonoBehaviour
@@ -36,8 +36,19 @@ namespace FrogGame.World
         [Header("Visual References")]
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+        [Header("Sorting Order Settings")]
+        [Tooltip("Elevates the open door frame sprite above the player sprite when the door opens.")]
+        [SerializeField] private bool elevateOpenFrameSorting = true;
+        [Tooltip("Optional Sorting Layer name for the open frame (e.g. Player or Foreground). Leave empty to keep current layer.")]
+        [SerializeField] private string openFrameSortingLayer = "";
+        [Tooltip("Order in Layer applied to the open door frame so it renders above the player.")]
+        [SerializeField] private int openFrameSortingOrder = 20;
+
         private Collider2D doorCollider;
         private int currentActiveSwitches = 0;
+        private int closedSortingLayerID;
+        private int closedSortingOrder;
+        private bool hasCachedClosedSorting = false;
 
         /// <summary>
         /// Returns collider dimensions in world units (Width x Height) based on Row x Column orientation.
@@ -50,6 +61,7 @@ namespace FrogGame.World
         private void Awake()
         {
             doorCollider = GetComponent<Collider2D>();
+            CacheClosedSorting();
             ApplyTileLayout();
             UpdateDoorState();
         }
@@ -57,8 +69,19 @@ namespace FrogGame.World
         private void OnValidate()
         {
             tileUnitSize = Mathf.Max(0.1f, tileUnitSize);
+            CacheClosedSorting();
             ApplyTileLayout();
             UpdateDoorState();
+        }
+
+        private void CacheClosedSorting()
+        {
+            if (spriteRenderer != null && !hasCachedClosedSorting)
+            {
+                closedSortingLayerID = spriteRenderer.sortingLayerID;
+                closedSortingOrder = spriteRenderer.sortingOrder;
+                hasCachedClosedSorting = true;
+            }
         }
 
         /// <summary>
@@ -133,8 +156,29 @@ namespace FrogGame.World
 
             if (spriteRenderer != null)
             {
+                CacheClosedSorting();
+
                 spriteRenderer.flipX = flipHorizontally;
                 spriteRenderer.sprite = GetActiveSprite();
+
+                if (isOpen && elevateOpenFrameSorting)
+                {
+                    if (!string.IsNullOrEmpty(openFrameSortingLayer))
+                    {
+                        int targetLayerID = SortingLayer.NameToID(openFrameSortingLayer);
+                        if (SortingLayer.IsValid(targetLayerID))
+                        {
+                            spriteRenderer.sortingLayerID = targetLayerID;
+                        }
+                    }
+
+                    spriteRenderer.sortingOrder = openFrameSortingOrder;
+                }
+                else
+                {
+                    spriteRenderer.sortingLayerID = closedSortingLayerID;
+                    spriteRenderer.sortingOrder = closedSortingOrder;
+                }
 
                 // If the SpriteRenderer lives on a child object, offset the 1x2 open top frame up by half a tile
                 // so it aligns with the upper row of the 2x2 doorway.

@@ -236,6 +236,7 @@ MonoBehaviour:
   spriteFacesLeftByDefault: 0
   alertAnimator: {fileID: 871676565379796860}
   attackAnimator: {fileID: 590053090165901807}
+  deathExplosionPrefab: {fileID: 5451267345766720601, guid: 838bfdae7817e52418bd6d4d37101d1e, type: 3}
 --- !u!95 &149030543259026282
 Animator:
   serializedVersion: 7

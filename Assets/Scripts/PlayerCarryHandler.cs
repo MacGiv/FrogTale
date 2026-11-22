@@ -1,9 +1,10 @@
 namespace FrogGame.Gameplay
 {
     using UnityEngine;
+    using FrogGame.World;
 
     /// <summary>
-    /// Handles carrying and dropping objects with obstacle and wall collision checks to prevent clipping.
+    /// Handles carrying and dropping objects with obstacle, wall, and occupied-switch checks to prevent clipping or stacking stones.
     /// </summary>
     public class PlayerCarryHandler : MonoBehaviour
     {
@@ -43,9 +44,8 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Attempts to drop the carried box in front of the player. 
-        /// Validates that the target position in facing direction is completely free of obstacles.
-        /// Returns false if blocked, preventing clipping or pushing player.
+        /// Attempts to drop the carried box in front of the player.
+        /// Validates that the target position is free of obstacles, walls, other stones, and already-occupied switches.
         /// </summary>
         public bool TryDropBox()
         {
@@ -61,13 +61,31 @@ namespace FrogGame.Gameplay
 
             Vector2 targetDropPos = (Vector2)transform.position + (facingDir.normalized * dropDistance);
 
-            // Check if the drop position in front of the player overlaps any obstacles or walls
+            // 1. Check if the drop position overlaps any obstacles or walls
             Collider2D obstacleHit = Physics2D.OverlapBox(targetDropPos, dropBoxSize, 0f, combinedMask);
-
             if (obstacleHit != null)
             {
-                // Target spot is blocked by an obstacle or wall: cancel drop to prevent clipping or pushing the player
                 return false;
+            }
+
+            // 2. Prevent stacking two stones on top of each other or dropping onto an already-occupied FloorSwitch
+            Collider2D[] overlapHits = Physics2D.OverlapBoxAll(targetDropPos, dropBoxSize, 0f);
+            for (int i = 0; i < overlapHits.Length; i++)
+            {
+                Collider2D hit = overlapHits[i];
+                if (hit == null) continue;
+
+                GrabbableItem existingItem = hit.GetComponent<GrabbableItem>() ?? hit.GetComponentInParent<GrabbableItem>();
+                if (existingItem != null && existingItem != currentCarriedBox)
+                {
+                    return false;
+                }
+
+                FloorSwitch floorSwitch = hit.GetComponent<FloorSwitch>() ?? hit.GetComponentInParent<FloorSwitch>();
+                if (floorSwitch != null && floorSwitch.HasLockedItem)
+                {
+                    return false;
+                }
             }
 
             currentCarriedBox.transform.SetParent(null);
