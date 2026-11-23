@@ -113,9 +113,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 899720666389097052}
-  - {fileID: 7154038776565817747}
   - {fileID: 7321021984527173762}
   - {fileID: 3725411144392325581}
+  - {fileID: 7154038776565817747}
   - {fileID: 1997887030479150523}
   - {fileID: 2259662450286957638}
   m_Father: {fileID: 0}
@@ -1343,6 +1343,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.CreditsPanelController
   defaultSelected: {fileID: 2794968831067047544}
+  transitionDuration: 0.5
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useFade: 1
+  hiddenAlpha: 0
+  useSlide: 0
+  hiddenOffset: {x: 0, y: 0}
+  useScale: 1
+  hiddenScale: {x: 0.25, y: 0.25, z: 0.25}
   previousPageButton: {fileID: 3346323344966519690}
   nextPageButton: {fileID: 1785875428057793252}
   backButton: {fileID: 2794968831067047544}
@@ -1896,6 +1927,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.MainPanelController
   defaultSelected: {fileID: 803315199596307830}
+  transitionDuration: 0.5
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useFade: 0
+  hiddenAlpha: 0
+  useSlide: 1
+  hiddenOffset: {x: 0, y: -1920}
+  useScale: 1
+  hiddenScale: {x: 2, y: 2, z: 1}
   playButton: {fileID: 803315199596307830}
   optionsButton: {fileID: 5941553744634216465}
   creditsButton: {fileID: 1562409810660753172}
@@ -4560,6 +4622,30 @@ PrefabInstance:
     - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -470
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: useScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: transitionDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8076844691531533576, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
       propertyPath: m_AnchoredPosition.y
