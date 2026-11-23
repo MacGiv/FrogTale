@@ -429,6 +429,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.OptionsPanelController
   defaultSelected: {fileID: 18624342374285526}
+  transitionDuration: 0.5
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useFade: 1
+  hiddenAlpha: 0
+  useSlide: 0
+  hiddenOffset: {x: 0, y: 0}
+  useScale: 1
+  hiddenScale: {x: 0.25, y: 0.25, z: 0.25}
   musicVolumeRTPC:
     idInternal: 0
     valueGuidInternal: 
@@ -443,17 +474,17 @@ MonoBehaviour:
   increaseSfxVolumeButton: {fileID: 4117129298776103226}
   backButton: {fileID: 18624342374285526}
   musicIndicators:
-  - {fileID: 2320270636808802702}
-  - {fileID: 2108544660374801032}
-  - {fileID: 5312687311472007645}
-  - {fileID: 6298950242477948780}
-  - {fileID: 2465022416337899099}
+  - {fileID: 5218417303185292481}
+  - {fileID: 8438554965721589703}
+  - {fileID: 2441724831366771858}
+  - {fileID: 4553868083837293091}
+  - {fileID: 5363030595811959572}
   sfxIndicators:
-  - {fileID: 2842094276867884328}
-  - {fileID: 2921412345448300813}
-  - {fileID: 2471593618034278624}
-  - {fileID: 8536481281685259244}
-  - {fileID: 1545269074437119140}
+  - {fileID: 5704352729195866215}
+  - {fileID: 4670859769743764546}
+  - {fileID: 5337916157352488367}
+  - {fileID: 2175070691181817507}
+  - {fileID: 9018789427595899371}
 --- !u!1 &8655612189385741655
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +576,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 4
+      value: Indicator Button 5
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -632,22 +663,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
---- !u!114 &1545269074437119140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
-  m_PrefabInstance: {fileID: 1160241194327731686}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &3073778786667895239 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 1160241194327731686}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9018789427595899371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_PrefabInstance: {fileID: 1160241194327731686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &1740897456603446218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -658,7 +689,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 1
+      value: Indicator Button 2
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -745,22 +776,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
---- !u!114 &2108544660374801032 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
-  m_PrefabInstance: {fileID: 1740897456603446218}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &2493491977546354667 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 1740897456603446218}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8438554965721589703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_PrefabInstance: {fileID: 1740897456603446218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &2227546080383536153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,7 +935,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button
+      value: Indicator Button 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -996,17 +1027,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2457490534427849834}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2842094276867884328 stripped
+--- !u!114 &5704352729195866215 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2457490534427849834}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &2691084296882970828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,7 +1048,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button
+      value: Indicator Button 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -1109,17 +1140,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2691084296882970828}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2320270636808802702 stripped
+--- !u!114 &5218417303185292481 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2691084296882970828}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &2821288003767054754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,7 +1161,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 2
+      value: Indicator Button 3
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -1222,17 +1253,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2821288003767054754}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2471593618034278624 stripped
+--- !u!114 &5337916157352488367 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2821288003767054754}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &2836814641775476505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1243,7 +1274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 4
+      value: Indicator Button 5
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -1335,17 +1366,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2836814641775476505}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2465022416337899099 stripped
+--- !u!114 &5363030595811959572 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 2836814641775476505}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &2906310251874937617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1595,7 +1626,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 1
+      value: Indicator Button 2
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -1687,17 +1718,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 3305948056699433039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2921412345448300813 stripped
+--- !u!114 &4670859769743764546 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 3305948056699433039}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!1001 &4077523357923055665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2080,119 +2111,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
---- !u!114 &5312687311472007645 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
-  m_PrefabInstance: {fileID: 5535367901711100063}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!224 &8530894640684178622 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-  m_PrefabInstance: {fileID: 5535367901711100063}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5909209719152004654
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8306372010847048996}
-    m_Modifications:
-    - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
-      propertyPath: m_Name
       value: Indicator Button 3
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
@@ -2280,17 +2198,130 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
---- !u!114 &6298950242477948780 stripped
+--- !u!114 &2441724831366771858 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_PrefabInstance: {fileID: 5535367901711100063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
+--- !u!224 &8530894640684178622 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_PrefabInstance: {fileID: 5535367901711100063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5909209719152004654
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8306372010847048996}
+    m_Modifications:
+    - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Name
+      value: Indicator Button 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
+--- !u!114 &4553868083837293091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 5909209719152004654}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
 --- !u!224 &7544649035928451599 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
@@ -2412,7 +2443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
-      value: Indicator Button 3
+      value: Indicator Button 4
       objectReference: {fileID: 0}
     - target: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Pivot.x
@@ -2499,22 +2530,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc419c826050b845a1be04922203d27, type: 3}
---- !u!224 &5309194150025823887 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
-  m_PrefabInstance: {fileID: 8294587414019207854}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8536481281685259244 stripped
+--- !u!114 &2175070691181817507 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390659991034753346, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
   m_PrefabInstance: {fileID: 8294587414019207854}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
+--- !u!224 &5309194150025823887 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4229514181769262113, guid: bbc419c826050b845a1be04922203d27, type: 3}
+  m_PrefabInstance: {fileID: 8294587414019207854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8326414876379541888
 PrefabInstance:
   m_ObjectHideFlags: 0

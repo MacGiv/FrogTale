@@ -19,8 +19,8 @@ namespace FrogGame.UI
         [SerializeField] private Button backButton;
 
         [Header("Volumen Indicators References")]
-        [SerializeField] private Button[] musicIndicators;
-        [SerializeField] private Button[] sfxIndicators;
+        [SerializeField] private UIIndicator[] musicIndicators;
+        [SerializeField] private UIIndicator[] sfxIndicators;
 
         public event Action OnBackPressed;
 
@@ -116,13 +116,13 @@ namespace FrogGame.UI
             UpdateIndicators(sfxIndicators, currentSfxLevel);
         }
 
-        private void UpdateIndicators(Button[] indicators, int activeCount)
+        private void UpdateIndicators(UIIndicator[] indicators, int activeCount)
         {
             for (int i = 0; i < indicators.Length; i++)
             {
                 if (indicators[i] != null)
                 {
-                    indicators[i].interactable = (i < activeCount);
+                    indicators[i].SetActiveState(i < activeCount);
                 }
             }
         }
