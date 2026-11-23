@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6587490980929110216, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+  m_Sprite: {fileID: 6931110292321677643, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb2b87359ae47a40a37e80a69885d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.UIIndicator
-  activeSprite: {fileID: -6587490980929110216, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
-  inactiveSprite: {fileID: 6411259347106031373, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+  activeSprite: {fileID: 6931110292321677643, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+  inactiveSprite: {fileID: 2463055396431647462, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
