@@ -82,6 +82,20 @@ namespace FrogGame.UI
             UpdateUIPage();
         }
 
+        public override void Hide()
+        {
+            if (slideCoroutine != null)
+            {
+                StopCoroutine(slideCoroutine);
+                slideCoroutine = null;
+            }
+
+            isNavigating = false;
+            UpdateUIPage();
+
+            base.Hide();
+        }
+
         #region Pages Navigation Logic
 
         private void PreviousPage()
@@ -108,33 +122,20 @@ namespace FrogGame.UI
         {
             if (pages == null || pages.Length == 0) return;
 
-            float spacing = GetCanvasWidth();
-            int prevIndex = GetWrappedIndex(currentPageIndex - 1);
-            int nextIndex = GetWrappedIndex(currentPageIndex + 1);
-
             for (int i = 0; i < pages.Length; i++)
             {
-                if (i == currentPageIndex)
+                if (pages[i] == null)
                 {
-                    pages[i].SetActive(true);
+                    continue;
+                }
 
+                bool isCurrent = (i == currentPageIndex);
+
+                pages[i].SetActive(isCurrent);
+
+                if (isCurrent)
+                {
                     SetPagePositionX(i, 0f);
-                }
-                else if (i == prevIndex)
-                {
-                    pages[i].SetActive(true);
-
-                    SetPagePositionX(i, -spacing);
-                }
-                else if (i == nextIndex)
-                {
-                    pages[i].SetActive(true);
-
-                    SetPagePositionX(i, spacing);
-                }
-                else
-                {
-                    pages[i].SetActive(false);
                 }
             }
 
