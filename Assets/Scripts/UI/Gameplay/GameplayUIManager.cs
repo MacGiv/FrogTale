@@ -17,8 +17,14 @@ namespace FrogGame.UI
         [Header("Panels References")]
         [SerializeField] private PausePanelController pausePanel;
         [SerializeField] private OptionsPanelController optionsPanel;
+        [SerializeField] private GameOverPanelController gameOverPanel;
 
         private Coroutine pauseIntroCoroutine;
+
+        private bool IsAnyPanelTransitioning =>
+            (pausePanel != null && pausePanel.IsTransitioning) ||
+            (optionsPanel != null && optionsPanel.IsTransitioning) ||
+            (gameOverPanel != null && gameOverPanel.IsTransitioning);
 
         private void Awake() => SubscribeEvents();
 
@@ -41,6 +47,7 @@ namespace FrogGame.UI
             if (gameController != null)
             {
                 gameController.OnPauseToggled += HandlePauseToggled;
+                gameController.OnGameOver += ShowGameOverPanel;
             }
 
             pausePanel.OnContinuePressed += HandleContinuePressed;
@@ -48,6 +55,9 @@ namespace FrogGame.UI
             pausePanel.OnQuitToMenuPressed += HandleQuitToMenuPressed;
 
             optionsPanel.OnBackPressed += ShowPausePanel;
+
+            gameOverPanel.OnPlayAgainPressed += HandlePlayAgainPressed;
+            gameOverPanel.OnMainMenuPressed += HandleQuitToMenuPressed;
         }
 
         private void UnsubscribeEvents()
@@ -55,6 +65,7 @@ namespace FrogGame.UI
             if (gameController != null)
             {
                 gameController.OnPauseToggled -= HandlePauseToggled;
+                gameController.OnGameOver -= ShowGameOverPanel;
             }
 
             pausePanel.OnContinuePressed -= HandleContinuePressed;
@@ -62,6 +73,9 @@ namespace FrogGame.UI
             pausePanel.OnQuitToMenuPressed -= HandleQuitToMenuPressed;
 
             optionsPanel.OnBackPressed -= ShowPausePanel;
+
+            gameOverPanel.OnPlayAgainPressed -= HandlePlayAgainPressed;
+            gameOverPanel.OnMainMenuPressed -= HandleQuitToMenuPressed;
         }
 
         #endregion
@@ -70,23 +84,49 @@ namespace FrogGame.UI
 
         private void ShowPausePanel()
         {
+            if (IsAnyPanelTransitioning) return;
+
             pausePanel.Show();
+            optionsPanel.Hide();
+        }
+
+        private void ShowPausePanelImmediate()
+        {
+            pausePanel.ShowImmediate();
             optionsPanel.Hide();
         }
 
         private void ShowOptionsPanel()
         {
-            Cursor.visible = true; // This is here temporarily to test the sound sliders.
-            Cursor.lockState = CursorLockMode.None; // This is here temporarily to test the sound sliders.
+            if (IsAnyPanelTransitioning) return;
 
             pausePanel.Hide();
             optionsPanel.Show();
         }
 
+        private void ShowGameOverPanel()
+        {
+            if (pauseIntroCoroutine != null)
+            {
+                StopCoroutine(pauseIntroCoroutine);
+                pauseIntroCoroutine = null;
+            }
+
+            if (pauseBackground != null)
+            {
+                pauseBackground.SetActive(false);
+            }
+
+            pausePanel.HideImmediate();
+            optionsPanel.HideImmediate();
+            gameOverPanel.Show();
+        }
+
         private void HideAllPanels()
         {
-            pausePanel.Hide();
-            optionsPanel.Hide();
+            pausePanel.HideImmediate();
+            optionsPanel.HideImmediate();
+            gameOverPanel.HideImmediate();
         }
 
         #endregion
@@ -156,7 +196,7 @@ namespace FrogGame.UI
                 yield return new WaitForSecondsRealtime(animDuration);
             }
 
-            ShowPausePanel();
+            ShowPausePanelImmediate();
 
             if (gameController != null)
             {
@@ -168,14 +208,26 @@ namespace FrogGame.UI
 
         private void HandleContinuePressed()
         {
+            if (IsAnyPanelTransitioning) return;
+
             if (gameController != null)
             {
                 gameController.SetPauseState(false);
             }
         }
 
+        private void HandlePlayAgainPressed()
+        {
+            if (IsAnyPanelTransitioning) return;
+
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         private void HandleQuitToMenuPressed()
         {
+            if (IsAnyPanelTransitioning) return;
+
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneNames.MAIN_MENU);
         }

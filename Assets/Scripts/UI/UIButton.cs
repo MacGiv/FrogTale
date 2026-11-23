@@ -5,42 +5,28 @@ namespace FrogGame.UI
     using UnityEngine.EventSystems;
 
     [RequireComponent(typeof(Button))]
-    public class UIButton : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
+    public class UIButton : MonoBehaviour, ISelectHandler
     {
-        [Header("Target Image")]
-        [SerializeField] private Image targetImage;
-
-        [Header("Colors Setup")]
-        [SerializeField] private Color normalColor = Color.white;
-        [SerializeField] private Color selectedColor = new Color(0.75f, 0.75f, 0.75f, 1f);
+        private Button button;
 
         private void Awake()
         {
-            if (targetImage == null)
-            {
-                targetImage = GetComponent<Image>();
-            }
+            button = GetComponent<Button>();
 
-            if (targetImage != null)
-            {
-                targetImage.color = normalColor;
-            }
+            button.onClick.AddListener(HandleButtonClicked);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            if (targetImage != null)
+            if (button != null)
             {
-                targetImage.color = normalColor;
+                button.onClick.RemoveListener(HandleButtonClicked);
             }
         }
 
         public void OnSelect(BaseEventData eventData)
         {
-            if (targetImage != null)
-            {
-                targetImage.color = selectedColor;
-            }
+            if (!button.IsInteractable()) return;
 
             if (AudioManager.Instance != null)
             {
@@ -48,15 +34,7 @@ namespace FrogGame.UI
             }
         }
 
-        public void OnDeselect(BaseEventData eventData)
-        {
-            if (targetImage != null)
-            {
-                targetImage.color = normalColor;
-            }
-        }
-
-        public void OnSubmit(BaseEventData eventData)
+        private void HandleButtonClicked()
         {
             if (AudioManager.Instance != null)
             {

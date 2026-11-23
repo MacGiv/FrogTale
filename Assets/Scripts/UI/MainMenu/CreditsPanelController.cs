@@ -17,7 +17,7 @@ namespace FrogGame.UI
         [SerializeField] private GameObject[] pages;
 
         [Header("Indicators References")]
-        [SerializeField] private Button[] indicators;
+        [SerializeField] private UIIndicator[] indicators;
 
         [Header("Carousel Settings")]
         [SerializeField] private float slideDuration = 0.25f;
@@ -82,6 +82,20 @@ namespace FrogGame.UI
             UpdateUIPage();
         }
 
+        public override void Hide()
+        {
+            if (slideCoroutine != null)
+            {
+                StopCoroutine(slideCoroutine);
+                slideCoroutine = null;
+            }
+
+            isNavigating = false;
+            UpdateUIPage();
+
+            base.Hide();
+        }
+
         #region Pages Navigation Logic
 
         private void PreviousPage()
@@ -108,33 +122,20 @@ namespace FrogGame.UI
         {
             if (pages == null || pages.Length == 0) return;
 
-            float spacing = GetCanvasWidth();
-            int prevIndex = GetWrappedIndex(currentPageIndex - 1);
-            int nextIndex = GetWrappedIndex(currentPageIndex + 1);
-
             for (int i = 0; i < pages.Length; i++)
             {
-                if (i == currentPageIndex)
+                if (pages[i] == null)
                 {
-                    pages[i].SetActive(true);
+                    continue;
+                }
 
+                bool isCurrent = (i == currentPageIndex);
+
+                pages[i].SetActive(isCurrent);
+
+                if (isCurrent)
+                {
                     SetPagePositionX(i, 0f);
-                }
-                else if (i == prevIndex)
-                {
-                    pages[i].SetActive(true);
-
-                    SetPagePositionX(i, -spacing);
-                }
-                else if (i == nextIndex)
-                {
-                    pages[i].SetActive(true);
-
-                    SetPagePositionX(i, spacing);
-                }
-                else
-                {
-                    pages[i].SetActive(false);
                 }
             }
 
@@ -197,7 +198,7 @@ namespace FrogGame.UI
             {
                 if (indicators[i] != null)
                 {
-                    indicators[i].interactable = (i == currentPageIndex);
+                    indicators[i].SetActiveState(i == currentPageIndex);
                 }
             }
         }

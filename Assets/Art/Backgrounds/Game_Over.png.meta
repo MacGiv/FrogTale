@@ -1,40 +1,10 @@
 fileFormatVersion: 2
-guid: e98855b226d909b4ebeba2b2a6eb4815
+guid: 216e225faebe6604f9c036b2fd358712
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3373781416596095984
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_0
-  - first:
-      213: 917156255849337258
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_1
-  - first:
-      213: -7150975002083116451
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_2
-  - first:
-      213: -306267247158942217
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_3
-  - first:
-      213: 1881629447607899537
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_4
-  - first:
-      213: -6355915701025979547
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_5
-  - first:
-      213: 5155724040161820631
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_6
-  - first:
-      213: 2871603552720093053
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_7
-  - first:
-      213: 3051027196916162960
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_8
-  - first:
-      213: -2250473737271657858
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_9
-  - first:
-      213: -3669637179865590799
-    second: LogoIC_Fondo_Oscuro_Sin-Slogan_10
+      213: -929040761274210741
+    second: Game_Over_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -76,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -143,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LogoIC_Fondo_Oscuro_Sin-Slogan_11
+      name: Game_Over_0
       rect:
         serializedVersion: 2
-        x: 121
-        y: 126
-        width: 782
-        height: 261
+        x: 0
+        y: 0
+        width: 256
+        height: 144
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f890513ed710aee4bb0dd25c9633e138
-      internalID: 1598088848
+      spriteID: b46646299526b13f0800000000000000
+      internalID: -929040761274210741
       vertices: []
       indices: 
       edges: []
@@ -169,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -178,18 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LogoIC_Fondo_Oscuro_Sin-Slogan_0: -3373781416596095984
-      LogoIC_Fondo_Oscuro_Sin-Slogan_1: 917156255849337258
-      LogoIC_Fondo_Oscuro_Sin-Slogan_10: -3669637179865590799
-      LogoIC_Fondo_Oscuro_Sin-Slogan_11: 1598088848
-      LogoIC_Fondo_Oscuro_Sin-Slogan_2: -7150975002083116451
-      LogoIC_Fondo_Oscuro_Sin-Slogan_3: -306267247158942217
-      LogoIC_Fondo_Oscuro_Sin-Slogan_4: 1881629447607899537
-      LogoIC_Fondo_Oscuro_Sin-Slogan_5: -6355915701025979547
-      LogoIC_Fondo_Oscuro_Sin-Slogan_6: 5155724040161820631
-      LogoIC_Fondo_Oscuro_Sin-Slogan_7: 2871603552720093053
-      LogoIC_Fondo_Oscuro_Sin-Slogan_8: 3051027196916162960
-      LogoIC_Fondo_Oscuro_Sin-Slogan_9: -2250473737271657858
+      Game_Over_0: -929040761274210741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
