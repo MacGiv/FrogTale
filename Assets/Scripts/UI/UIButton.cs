@@ -5,7 +5,7 @@ namespace FrogGame.UI
     using UnityEngine.EventSystems;
 
     [RequireComponent(typeof(Button))]
-    public class UIButton : MonoBehaviour, ISelectHandler, IDeselectHandler, ISubmitHandler
+    public class UIButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         [Header("Target Image")]
         [SerializeField] private Image targetImage;
@@ -14,8 +14,12 @@ namespace FrogGame.UI
         [SerializeField] private Color normalColor = Color.white;
         [SerializeField] private Color selectedColor = new Color(0.75f, 0.75f, 0.75f, 1f);
 
+        private Button button;
+
         private void Awake()
         {
+            button = GetComponent<Button>();
+
             if (targetImage == null)
             {
                 targetImage = GetComponent<Image>();
@@ -25,7 +29,11 @@ namespace FrogGame.UI
             {
                 targetImage.color = normalColor;
             }
+
+            button.onClick.AddListener(HandleButtonClicked);
         }
+
+        private void OnDestroy() => button.onClick.RemoveListener(HandleButtonClicked);
 
         private void OnDisable()
         {
@@ -37,6 +45,8 @@ namespace FrogGame.UI
 
         public void OnSelect(BaseEventData eventData)
         {
+            if (!button.IsInteractable()) return;
+
             if (targetImage != null)
             {
                 targetImage.color = selectedColor;
@@ -56,7 +66,7 @@ namespace FrogGame.UI
             }
         }
 
-        public void OnSubmit(BaseEventData eventData)
+        private void HandleButtonClicked()
         {
             if (AudioManager.Instance != null)
             {
