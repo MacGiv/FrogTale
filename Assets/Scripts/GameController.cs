@@ -96,6 +96,12 @@ namespace FrogGame.Core
         private void TriggerGameOver()
         {
             Time.timeScale = 0f;
+
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.PauseMusic();
+            }
+
             OnGameOver?.Invoke();
         }
 
