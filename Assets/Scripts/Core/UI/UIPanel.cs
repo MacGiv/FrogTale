@@ -57,11 +57,34 @@ namespace FrogGame.Core
             }
         }
 
+        public virtual void ShowImmediate()
+        {
+            if (transitionCoroutine != null)
+            {
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = null;
+            }
+
+            ApplyVisualState(true);
+            FocusTarget(LastSelected != null ? LastSelected : defaultSelected);
+        }
+
         public virtual void Hide()
         {
             SaveCurrentSelection();
 
             StartTransition(false);
+        }
+
+        public virtual void HideImmediate()
+        {
+            if (transitionCoroutine != null)
+            {
+                StopCoroutine(transitionCoroutine);
+                transitionCoroutine = null;
+            }
+
+            ApplyVisualState(false);
         }
 
         public virtual void Focus() => FocusTarget(defaultSelected);
@@ -78,7 +101,7 @@ namespace FrogGame.Core
             focusCoroutine = StartCoroutine(SetFocusRoutine(target));
         }
 
-        public void SaveCurrentSelection()
+        private void SaveCurrentSelection()
         {
             if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
             {
@@ -94,22 +117,12 @@ namespace FrogGame.Core
             }
         }
 
-        public void HideImmediate()
-        {
-            if (transitionCoroutine != null)
-            {
-                StopCoroutine(transitionCoroutine);
-                transitionCoroutine = null;
-            }
-
-            ApplyVisualState(false);
-        }
-
         private void StartTransition(bool showing)
         {
             if (transitionCoroutine != null)
             {
                 StopCoroutine(transitionCoroutine);
+                transitionCoroutine = null;
             }
 
             if (transitionDuration <= 0f)

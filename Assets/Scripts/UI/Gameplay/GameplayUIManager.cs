@@ -74,6 +74,12 @@ namespace FrogGame.UI
             optionsPanel.Hide();
         }
 
+        private void ShowPausePanelImmediate()
+        {
+            pausePanel.ShowImmediate();
+            optionsPanel.Hide();
+        }
+
         private void ShowOptionsPanel()
         {
             pausePanel.Hide();
@@ -82,8 +88,8 @@ namespace FrogGame.UI
 
         private void HideAllPanels()
         {
-            pausePanel.Hide();
-            optionsPanel.Hide();
+            pausePanel.HideImmediate();
+            optionsPanel.HideImmediate();
         }
 
         #endregion
@@ -153,7 +159,7 @@ namespace FrogGame.UI
                 yield return new WaitForSecondsRealtime(animDuration);
             }
 
-            ShowPausePanel();
+            ShowPausePanelImmediate();
 
             if (gameController != null)
             {
