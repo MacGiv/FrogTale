@@ -335,6 +335,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.PausePanelController
   defaultSelected: {fileID: 8447307115030247160}
+  transitionDuration: 0.2
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useFade: 1
+  hiddenAlpha: 0
+  useSlide: 0
+  hiddenOffset: {x: 0, y: 0}
+  useScale: 0
+  hiddenScale: {x: 1, y: 1, z: 1}
   continueButton: {fileID: 8447307115030247160}
   optionsButton: {fileID: 8070485576641262094}
   quitToMenuButton: {fileID: 5765872108291219679}
@@ -1070,6 +1101,26 @@ PrefabInstance:
     - target: {fileID: 7570309464183906301, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -320
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: useScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: hiddenScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+      propertyPath: transitionDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8306372010847048996, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
       propertyPath: m_AnchorMax.y
