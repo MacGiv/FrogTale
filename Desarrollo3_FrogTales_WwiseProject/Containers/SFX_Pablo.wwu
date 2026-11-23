@@ -92,8 +92,12 @@
 														<Custom>
 															<Effect Name="Parametric EQ (Custom)" ID="{1AF41936-3AF3-40FB-A633-30DF92B9D04E}" ShortID="49815012" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 																<PropertyList>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
 																	<Property Name="FrequencyBand2" Type="Real32" Value="748.0776"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="2020.985"/>
 																	<Property Name="GainBand2" Type="Real32" Value="-5.772152"/>
+																	<Property Name="GainBand3" Type="Real32" Value="6.03352"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
 																</PropertyList>
 															</Effect>
 														</Custom>
@@ -203,6 +207,11 @@
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
 												<Value>-80</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -940,6 +949,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -993,6 +1007,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1328,6 +1347,11 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="BlendBehavior" Type="int16" Value="1"/>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>22</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 										<Property Name="Volume" Type="Real64">
@@ -1628,6 +1652,18 @@
 									</ChildrenList>
 								</BlendContainer>
 								<Sound Name="Env_Platform_Impact" ID="{1D469E9F-3051-43DA-89A7-9474302221EC}" ShortID="856780558">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -1787,8 +1823,13 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Player_Vox" ID="{8B68F8CA-1D0C-4554-9CE2-990BB14EB09F}" ShortID="976488864">
+									<Comment>Se cambio el pitch por la musica Demo
+</Comment>
 									<PropertyList>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-130</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{664A21AC-F5EA-49A3-B7CC-65ADC89206AD}">
@@ -1855,7 +1896,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-9</Value>
+												<Value>-7</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
