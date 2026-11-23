@@ -17,7 +17,7 @@ namespace FrogGame.UI
         [SerializeField] private GameObject[] pages;
 
         [Header("Indicators References")]
-        [SerializeField] private Button[] indicators;
+        [SerializeField] private UIIndicator[] indicators;
 
         [Header("Carousel Settings")]
         [SerializeField] private float slideDuration = 0.25f;
@@ -198,7 +198,7 @@ namespace FrogGame.UI
             {
                 if (indicators[i] != null)
                 {
-                    indicators[i].interactable = (i == currentPageIndex);
+                    indicators[i].SetActiveState(i == currentPageIndex);
                 }
             }
         }
