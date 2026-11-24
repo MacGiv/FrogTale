@@ -574,6 +574,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8791837111498669317}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 5
@@ -658,6 +662,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -687,6 +699,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8306372010847048996}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 2
@@ -771,6 +787,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -933,6 +957,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8791837111498669317}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 1
@@ -1017,6 +1045,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1046,6 +1082,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8306372010847048996}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 1
@@ -1130,6 +1170,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1159,6 +1207,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8791837111498669317}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 3
@@ -1243,6 +1295,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1272,6 +1332,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8306372010847048996}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 5
@@ -1356,6 +1420,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1624,6 +1696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8791837111498669317}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 2
@@ -1708,6 +1784,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2109,6 +2193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8306372010847048996}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 3
@@ -2193,6 +2281,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2222,6 +2318,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8306372010847048996}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 4
@@ -2306,6 +2406,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2441,6 +2549,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8791837111498669317}
     m_Modifications:
+    - target: {fileID: 1183773875842483777, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     - target: {fileID: 1834047810377039678, guid: bbc419c826050b845a1be04922203d27, type: 3}
       propertyPath: m_Name
       value: Indicator Button 4
@@ -2525,6 +2637,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: activeSprite
+      value: 
+      objectReference: {fileID: 941187090, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
+    - target: {fileID: 7868681401687284749, guid: bbc419c826050b845a1be04922203d27, type: 3}
+      propertyPath: inactiveSprite
+      value: 
+      objectReference: {fileID: 2119239525, guid: 8f52eacb3bcc6104f8bda461cecf2a63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
