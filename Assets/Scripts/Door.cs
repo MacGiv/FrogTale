@@ -1,10 +1,11 @@
 namespace FrogGame.World
 {
+    using System.Collections;
     using UnityEngine;
 
     /// <summary>
-    /// Interactive puzzle door supporting 2x2 downward doors (with 1x2 top frame when open)
-    /// and 2x1 side doors (2 rows x 1 column), elevating open frame sorting order above the player.
+    /// Interactive puzzle door driven natively by a Unity Animator ("IsOpen" bool),
+    /// blocking player passage until the opening animation finishes and elevating open-frame sorting order.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class Door : MonoBehaviour
@@ -25,27 +26,31 @@ namespace FrogGame.World
         [Tooltip("World units per single grid tile (default 1).")]
         [SerializeField] private float tileUnitSize = 1f;
 
-        [Header("Down Door Sprites (2x2 Closed / 1x2 Top Frame Open)")]
-        [SerializeField] private Sprite closedDownSprite;
-        [SerializeField] private Sprite openDownFrameSprite;
-
-        [Header("Left Door Sprites (2x1 Closed / Frame Open)")]
-        [SerializeField] private Sprite closedLeftSprite;
-        [SerializeField] private Sprite openLeftFrameSprite;
+        [Header("Animator & Passage Timing")]
+        [SerializeField] private Animator doorAnimator;
+        [Tooltip("Seconds to wait after triggering the open animation before disabling the collider (match your 6-frame clip duration, e.g. 0.45s).")]
+        [Min(0f)]
+        [SerializeField] private float openPassageDelay = 0.45f;
 
         [Header("Visual References")]
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [Tooltip("Enable only if the open sprite is a 1x2 top arch on a child object that needs to shift up half a tile.")]
+        [SerializeField] private bool offsetOpenDownChildSprite = false;
 
         [Header("Sorting Order Settings")]
-        [Tooltip("Elevates the open door frame sprite above the player sprite when the door opens.")]
+        [Tooltip("Elevates the open door frame sprite above the player sprite once the door is passable.")]
         [SerializeField] private bool elevateOpenFrameSorting = true;
         [Tooltip("Optional Sorting Layer name for the open frame (e.g. Player or Foreground). Leave empty to keep current layer.")]
         [SerializeField] private string openFrameSortingLayer = "";
         [Tooltip("Order in Layer applied to the open door frame so it renders above the player.")]
         [SerializeField] private int openFrameSortingOrder = 20;
 
+        private static readonly int IsOpenHash = Animator.StringToHash("IsOpen");
+
         private Collider2D doorCollider;
+        private Coroutine passageCoroutine;
         private int currentActiveSwitches = 0;
+
         private int closedSortingLayerID;
         private int closedSortingOrder;
         private bool hasCachedClosedSorting = false;
@@ -61,9 +66,20 @@ namespace FrogGame.World
         private void Awake()
         {
             doorCollider = GetComponent<Collider2D>();
+
+            if (spriteRenderer == null)
+            {
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            }
+
+            if (doorAnimator == null)
+            {
+                doorAnimator = GetComponentInChildren<Animator>();
+            }
+
             CacheClosedSorting();
             ApplyTileLayout();
-            UpdateDoorState();
+            ApplyImmediateState(isOpen);
         }
 
         private void OnValidate()
@@ -71,7 +87,6 @@ namespace FrogGame.World
             tileUnitSize = Mathf.Max(0.1f, tileUnitSize);
             CacheClosedSorting();
             ApplyTileLayout();
-            UpdateDoorState();
         }
 
         private void CacheClosedSorting()
@@ -126,23 +141,78 @@ namespace FrogGame.World
             EvaluateState();
         }
 
+        /// <summary>
+        /// Optional Animation Event hook: place on frame 5 or 6 of the open clip to unlock passage on that exact frame.
+        /// </summary>
+        public void AnimEvent_OnDoorPassable()
+        {
+            if (!isOpen) return;
+
+            if (passageCoroutine != null)
+            {
+                StopCoroutine(passageCoroutine);
+                passageCoroutine = null;
+            }
+
+            SetPassageEnabled(true);
+        }
+
         private void EvaluateState()
         {
             bool shouldBeOpen = currentActiveSwitches >= requiredSwitches;
+            if (shouldBeOpen == isOpen) return;
 
-            if (shouldBeOpen != isOpen)
+            isOpen = shouldBeOpen;
+
+            if (passageCoroutine != null)
             {
-                isOpen = shouldBeOpen;
-                UpdateDoorState();
+                StopCoroutine(passageCoroutine);
+                passageCoroutine = null;
+            }
 
-                if (isOpen && AudioManager.Instance != null)
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool(IsOpenHash, isOpen);
+            }
+
+            if (isOpen)
+            {
+                if (AudioManager.Instance != null)
                 {
                     AudioManager.Instance.PlayEnvDoorsOpen(gameObject);
                 }
+
+                passageCoroutine = StartCoroutine(EnablePassageAfterDelayRoutine());
+            }
+            else
+            {
+                // Lock passage immediately when closing starts
+                SetPassageEnabled(false);
             }
         }
 
-        private void UpdateDoorState()
+        private IEnumerator EnablePassageAfterDelayRoutine()
+        {
+            if (openPassageDelay > 0f)
+            {
+                yield return new WaitForSeconds(openPassageDelay);
+            }
+
+            SetPassageEnabled(true);
+            passageCoroutine = null;
+        }
+
+        private void ApplyImmediateState(bool open)
+        {
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool(IsOpenHash, open);
+            }
+
+            SetPassageEnabled(open);
+        }
+
+        private void SetPassageEnabled(bool canPass)
         {
             if (doorCollider == null)
             {
@@ -151,60 +221,45 @@ namespace FrogGame.World
 
             if (doorCollider != null)
             {
-                doorCollider.enabled = !isOpen;
+                doorCollider.enabled = !canPass;
             }
 
-            if (spriteRenderer != null)
+            if (spriteRenderer == null) return;
+
+            CacheClosedSorting();
+            spriteRenderer.flipX = flipHorizontally;
+
+            if (canPass && elevateOpenFrameSorting)
             {
-                CacheClosedSorting();
-
-                spriteRenderer.flipX = flipHorizontally;
-                spriteRenderer.sprite = GetActiveSprite();
-
-                if (isOpen && elevateOpenFrameSorting)
+                if (!string.IsNullOrEmpty(openFrameSortingLayer))
                 {
-                    if (!string.IsNullOrEmpty(openFrameSortingLayer))
+                    int targetLayerID = SortingLayer.NameToID(openFrameSortingLayer);
+                    if (SortingLayer.IsValid(targetLayerID))
                     {
-                        int targetLayerID = SortingLayer.NameToID(openFrameSortingLayer);
-                        if (SortingLayer.IsValid(targetLayerID))
-                        {
-                            spriteRenderer.sortingLayerID = targetLayerID;
-                        }
+                        spriteRenderer.sortingLayerID = targetLayerID;
                     }
-
-                    spriteRenderer.sortingOrder = openFrameSortingOrder;
-                }
-                else
-                {
-                    spriteRenderer.sortingLayerID = closedSortingLayerID;
-                    spriteRenderer.sortingOrder = closedSortingOrder;
                 }
 
-                // If the SpriteRenderer lives on a child object, offset the 1x2 open top frame up by half a tile
-                // so it aligns with the upper row of the 2x2 doorway.
-                if (spriteRenderer.transform != transform)
-                {
-                    bool needsTopRowOffset = isOpen && orientation == DoorOrientation.Down_2x2;
-                    spriteRenderer.transform.localPosition = needsTopRowOffset
-                        ? new Vector3(0f, 0.5f * tileUnitSize, 0f)
-                        : Vector3.zero;
-                }
+                spriteRenderer.sortingOrder = openFrameSortingOrder;
             }
-        }
-
-        private Sprite GetActiveSprite()
-        {
-            if (orientation == DoorOrientation.Left_2x1)
+            else
             {
-                return isOpen ? openLeftFrameSprite : closedLeftSprite;
+                spriteRenderer.sortingLayerID = closedSortingLayerID;
+                spriteRenderer.sortingOrder = closedSortingOrder;
             }
 
-            return isOpen ? openDownFrameSprite : closedDownSprite;
+            if (spriteRenderer.transform != transform)
+            {
+                bool needsTopRowOffset = offsetOpenDownChildSprite && canPass && orientation == DoorOrientation.Down_2x2;
+                spriteRenderer.transform.localPosition = needsTopRowOffset
+                    ? new Vector3(0f, 0.5f * tileUnitSize, 0f)
+                    : Vector3.zero;
+            }
         }
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = isOpen ? Color.green : Color.red;
+            Gizmos.color = (doorCollider != null && !doorCollider.enabled) ? Color.green : Color.red;
             Matrix4x4 oldMatrix = Gizmos.matrix;
             Gizmos.matrix = transform.localToWorldMatrix;
             Gizmos.DrawWireCube(Vector3.zero, ClosedColliderDimensions);
