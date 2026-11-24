@@ -79,7 +79,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.25}
+  m_Size: {x: 0.5, y: 0.2}
   m_EdgeRadius: 0
 --- !u!50 &8986904639749565746
 Rigidbody2D:
@@ -123,6 +123,7 @@ MonoBehaviour:
   speed: 6
   damage: 1
   maxLifetime: 3
+  destroyAudioDelay: 2
   pickupArrowPrefab: {fileID: 4340830154474281819, guid: 53e86a3aef86f5a4da5d1912b3318cfa, type: 3}
   knockbackForce: 6
   knockbackDuration: 0.15
@@ -213,7 +214,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1477315881
-  m_SortingLayer: 8
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5077489997798273135, guid: 969492fcfac45a44da7e83f90798340f, type: 3}
