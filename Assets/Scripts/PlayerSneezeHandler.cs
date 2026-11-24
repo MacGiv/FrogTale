@@ -69,11 +69,6 @@ namespace FrogGame.Gameplay
 
             foreach (var hit in hits)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayEnemyBoogerHit(gameObject);
-                }
-
                 // 1. Apply Damage
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {

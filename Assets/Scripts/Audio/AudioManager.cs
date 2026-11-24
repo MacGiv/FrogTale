@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("Enemy Events")]
     [SerializeField] private AK.Wwise.Event playEnemyAttack;
-    [SerializeField] private AK.Wwise.Event playEnemyBoogerHit;
     [SerializeField] private AK.Wwise.Event playEnemyCombatAlertFox;
     [SerializeField] private AK.Wwise.Event playEnemyCombatAlertOwl;
     [SerializeField] private AK.Wwise.Event playEnemyDamage;
@@ -106,7 +105,6 @@ public class AudioManager : MonoBehaviour
 
     #region Play Methods
     public void PlayEnemyAttack(GameObject emitter = null) => PostEvent(playEnemyAttack, emitter);
-    public void PlayEnemyBoogerHit(GameObject emitter = null) => PostEvent(playEnemyBoogerHit, emitter);
     public void PlayEnemyCombatAlertFox(GameObject emitter = null) => PostEvent(playEnemyCombatAlertFox, emitter);
     public void PlayEnemyCombatAlertOwl(GameObject emitter = null) => PostEvent(playEnemyCombatAlertOwl, emitter);
     public void PlayEnemyDamage(GameObject emitter = null) => PostEvent(playEnemyDamage, emitter);
