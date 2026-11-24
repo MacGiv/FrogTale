@@ -3,7 +3,9 @@ namespace FrogGame.UI
     using System.Collections;
     using UnityEngine;
     using UnityEngine.Events;
+    using UnityEngine.SceneManagement;
     using UnityEngine.UI;
+    using FrogGame.Core;
     using FrogGame.Gameplay;
 
     /// <summary>
@@ -24,6 +26,7 @@ namespace FrogGame.UI
         [Header("Transition & Flow")]
         [SerializeField] private float fadeInDuration = 0.5f;
         [SerializeField] private float holdAfterFinishDuration = 1.5f;
+        [SerializeField] private bool returnToMainMenuOnComplete = true;
         [SerializeField] private UnityEvent onSequenceCompleted;
 
         private CanvasGroup canvasGroup;
@@ -55,7 +58,7 @@ namespace FrogGame.UI
         {
             isPlaying = true;
 
-            // Disable player input so the character cannot move or fall during the ending
+            // Disable player input (also disables pause action in OnDisable)
             PlayerInputHandler inputHandler = FindFirstObjectByType<PlayerInputHandler>();
             if (inputHandler != null)
             {
@@ -101,17 +104,32 @@ namespace FrogGame.UI
                 yield return new WaitForSecondsRealtime(frameDuration);
             }
 
-            if (!loopLastFrame && displayImage != null)
-            {
-                displayImage.enabled = false;
-            }
-
+            // Hold the last frame visible before transitioning
             if (holdAfterFinishDuration > 0f)
             {
                 yield return new WaitForSecondsRealtime(holdAfterFinishDuration);
             }
 
+            if (!loopLastFrame && !returnToMainMenuOnComplete && displayImage != null)
+            {
+                displayImage.enabled = false;
+            }
+
             onSequenceCompleted?.Invoke();
+
+            if (returnToMainMenuOnComplete)
+            {
+                ReturnToMainMenu();
+            }
+        }
+
+        /// <summary>
+        /// Loads the Main Menu scene cleanly. Can also be hooked up to UnityEvents in the Inspector.
+        /// </summary>
+        public void ReturnToMainMenu()
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneNames.MAIN_MENU);
         }
     }
 }
