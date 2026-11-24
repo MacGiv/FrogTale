@@ -59,11 +59,6 @@ namespace FrogGame.Gameplay
             // 2. Check enemy/stunnable collision / Impacto contra enemigo o entidad aturdible
             if ((colLayer & enemyLayer) != 0)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayEnemyBoogerHit(gameObject);
-                }
-
                 if (collision.TryGetComponent<IStunnable>(out var stunnable))
                 {
                     stunnable.ApplyStun(stunDuration);
