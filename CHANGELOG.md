@@ -1,5 +1,47 @@
 # Changelog
 
+## [0.11.0] - 2026-11-24
+
+### New
+
+- Full-screen animated ending cutscene triggered upon reaching the end of the Mangrove level, with smooth fade-in transitions and automatic player input locking.
+- Game Over screen with Play Again and Main Menu buttons, automatically pausing background music and closing the pause menu upon player death.
+- Surface-based footstep sound effects that adapt to Concrete, Short Grass, and Tall Grass terrain across Plateau and Mangrove levels.
+- Interactive tall grass foliage that reacts with leaf rustling animations when the player walks through it.
+- Animated firefly visual and ambient particle effect around the Sneeze ability pickup.
+- Dedicated background music tracks for the Main Menu, Plateau, and Mangrove levels, with smooth audio fading when pausing/resuming and automatic music transitions when entering areas like the Shop.
+- Expanded sound effects across combat, environment, and UI: surface-specific arrow impacts (Grass, Metal, Wood), tongue attack and rock interaction sounds, rock drop impacts, shield removal sounds, moving platform audio loops, enemy defeat sounds, and UI navigation feedback.
+- Animated rain effect and environmental overlay details in the Mangrove level.
+- Sand terrain tiles added to the Plateau level with matching footstep audio support.
+- Animated puzzle doors (horizontal and vertical layouts) whose passage unlocks in sync with the opening animation.
+- Smooth fade, slide, and scale transition animations across UI panels, plus visual indicator bars for volume settings and credits pages.
+- Custom multi-resolution application icon for the game executable.
+
+### Changes
+
+- Standardized level names (`01_Plateau` and `02_Mangrove`) across the project build.
+- Upgraded HUD damage feedback with multi-flash blinking and health-synced hit animations that no longer overlap when taking rapid hits.
+- Replaced the old sneeze particle effect with a directional animated visual effect.
+- Enabled full 8-directional player movement while riding moving platforms.
+- Upgraded the Options menu with step buttons and visual bars for Music and SFX volume, saving player preferences automatically.
+- Updated UI button sprites across Main Menu and Gameplay screens, and kept the hardware mouse cursor hidden when opening Options during gameplay.
+- Reorganized Main Menu visuals with an animated stone frog statue, separated game and studio logos in Credits, and updated the Image Campus logo to pixel-art.
+- Cleaned up sprite rendering layers so open door frames properly display above the player.
+- Refined the Plateau level layout by removing hidden water under ground tiles and removing Small Owl enemies, while expanding terrain and props in the Mangrove level.
+- Rebalanced overall audio mixing and removed outdated enemy stun impact sounds.
+
+### Bug Fixes
+
+- FROG-42 Implemented dynamic tongue rendering order so upward tongue shots appear behind the player while downward and side shots appear in front.
+- FROG-58 Fixed stone push displacement so players and enemies can no longer push grounded stones around while still allowing them to trigger floor switches.
+- Fixed a multi-switch puzzle soft-lock where placing multiple stones on the same switch permanently locked both stones; switches now lock a single stone and block dropping additional stones onto occupied switches or stacked stones.
+- Fixed a 1-frame movement desynchronization when stepping onto moving platforms and synchronized water respawn points so drowning on a return trip respawns the player at the correct departure shore.
+- Fixed tongue shots getting blocked by the grapple point the player is currently standing on.
+- Fixed destructible bushes and tall grass failing to spawn loot drops reliably upon destruction.
+- Fixed arrow impact sounds cutting off prematurely upon hitting targets and removed duplicate audio playback when grabbing items.
+- Fixed pause menu input handling to prevent unintended UI button selection during active gameplay.
+- Fixed broken studio and Image Campus logo references on the Splash Screen.
+
 ## [0.10.0] - 2026-11-17
 
 ### New
