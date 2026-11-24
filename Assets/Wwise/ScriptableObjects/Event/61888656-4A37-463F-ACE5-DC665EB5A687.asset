@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b354e3eb4ebb3439ba266a0adafd43, type: 3}
   m_Name: 61888656-4A37-463F-ACE5-DC665EB5A687
   m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
-  objectName: Play_Enemy_BoogerHit
-  id: 3439094466
+  objectName: Play_Enemy_Booger_Hit
+  id: 1588384297
   guid: 61888656-4A37-463F-ACE5-DC665EB5A687
   IsInUserDefinedSoundBank: 1

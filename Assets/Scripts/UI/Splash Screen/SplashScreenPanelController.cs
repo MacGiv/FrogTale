@@ -3,6 +3,7 @@ namespace FrogGame.UI
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.InputSystem;
+    using FrogGame.Core;
 
     public class SplashScreenPanelController : MonoBehaviour
     {
@@ -35,10 +36,12 @@ namespace FrogGame.UI
         {
             if (submitAction != null && submitAction.action.WasPressedThisFrame())
             {
+                AudioManager.Instance.PlayUIStartMenu();
+
                 LoadNextScene();
             }
         }
 
-        private void LoadNextScene() => SceneManager.LoadScene("MainMenu");
+        private void LoadNextScene() => SceneManager.LoadScene(SceneNames.MAIN_MENU);
     }
 }

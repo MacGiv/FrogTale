@@ -139,9 +139,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -750558851
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 711346111
+  m_SortingLayer: 2
+  m_SortingOrder: 30
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ee488c03f115bc94e829608b00d126e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,6 +153,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5166347551355941271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6769130746222634285}
+  m_Layer: 8
+  m_Name: TallGrassDetectorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6769130746222634285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166347551355941271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 939356276976503626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5779661112466472930
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +262,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1079636369
-  m_SortingLayer: 7
+  m_SortingLayer: 5
   m_SortingOrder: 12
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 882f9014a52476f4f900360e2d8ef7f0, type: 3}
@@ -269,10 +300,10 @@ GameObject:
   - component: {fileID: 9121058244511926470}
   - component: {fileID: 4074726627394767299}
   - component: {fileID: 1603623593437131}
-  - component: {fileID: 3253473108220971834}
   - component: {fileID: 278519217810397165}
   - component: {fileID: 141681743693933888}
-  - component: {fileID: 3569756098962365395}
+  - component: {fileID: 6404451420294413117}
+  - component: {fileID: 2623179612302005995}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -298,6 +329,8 @@ Transform:
   - {fileID: 2473404711069442025}
   - {fileID: 8451421526952349763}
   - {fileID: 8541942503707674416}
+  - {fileID: 6787589997471889207}
+  - {fileID: 6769130746222634285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &984263636307533334
@@ -339,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd87f54ee01c314cb5f4de794438860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerInputHandler
+  uiInputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   moveAction: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   tongueAction: {fileID: 3649587331760782945, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   arrowAction: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
@@ -374,7 +408,7 @@ MonoBehaviour:
   arrowSpawnPoint: {fileID: 2473404711069442025}
   carryHandler: {fileID: 0}
   helmetAnimatorOverride: {fileID: 22100000, guid: 9d5b456f269621b47aeb30ac09c472f4, type: 2}
-  startWithHelmet: 1
+  startWithHelmet: 0
 --- !u!114 &4998396240059985195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,11 +433,12 @@ MonoBehaviour:
   shieldLayer:
     serializedVersion: 2
     m_Bits: 131072
-  wallLayer:
+  obstaclesLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   tongueOrigin: {fileID: 4559666176104124744}
   tongueTip: {fileID: 9147826235726030823}
+  playerSpriteRenderer: {fileID: 0}
 --- !u!120 &1655920308539956457
 LineRenderer:
   serializedVersion: 3
@@ -450,7 +485,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1079636369
-  m_SortingLayer: 7
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Positions:
@@ -548,7 +583,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.050819278}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -558,7 +593,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.69500446, y: 0.87795436}
+  m_Size: {x: 0.6, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &808932101003858372
 MonoBehaviour:
@@ -572,11 +607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14c66b3e76883c4e9c9ff16ccd0ba2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerHealthSystem
-  maxHealth: 6
-  invincibilityDuration: 1
-  isShieldOn: 1
+  maxHealth: 5
+  invincibilityDuration: 1.25
+  isShieldOn: 0
   playerSprite: {fileID: 4074726627394767299}
-  currentHealth: 25
+  currentHealth: 5
 --- !u!114 &256641055099659110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,8 +631,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 32896
-  dropBoxSize: {x: 1, y: 1}
-  dropDistance: 0.7
+  dropBoxSize: {x: 0.75, y: 0.75}
+  dropDistance: 0.5
 --- !u!114 &8395082505162536254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,8 +645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca0791d166a7c54b9661a7ff27cfa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerAmmoSystem
-  currentArrows: 25
-  maxArrows: 25
+  currentArrows: 10
+  maxArrows: 50
 --- !u!114 &7106084710380421344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +692,10 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
-  sneezeParticle: {fileID: 3004018478875197302, guid: 09eefc6cdc22e5645aac046b23bed5d5, type: 3}
+  sneezeVfxPrefab: {fileID: 175865138835448796, guid: 9e22accbd170ed941ab925528637e4a1, type: 3}
+  sneezeSpawnPoint: {fileID: 0}
+  spawnForwardOffset: 1
+  rotateVfxWithDirection: 1
 --- !u!114 &4138766253333921927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +776,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1079636369
-  m_SortingLayer: 7
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4636258348838621186, guid: e03bfd0f8dcd51546a98fb9c8c9daa21, type: 3}
@@ -765,39 +803,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerGrappleCollisionDetector
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 32896
+    m_Bits: 32768
   boxSize: {x: 0.25, y: 0.65}
   detectionDistance: 0.4
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
---- !u!114 &3253473108220971834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8907015057044918926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d514c66b1fe3bbe4ea2654d2214935c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
-  useCallbacks: 0
-  stopSoundOnDisable: 1
-  Callbacks: []
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
 --- !u!114 &278519217810397165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +846,7 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &3569756098962365395
+--- !u!114 &6404451420294413117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -846,26 +855,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8907015057044918926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d514c66b1fe3bbe4ea2654d2214935c4, type: 3}
+  m_Script: {fileID: 11500000, guid: ee047c5818be1bb4e84da900625a78e3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
-  useCallbacks: 0
-  stopSoundOnDisable: 1
-  Callbacks: []
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerTallGrassDetector
+  tallGrassLayer:
+    serializedVersion: 2
+    m_Bits: 524288
+  detectionPoint: {fileID: 6769130746222634285}
+  movementThreshold: 0.01
+  grassEffectAnimator: {fileID: 3360973532838947145}
+--- !u!114 &2623179612302005995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0cdaf65124fda478384f7c97a7786b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerFootstepHandler
+  feetPoint: {fileID: 6769130746222634285}
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,3 +908,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 939356276976503626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5827116355784029140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 939356276976503626}
+    m_Modifications:
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_Name
+      value: GrassMovingFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535880068498354989, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+--- !u!95 &3360973532838947145 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9113738552259828381, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+  m_PrefabInstance: {fileID: 5827116355784029140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6787589997471889207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1075320517531944163, guid: 9c7d95127c534924fa77990f7163c89a, type: 3}
+  m_PrefabInstance: {fileID: 5827116355784029140}
+  m_PrefabAsset: {fileID: 0}

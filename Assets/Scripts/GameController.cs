@@ -5,21 +5,29 @@ namespace FrogGame.Core
     using UnityEngine.SceneManagement;
     using FrogGame.Gameplay;
 
-    /// <summary>
-    /// Debug & scene controller for restarting, quitting, and pausing using Unity's New Input System.
-    /// </summary>
     public class GameController : MonoBehaviour
     {
         [Header("Input References")]
         [SerializeField] private PlayerInputHandler playerInputHandler;
 
-        [Header("Restart Settings")]
-        [SerializeField] private float deathRestartDelay = 1f;
+        [Header("Game Over Settings")]
+        [SerializeField] private float gameOverDelay = 1f;
 
         public bool IsPaused { get; private set; }
         public bool IsPauseLocked { get; set; }
+        public bool IsGameOver { get; private set; }
 
         public event Action<bool> OnPauseToggled;
+        public event Action OnGameOver;
+
+        private void Start()
+        {
+            if (playerInputHandler != null)
+            {
+                playerInputHandler.EnableInput();
+                playerInputHandler.DisableUIInput();
+            }
+        }
 
         private void OnEnable()
         {
@@ -43,23 +51,27 @@ namespace FrogGame.Core
 
         public void TogglePause()
         {
-            if (IsPauseLocked) return;
+            if (IsPauseLocked || IsGameOver) return;
 
             SetPauseState(!IsPaused);
         }
 
         public void SetPauseState(bool paused)
         {
+            if (IsGameOver) return;
+
             IsPaused = paused;
             Time.timeScale = IsPaused ? 0f : 1f;
 
             if (IsPaused)
             {
-                playerInputHandler?.DisableInput();
+                playerInputHandler.EnableUIInput();
+                playerInputHandler.DisableInput();
             }
             else
             {
-                playerInputHandler?.EnableInput();
+                playerInputHandler.DisableUIInput();
+                playerInputHandler.EnableInput();
             }
 
             OnPauseToggled?.Invoke(IsPaused);
@@ -67,7 +79,30 @@ namespace FrogGame.Core
 
         private void HandlePlayerDied()
         {
-            Invoke(nameof(RestartScene), deathRestartDelay);
+            if (IsGameOver) return;
+
+            IsGameOver = true;
+            IsPauseLocked = true;
+
+            if (playerInputHandler != null)
+            {
+                playerInputHandler.DisableInput();
+                playerInputHandler.EnableUIInput();
+            }
+
+            Invoke(nameof(TriggerGameOver), gameOverDelay);
+        }
+
+        private void TriggerGameOver()
+        {
+            Time.timeScale = 0f;
+
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.PauseMusic();
+            }
+
+            OnGameOver?.Invoke();
         }
 
         public void RestartScene()

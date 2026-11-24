@@ -5,7 +5,8 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Trigger-based moving platform for top-down gameplay.
-    /// Supports bi-directional travel (Point A <-> Point B) and resets to the current trip's origin shore upon player drowning.
+    /// Supports bi-directional travel (Point A <-> Point B), carries the player smoothly via Rigidbody2D deltas,
+    /// and resets cleanly to the current trip's origin shore upon player drowning.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
@@ -27,12 +28,21 @@ namespace FrogGame.Gameplay
         private Rigidbody2D rb;
         private Vector3 targetPosition;
         private Vector3 currentOrigin; // Dynamic origin shore for current trip
-        private Vector3 lastPlatformPosition;
 
         private Transform playerTransform;
+        private Rigidbody2D playerRb;
+        private PlayerBrain playerBrain;
+        private PlayerWaterDetector playerWaterDetector;
         private bool isPlayerOnPlatform = false;
+        private bool isHeadingToB = true;
         private bool isMoving = false;
         private bool isWaiting = false;
+        private bool isMovingAudioPlaying = false;
+        private float postRespawnCooldown = 0f;
+
+        public PlatformMode Mode => mode;
+        public Vector3 CurrentOrigin => currentOrigin;
+        public Vector3 TargetPosition => targetPosition;
 
         private void Awake()
         {
@@ -49,12 +59,14 @@ namespace FrogGame.Gameplay
         private void OnDisable()
         {
             PlayerDrownState.OnPlayerDrowned -= HandlePlayerDrowned;
+            StopMovementAudio();
         }
 
         private void Start()
         {
             if (pointA != null && pointB != null)
             {
+                isHeadingToB = true;
                 currentOrigin = pointA.position;
                 targetPosition = pointB.position;
             }
@@ -62,10 +74,24 @@ namespace FrogGame.Gameplay
             ResetToCurrentOrigin();
         }
 
+        private void Update()
+        {
+            if (postRespawnCooldown > 0f)
+            {
+                postRespawnCooldown -= Time.deltaTime;
+            }
+        }
+
         private void HandlePlayerDrowned()
         {
             isPlayerOnPlatform = false;
             playerTransform = null;
+            playerRb = null;
+            playerBrain = null;
+            playerWaterDetector = null;
+
+            // Brief cooldown prevents immediate re-trigger if the respawn tile borders the dock trigger
+            postRespawnCooldown = 0.35f;
 
             if (mode == PlatformMode.OnTrigger)
             {
@@ -74,7 +100,7 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Resets the platform to the starting shore of its current journey leg.
+        /// Resets the platform to the starting shore of its current journey leg and clears pending physics motion.
         /// </summary>
         public void ResetToCurrentOrigin()
         {
@@ -82,61 +108,129 @@ namespace FrogGame.Gameplay
             isWaiting = false;
             isMoving = (mode == PlatformMode.Always);
 
+            if (pointA != null && pointB != null)
+            {
+                currentOrigin = isHeadingToB ? pointA.position : pointB.position;
+                targetPosition = isHeadingToB ? pointB.position : pointA.position;
+            }
+
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
             transform.position = currentOrigin;
             rb.position = currentOrigin;
-            lastPlatformPosition = currentOrigin;
+            Physics2D.SyncTransforms();
+
+            if (isMoving)
+            {
+                StartMovementAudio();
+            }
+            else
+            {
+                StopMovementAudio();
+            }
         }
 
         private void FixedUpdate()
         {
-            Vector3 currentPos = transform.position;
+            if (!isMoving || isWaiting || pointA == null || pointB == null) return;
 
-            if (isMoving && !isWaiting && pointA != null && pointB != null)
+            Vector2 currentRbPos = rb.position;
+            Vector2 newPos = Vector2.MoveTowards(currentRbPos, targetPosition, speed * Time.fixedDeltaTime);
+            Vector2 platformDelta = newPos - currentRbPos;
+
+            rb.MovePosition(newPos);
+
+            // Carry the player in exact lockstep with the Rigidbody2D delta so the platform never leaves them behind
+            if (isPlayerOnPlatform && platformDelta != Vector2.zero)
             {
-                Vector3 targetPos = targetPosition;
-                Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, speed * Time.fixedDeltaTime);
-
-                rb.MovePosition(newPos);
-
-                if (Vector3.Distance(newPos, targetPos) < 0.02f)
+                if (playerRb != null)
                 {
-                    StartCoroutine(WaitAndSwitchTarget());
+                    playerRb.position += platformDelta;
+                }
+                else if (playerTransform != null)
+                {
+                    playerTransform.position += (Vector3)platformDelta;
                 }
             }
 
-            Vector3 platformDelta = transform.position - lastPlatformPosition;
-
-            if (isPlayerOnPlatform && playerTransform != null && platformDelta != Vector3.zero)
+            if (Vector2.Distance(newPos, targetPosition) <= 0.01f)
             {
-                playerTransform.position += platformDelta;
+                rb.linearVelocity = Vector2.zero;
+                transform.position = targetPosition;
+                rb.position = targetPosition;
+                OnWaypointReached();
+            }
+        }
+
+        /// <summary>
+        /// Commits the reached waypoint as the new origin shore immediately before starting the arrival cooldown,
+        /// and updates the player's safe respawn shore if the player is riding the platform.
+        /// </summary>
+        private void OnWaypointReached()
+        {
+            // The reached waypoint becomes the new origin for the return trip
+            isHeadingToB = !isHeadingToB;
+            currentOrigin = isHeadingToB ? pointA.position : pointB.position;
+            targetPosition = isHeadingToB ? pointB.position : pointA.position;
+
+            if (mode == PlatformMode.OnTrigger && isPlayerOnPlatform && playerWaterDetector != null)
+            {
+                playerWaterDetector.UpdateSafeRespawnNear(currentOrigin);
             }
 
-            lastPlatformPosition = transform.position;
+            StopMovementAudio();
+
+            if (mode == PlatformMode.OnTrigger)
+            {
+                isMoving = false;
+            }
+
+            StartCoroutine(WaypointCooldownRoutine());
+        }
+
+        private IEnumerator WaypointCooldownRoutine()
+        {
+            isWaiting = true;
+            yield return new WaitForSeconds(waitTimeAtWaypoints);
+            isWaiting = false;
+
+            if (isMoving)
+            {
+                StartMovementAudio();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
-            {
-                playerTransform = other.transform;
-                isPlayerOnPlatform = true;
-            }
+            if (!other.CompareTag("Player")) return;
+
+            CachePlayerReferences(other);
+            if (IsPlayerDrowning()) return;
+
+            isPlayerOnPlatform = true;
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (!other.CompareTag("Player")) return;
+
+            CachePlayerReferences(other);
+            if (IsPlayerDrowning()) return;
+
+            isPlayerOnPlatform = true;
+
+            if (mode == PlatformMode.OnTrigger && !isMoving && !isWaiting && postRespawnCooldown <= 0f)
             {
-                playerTransform = other.transform;
-                isPlayerOnPlatform = true;
+                float distanceToCenter = Vector2.Distance(other.transform.position, transform.position);
 
-                if (mode == PlatformMode.OnTrigger && !isMoving && !isWaiting)
+                if (distanceToCenter <= centerTileRadius)
                 {
-                    float distanceToCenter = Vector2.Distance(other.transform.position, transform.position);
+                    isMoving = true;
+                    StartMovementAudio();
 
-                    if (distanceToCenter <= centerTileRadius)
+                    if (AudioManager.Instance != null)
                     {
-                        isMoving = true;
+                        AudioManager.Instance.PlayEnvPlatformPlayer(gameObject);
                     }
                 }
             }
@@ -144,28 +238,47 @@ namespace FrogGame.Gameplay
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (!other.CompareTag("Player")) return;
+
+            isPlayerOnPlatform = false;
+            playerTransform = null;
+            playerRb = null;
+            playerBrain = null;
+            playerWaterDetector = null;
+        }
+
+        private void CachePlayerReferences(Collider2D playerCollider)
+        {
+            if (playerTransform != playerCollider.transform)
             {
-                isPlayerOnPlatform = false;
-                playerTransform = null;
+                playerTransform = playerCollider.transform;
+                playerRb = playerCollider.attachedRigidbody;
+                playerBrain = playerCollider.GetComponentInParent<PlayerBrain>();
+                playerWaterDetector = playerCollider.GetComponentInParent<PlayerWaterDetector>();
             }
         }
 
-        private IEnumerator WaitAndSwitchTarget()
+        private bool IsPlayerDrowning()
         {
-            isWaiting = true;
+            return playerBrain != null && playerBrain.FSM != null && playerBrain.FSM.CurrentState is PlayerDrownState;
+        }
 
-            if (mode == PlatformMode.OnTrigger)
+        private void StartMovementAudio()
+        {
+            if (!isMovingAudioPlaying && AudioManager.Instance != null)
             {
-                isMoving = false;
+                AudioManager.Instance.PlayEnvPlatform(gameObject);
+                isMovingAudioPlaying = true;
             }
+        }
 
-            yield return new WaitForSeconds(waitTimeAtWaypoints);
-
-            // The reached waypoint becomes the new origin for the return trip
-            currentOrigin = targetPosition;
-            targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
-            isWaiting = false;
+        private void StopMovementAudio()
+        {
+            if (isMovingAudioPlaying && AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopEnvPlatform(gameObject);
+                isMovingAudioPlaying = false;
+            }
         }
 
         private void OnDrawGizmos()

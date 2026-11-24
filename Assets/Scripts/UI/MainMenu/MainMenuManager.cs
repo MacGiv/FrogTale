@@ -2,6 +2,7 @@ namespace FrogGame.UI
 {
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using FrogGame.Core;
 
     public class MainMenuManager : MonoBehaviour
     {
@@ -10,9 +11,19 @@ namespace FrogGame.UI
         [SerializeField] private OptionsPanelController optionsPanel;
         [SerializeField] private CreditsPanelController creditsPanel;
 
+        private bool IsAnyPanelTransitioning =>
+            (mainPanel != null && mainPanel.IsTransitioning) ||
+            (optionsPanel != null && optionsPanel.IsTransitioning) ||
+            (creditsPanel != null && creditsPanel.IsTransitioning);
+
         private void Awake() => SubscribeEvents();
 
-        private void Start() => ShowMainPanel();
+        private void Start()
+        {
+            optionsPanel.HideImmediate();
+            creditsPanel.HideImmediate();
+            mainPanel.Show();
+        }
 
         private void OnDestroy() => UnsubscribeEvents();
 
@@ -48,20 +59,26 @@ namespace FrogGame.UI
 
         private void ShowMainPanel()
         {
-            mainPanel.Show();
+            if (IsAnyPanelTransitioning) return;
+
             optionsPanel.Hide();
             creditsPanel.Hide();
+            mainPanel.Show();
         }
 
         private void ShowOptionsPanel()
         {
+            if (IsAnyPanelTransitioning) return;
+
             mainPanel.Hide();
-            optionsPanel.Show();
             creditsPanel.Hide();
+            optionsPanel.Show();
         }
 
         private void ShowCreditsPanel()
         {
+            if (IsAnyPanelTransitioning) return;
+
             mainPanel.Hide();
             optionsPanel.Hide();
             creditsPanel.Show();
@@ -73,15 +90,19 @@ namespace FrogGame.UI
 
         private void HandlePlayPressed()
         {
-            SceneManager.LoadScene("GameplayTest_Artist_Meseta");
+            if (IsAnyPanelTransitioning) return;
+
+            SceneManager.LoadScene(SceneNames.PLATEAU);
         }
 
         private void HandleExitPressed()
         {
+            if (IsAnyPanelTransitioning) return;
+
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
         }
 

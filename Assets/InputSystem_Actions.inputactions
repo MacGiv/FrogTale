@@ -25,6 +25,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Tongue",
+                    "type": "Button",
+                    "id": "9063f0ba-522a-4137-ac70-962b1fdc8a17",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
@@ -43,9 +52,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Tongue",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "9063f0ba-522a-4137-ac70-962b1fdc8a17",
+                    "id": "092e66c3-3c6c-49dc-9711-18ee79ddbfdc",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -101,15 +110,6 @@
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "092e66c3-3c6c-49dc-9711-18ee79ddbfdc",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -315,10 +315,21 @@
                 {
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbaf4a53-f00e-470d-90f1-b60199b6eb1a",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -337,10 +348,21 @@
                 {
                     "name": "",
                     "id": "62e39657-22db-4c70-aa70-aafa29a15cff",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Stun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7538b732-4a9d-47b0-ab67-c09385fa1288",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Stun",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -359,10 +381,21 @@
                 {
                     "name": "",
                     "id": "6cad37cb-f849-4877-8ba5-9589a5240603",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Tongue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3e8f560-c758-4caf-af2a-6f12922901f9",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Tongue",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -523,22 +556,33 @@
                 },
                 {
                     "name": "",
-                    "id": "b93c55a3-a31f-4e59-b478-08de429e92e6",
-                    "path": "<Keyboard>/escape",
+                    "id": "fa823576-2758-40ff-b177-5317a12e1614",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": ";Gamepad;Joystick",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fa823576-2758-40ff-b177-5317a12e1614",
-                    "path": "<Gamepad>/start",
+                    "id": "27926f55-5f99-465f-b970-dd735b027fc0",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b93c55a3-a31f-4e59-b478-08de429e92e6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -940,8 +984,41 @@
                 },
                 {
                     "name": "",
+                    "id": "cc01e0ee-9a58-4cc6-9ab1-f80e6f13556c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "802bf97e-1033-4532-96fe-b4882f8db082",
                     "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f15e997-f04a-4be2-81b8-b1eb7994ccaa",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "872469a7-6eb5-41de-a9fd-f6410547ba34",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

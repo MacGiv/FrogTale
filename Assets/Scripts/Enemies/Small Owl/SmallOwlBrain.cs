@@ -2,6 +2,7 @@ namespace FrogGame.Enemies
 {
     using UnityEngine;
     using FrogGame.Core;
+    using FrogGame.Gameplay;
 
     /// <summary>
     /// Brain & FSM Controller for the flying Small Owl enemy.
@@ -32,6 +33,7 @@ namespace FrogGame.Enemies
         [Header("FX References")]
         [SerializeField] private Animator alertAnimator;
         [SerializeField] private Animator attackAnimator;
+        [SerializeField] private GameObject deathExplosionPrefab;
 
         private Rigidbody2D rb;
         private int currentHealth;
@@ -112,6 +114,11 @@ namespace FrogGame.Enemies
 
                     if (AttackAnimator != null)
                     {
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnemyAttack(gameObject);
+                        }
+
                         AttackAnimator.gameObject.SetActive(true);
                         AttackAnimator.Play("SmallOwlScratch", -1, 0f);
                     }
@@ -151,12 +158,7 @@ namespace FrogGame.Enemies
 
             if (currentHealth <= 0)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayEnemyDead(gameObject);
-                }
-
-                Destroy(gameObject);
+                Die();
             }
         }
 
@@ -170,6 +172,35 @@ namespace FrogGame.Enemies
         {
             knockbackTimer = duration;
             rb.linearVelocity = direction.normalized * force;
+        }
+
+        /// <summary>
+        /// Triggers death audio, spawns the explosion VFX, and destroys the enemy GameObject.
+        /// </summary>
+        private void Die()
+        {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.SetEnemyDeadOwl(gameObject);
+                AudioManager.Instance.PlayEnemyDead(gameObject);
+            }
+
+            SpawnDeathExplosion();
+            Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Instantiates the death explosion VFX prefab at the enemy's position and ensures automatic cleanup.
+        /// </summary>
+        private void SpawnDeathExplosion()
+        {
+            if (deathExplosionPrefab == null) return;
+
+            GameObject explosion = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+            if (!explosion.TryGetComponent<AutoDestroyFX>(out _))
+            {
+                explosion.AddComponent<AutoDestroyFX>();
+            }
         }
 
         private void OnDrawGizmosSelected()

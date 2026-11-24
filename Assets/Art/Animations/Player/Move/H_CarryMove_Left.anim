@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -3181042705160940325, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
+      value: {fileID: 2969761524127951351, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
     - time: 0.016666668
-      value: {fileID: -4322071558629207535, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
+      value: {fileID: -6615476325363509259, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -3181042705160940325, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
-    - {fileID: -4322071558629207535, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
+    - {fileID: 2969761524127951351, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
+    - {fileID: -6615476325363509259, guid: ea973670e5ce7e44bb37f46a8c8dab5a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -72,4 +72,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: AnimEvent_OnFootstep
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

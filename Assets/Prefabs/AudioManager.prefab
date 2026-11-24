@@ -48,7 +48,31 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ae407f4de7e19b84eaba1292fcce7588, type: 2}
-  gameplayState:
+  bossFightState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b6e3ad315b6c984408a9e4fa8b7ab609, type: 2}
+  dungeonState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3b9c2466f22afcb43b399815c2ff8da7, type: 2}
+  mangroveState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6ab2141d434da4a409b11cc71cc8801b, type: 2}
+  menuState:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 04dca2a19f8e92e428a4a1fdbd17d88a, type: 2}
+  plateauState:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
@@ -60,24 +84,15 @@ MonoBehaviour:
     groupIdInternal: 0
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b7c3ef088d6146c4fabe96c7ecfe7638, type: 2}
-  menuState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 04dca2a19f8e92e428a4a1fdbd17d88a, type: 2}
-  dungeonState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 3b9c2466f22afcb43b399815c2ff8da7, type: 2}
-  bossFightState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: b6e3ad315b6c984408a9e4fa8b7ab609, type: 2}
+  sceneMusicEntries:
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
+  - SceneName: 
+    MusicState: 0
 --- !u!1 &2221066544426684449
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,10 +142,10 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5b50c78a378743941be358b4d057fa9c, type: 2}
-  playEnemyArrowHit:
+  playEnemyAttack:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: fe98ab6b634cc864f9d706c096fe9fe4, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 7d1aac38bbe73964fbe630ab9bdc37e3, type: 2}
   playEnemyBoogerHit:
     idInternal: 0
     valueGuidInternal: 
@@ -171,18 +186,26 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: c41ac0b4edd879c4f82994199ad4c2c9, type: 2}
-  playPlayerBoogerHit:
+  playEnvPlatform:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 408cb3d3212affa49816768b805d65a8, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 51c99e7eff465f34db8b7063d687afc2, type: 2}
+  stopEnvPlatform:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7bed7bda7564c434db225409a40355b1, type: 2}
+  playEnvPlatformPlayer:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e18b348110ba0134dabf7df5230ab91f, type: 2}
+  playPlayerArrowHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 942bc17a934100f4a8313fd978e222e3, type: 2}
   playPlayerBoogerShot:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 0f5e1cc725c8b4f4398e8d4c20c2d0a5, type: 2}
-  playPlayerBowHit:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 942bc17a934100f4a8313fd978e222e3, type: 2}
   playPlayerBowShot:
     idInternal: 0
     valueGuidInternal: 
@@ -191,19 +214,103 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 861ec0b611994264eb3f12765154c72b, type: 2}
+  playPlayerEnemyMaskRemove:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 36c58bc0bb8558946b1ce4773ba50fdc, type: 2}
   playPlayerFallWater:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: f66d61353243a5e4a84d0ac4bf435ec7, type: 2}
+  playPlayerFootsteps:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8f3b309280dccd9418d11b9d4275e9bc, type: 2}
   playPlayerTongueHit:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: d0322df22715ddc40acdf333412c378b, type: 2}
-  playPlayerTongueShot:
+  playUIClickButton:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a9f3382fa05f1ac44a5bd122ea74d3b2, type: 2}
-  playTestSound:
+    WwiseObjectReference: {fileID: 11400000, guid: 25e87491d939e3d4f920665c000f1c0c, type: 2}
+  playUIHoverButton:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: b6867b5a5658b61449c5e94b8da0dc6a, type: 2}
+  playUIStartMenu:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 50916e44ee86b1249afe82802ad52aaf, type: 2}
+  enemyDeadBoss:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2f753e9ac6236ff4ab4472ddd3e704d3, type: 2}
+  enemyDeadFox:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 904096ccd97b3f149a08c2f4030bb35c, type: 2}
+  enemyDeadOwl:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8e8f1641fdfe9e147be3a3652c450c6a, type: 2}
+  arrowHitGrass:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 92d1ecece68c7174a832ca05a12d01d6, type: 2}
+  arrowHitMetal:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 938743c02e2363f40922dfcada5851be, type: 2}
+  arrowHitWood:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 698aac7a917bd744c951b0459cbb9439, type: 2}
+  playerFootstepsConcrete:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c45a14ae0e10d0e4fbdb24ca87b65824, type: 2}
+  playerFootstepsGrassLarge:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2c6dc025ec2d3614e95f5e981806a619, type: 2}
+  playerFootstepsGrassShort:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 847259a8ccfc26445934e7156b3d26f6, type: 2}
+  playerTongueHitRandom:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: da2a5e3819eae9249aa1129f278e9ef1, type: 2}
+  playerTongueHitRock:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4eb05cbd8ba8f204491af0248b9f3147, type: 2}
+  playerTongueShot:
+    idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fc3c81a44e499c34ab3ada6fd009c515, type: 2}

@@ -1,22 +1,34 @@
 using UnityEngine;
-using AK.Wwise;
+using UnityEngine.SceneManagement;
+using FrogGame.Core;
 
 public class MusicManager : MonoBehaviour
 {
+    public enum MusicOption
+    {
+        BossFight,
+        Dungeon,
+        Mangrove,
+        Menu,
+        Plateau,
+        Shop
+    }
+
     public static MusicManager Instance { get; private set; }
 
     [Header("Music Event")]
     [SerializeField] private AK.Wwise.Event playMX;
 
     [Header("Location / Context States")]
-    [SerializeField] private AK.Wwise.State gameplayState;
-    [SerializeField] private AK.Wwise.State shopState;
-    [SerializeField] private AK.Wwise.State menuState;
-    [SerializeField] private AK.Wwise.State dungeonState;
     [SerializeField] private AK.Wwise.State bossFightState;
+    [SerializeField] private AK.Wwise.State dungeonState;
+    [SerializeField] private AK.Wwise.State mangroveState;
+    [SerializeField] private AK.Wwise.State menuState;
+    [SerializeField] private AK.Wwise.State plateauState;
+    [SerializeField] private AK.Wwise.State shopState;
 
-    // ID numérico de reproducción (0 representa una instancia no válida o inactiva)
     private uint musicPlayingId = 0u;
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -28,35 +40,77 @@ public class MusicManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        PlayMusic();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        if (gameplayState != null && gameplayState.IsValid())
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
         {
-            SetGameplay();
+            case SceneNames.MAIN_MENU:
+
+                SetMenu();
+                PlayMusic();
+
+                break;
+            case SceneNames.PLATEAU:
+
+                SetPlateau();
+                PlayMusic();
+
+                break;
+            case SceneNames.MANGROVE:
+
+                SetMangrove();
+                PlayMusic();
+
+                break;
         }
     }
 
-    #region Play / Stop
+    #region Play / Stop / Pause
     public void PlayMusic()
     {
-        // Si la música ya tiene un ID de reproducción activo (> 0), evitamos volver a dispararla
-        if (musicPlayingId != 0u)
+        if (isPaused)
         {
-            Debug.LogWarning($"[MusicManager] Se intentó disparar PlayMusic(), pero la música ya está activa (ID: {musicPlayingId}).", gameObject);
+            ResumeMusic();
             return;
         }
 
+        if (musicPlayingId != 0u) return;
+
         if (playMX != null && playMX.IsValid())
         {
-            // Post() devuelve un uint > 0 si el evento se ejecutó correctamente
             musicPlayingId = playMX.Post(gameObject);
+        }
+    }
 
-            if (musicPlayingId != 0u)
-            {
-                Debug.Log($"[MusicManager] Música iniciada con Playing ID: {musicPlayingId}");
-            }
+    public void PauseMusic(int fadeOutMs = 100)
+    {
+        if (musicPlayingId == 0u || isPaused) return;
+
+        if (playMX != null && playMX.IsValid())
+        {
+            playMX.ExecuteAction(gameObject, AkActionOnEventType.AkActionOnEventType_Pause, fadeOutMs, AkCurveInterpolation.AkCurveInterpolation_Linear);
+            isPaused = true;
+        }
+    }
+
+    public void ResumeMusic(int fadeInMs = 100)
+    {
+        if (musicPlayingId == 0u || !isPaused) return;
+
+        if (playMX != null && playMX.IsValid())
+        {
+            playMX.ExecuteAction(gameObject, AkActionOnEventType.AkActionOnEventType_Resume, fadeInMs, AkCurveInterpolation.AkCurveInterpolation_Linear);
+            isPaused = false;
         }
     }
 
@@ -66,6 +120,7 @@ public class MusicManager : MonoBehaviour
         {
             playMX.Stop(gameObject);
             musicPlayingId = 0u;
+            isPaused = false;
         }
     }
     #endregion
@@ -79,10 +134,48 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void SetGameplay() => SetState(gameplayState);
-    public void SetShop() => SetState(shopState);
-    public void SetMenu() => SetState(menuState);
-    public void SetDungeon() => SetState(dungeonState);
+    public void SetMusic(MusicOption musciOption)
+    {
+        switch (musciOption)
+        {
+            case MusicOption.BossFight:
+
+                SetBossFight();
+
+                break;
+            case MusicOption.Dungeon:
+
+                SetDungeon();
+
+                break;
+            case MusicOption.Mangrove:
+
+                SetMangrove();
+
+                break;
+            case MusicOption.Menu:
+
+                SetMenu();
+
+                break;
+            case MusicOption.Plateau:
+
+                SetPlateau();
+
+                break;
+            case MusicOption.Shop:
+
+                SetShop();
+
+                break;
+        }
+    }
+
     public void SetBossFight() => SetState(bossFightState);
+    public void SetDungeon() => SetState(dungeonState);
+    public void SetMangrove() => SetState(mangroveState);
+    public void SetMenu() => SetState(menuState);
+    public void SetPlateau() => SetState(plateauState);
+    public void SetShop() => SetState(shopState);
     #endregion
 }

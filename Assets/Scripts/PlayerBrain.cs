@@ -17,6 +17,8 @@ namespace FrogGame.Gameplay
     [RequireComponent(typeof(PlayerAnimationHandler))]
     [RequireComponent(typeof(PlayerGrappleCollisionDetector))]
     [RequireComponent(typeof(PlayerAbilityTracker))]
+    [RequireComponent(typeof(PlayerTallGrassDetector))]
+    [RequireComponent(typeof(PlayerFootstepHandler))]
     public class PlayerBrain : MonoBehaviour
     {
         [Header("Weapon Prefabs & Spawns")]
@@ -45,6 +47,8 @@ namespace FrogGame.Gameplay
         public PlayerAnimationHandler AnimationHandler { get; private set; }
         public PlayerGrappleCollisionDetector GrappleCollisionDetector { get; private set; }
         public PlayerAbilityTracker AbilityTracker { get; private set; }
+        public PlayerTallGrassDetector TallGrassDetector { get; private set; }
+        public PlayerFootstepHandler FootstepHandler { get; private set; }
 
         public bool IsHelmetEquipped => isHelmetEquipped;
 
@@ -76,6 +80,8 @@ namespace FrogGame.Gameplay
             AnimationHandler = GetComponent<PlayerAnimationHandler>();
             GrappleCollisionDetector = GetComponent<PlayerGrappleCollisionDetector>();
             AbilityTracker = GetComponent<PlayerAbilityTracker>();
+            TallGrassDetector = GetComponent<PlayerTallGrassDetector>();
+            FootstepHandler = GetComponent<PlayerFootstepHandler>();
 
             // Cache the base RuntimeAnimatorController
             if (Animator != null)

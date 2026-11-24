@@ -7,7 +7,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Item that can be grabbed and retrieved via tongue or direct interaction.
-    /// Supports locking onto floor switches and carrying physics.
+    /// Supports locking onto floor switches and carrying physics without push displacement.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class GrabbableItem : MonoBehaviour
@@ -45,6 +45,24 @@ namespace FrogGame.Gameplay
         {
             itemCollider = GetComponent<Collider2D>();
             rb = GetComponent<Rigidbody2D>();
+
+            SetGroundedPhysics();
+        }
+
+        /// <summary>
+        /// Keeps the Rigidbody2D Dynamic with FreezeAll constraints so it triggers FloorSwitches reliably
+        /// while remaining completely immovable by player or enemy push collisions.
+        /// </summary>
+        public void SetGroundedPhysics()
+        {
+            if (rb == null) return;
+
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb.simulated = true;
         }
 
         /// <summary>
@@ -57,11 +75,7 @@ namespace FrogGame.Gameplay
             transform.SetParent(null);
             transform.position = switchCenterPosition;
 
-            if (rb != null)
-            {
-                rb.simulated = true;
-                rb.linearVelocity = Vector2.zero;
-            }
+            SetGroundedPhysics();
 
             if (itemCollider != null)
             {
@@ -104,11 +118,6 @@ namespace FrogGame.Gameplay
 
             onCollected?.Invoke();
 
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayEnvItemsPickup(gameObject);
-            }
-
             if (pullTarget != null && TryGetComponent<IPickupable>(out var pickupable))
             {
                 pickupable.Collect(pullTarget.gameObject);
@@ -124,15 +133,26 @@ namespace FrogGame.Gameplay
                     {
                         if (pullTarget != null && pullTarget.TryGetComponent<PlayerHealthSystem>(out var healthSystem))
                         {
+                            if (AudioManager.Instance != null)
+                            {
+                                AudioManager.Instance.PlayPlayerEnemyMaskRemove();
+                            }
+
                             healthSystem.SetShieldState(true);
                         }
+
                         Destroy(gameObject);
                     }
                     break;
 
                 case ItemType.HeavyBlock:
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                    }
+
                     if (itemCollider != null) itemCollider.enabled = true;
-                    if (rb != null) rb.simulated = true;
+                    SetGroundedPhysics();
                     isBeingPulled = false;
                     break;
 
@@ -151,6 +171,11 @@ namespace FrogGame.Gameplay
                 case ItemType.AbilityBow:
                     if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainBow))
                     {
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                        }
+
                         brainBow.AbilityTracker?.UnlockBow();
                         brainBow.AmmoSystem?.AddArrows(10);
                     }
@@ -160,6 +185,11 @@ namespace FrogGame.Gameplay
                 case ItemType.AbilitySneeze:
                     if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainSneeze))
                     {
+                        if (AudioManager.Instance != null)
+                        {
+                            AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                        }
+
                         brainSneeze.AbilityTracker?.UnlockSneeze();
                     }
                     Destroy(gameObject);

@@ -3,6 +3,7 @@ namespace FrogGame.Enemies
     using UnityEngine;
     using UnityEngine.Tilemaps;
     using FrogGame.Core;
+    using FrogGame.Gameplay;
 
     /// <summary>
     /// Brain & FSM Controller for the Fox enemy.
@@ -34,10 +35,12 @@ namespace FrogGame.Enemies
         [Header("Visuals & Flip Settings")]
         [SerializeField] private Transform visualsTransform;
         [SerializeField] private bool spriteFacesLeftByDefault = false;
+        [SerializeField] private EnemyHitFlash hitFlash;
 
         [Header("FX References")]
         [SerializeField] private Animator alertAnimator;
         [SerializeField] private Animator attackAnimator;
+        [SerializeField] private GameObject deathExplosionPrefab;
 
         private Rigidbody2D rb;
         private int currentHealth;
@@ -75,6 +78,7 @@ namespace FrogGame.Enemies
             currentHealth = maxHealth;
 
             Animator = GetComponent<Animator>();
+            if (hitFlash == null) hitFlash = GetComponent<EnemyHitFlash>();
 
             FSM = new FiniteStateMachine();
 
@@ -219,6 +223,10 @@ namespace FrogGame.Enemies
 
         public void TakeDamage(int damageAmount)
         {
+            if (hitFlash != null)
+            {
+                hitFlash.TriggerHitFlash();
+            }
             currentHealth -= damageAmount;
             Debug.Log($"{gameObject.name} took {damageAmount} damage. Health left: {currentHealth}");
 
@@ -249,11 +257,26 @@ namespace FrogGame.Enemies
         {
             if (AudioManager.Instance != null)
             {
+                AudioManager.Instance.SetEnemyDeadFox(gameObject);
                 AudioManager.Instance.PlayEnemyDead(gameObject);
             }
 
-            // TODO: Efectos visuales, drops o eventos de muerte
+            SpawnDeathExplosion();
             Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Instantiates the death explosion VFX prefab at the enemy's position and ensures automatic cleanup.
+        /// </summary>
+        private void SpawnDeathExplosion()
+        {
+            if (deathExplosionPrefab == null) return;
+
+            GameObject explosion = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+            if (!explosion.TryGetComponent<AutoDestroyFX>(out _))
+            {
+                explosion.AddComponent<AutoDestroyFX>();
+            }
         }
 
         private void OnDrawGizmosSelected()

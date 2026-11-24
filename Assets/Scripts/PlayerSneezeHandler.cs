@@ -5,7 +5,7 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles the area-of-effect (AoE) sneeze attack, applying damage, knockback, and stun to enemies.
+    /// Handles the area-of-effect (AoE) sneeze attack, applying damage, knockback, stun, and spawning the sneeze VFX animation.
     /// </summary>
     public class PlayerSneezeHandler : MonoBehaviour
     {
@@ -21,7 +21,10 @@ namespace FrogGame.Gameplay
         [SerializeField] private LayerMask enemyLayer;
 
         [Header("Visual & Feedback References")]
-        [SerializeField] private GameObject sneezeParticle;
+        [SerializeField] private GameObject sneezeVfxPrefab;
+        [SerializeField] private Transform sneezeSpawnPoint;
+        [SerializeField] private float spawnForwardOffset = 0.5f;
+        [SerializeField] private bool rotateVfxWithDirection = true;
 
         private float lastSneezeTime = -999f;
         private PlayerMovementHandler movementHandler;
@@ -61,18 +64,11 @@ namespace FrogGame.Gameplay
             Vector2 boxSize = new Vector2(range, areaWidth);
             float angle = Mathf.Atan2(facingDir.y, facingDir.x) * Mathf.Rad2Deg;
 
-            Debug.Log($"[PlayerSneezeHandler] Sneeze executed in direction: {facingDir}");
-
             // Detect enemies within the AoE box
             Collider2D[] hits = Physics2D.OverlapBoxAll(attackCenter, boxSize, angle, enemyLayer);
 
             foreach (var hit in hits)
             {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayPlayerBoogerHit(hit.gameObject);
-                }
-
                 // 1. Apply Damage
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {
@@ -93,26 +89,48 @@ namespace FrogGame.Gameplay
                 }
             }
 
-            // Trigger visual particle effect if assigned
-            if (sneezeParticle != null)
-            {
-                // Rotate parent container around Z axis matching the attack angle
-                Quaternion particleRotation = Quaternion.Euler(0f, 0f, angle);
-
-                GameObject particleObj = Instantiate(sneezeParticle, transform.position, particleRotation);
-
-                // Play particle system on child component
-                var ps = particleObj.GetComponentInChildren<ParticleSystem>();
-                if (ps != null)
-                {
-                    ps.Play();
-                }
-
-                // Automatically destroy clone after 2 seconds to avoid leaks
-                Destroy(particleObj, 2.0f);
-            }
+            SpawnSneezeAnimation(facingDir, angle);
 
             return true;
+        }
+
+        private void SpawnSneezeAnimation(Vector2 facingDir, float angle)
+        {
+            if (sneezeVfxPrefab == null) return;
+
+            Vector3 spawnPos = sneezeSpawnPoint != null
+                ? sneezeSpawnPoint.position
+                : (Vector3)((Vector2)transform.position + (facingDir.normalized * spawnForwardOffset));
+
+            Quaternion vfxRotation = rotateVfxWithDirection
+                ? Quaternion.Euler(0f, 0f, angle)
+                : Quaternion.identity;
+
+            GameObject vfxObj = Instantiate(sneezeVfxPrefab, spawnPos, vfxRotation);
+
+            if (vfxObj.TryGetComponent<Animator>(out var vfxAnimator))
+            {
+                foreach (AnimatorControllerParameter param in vfxAnimator.parameters)
+                {
+                    if (param.name == "MoveX" && param.type == AnimatorControllerParameterType.Float)
+                    {
+                        vfxAnimator.SetFloat("MoveX", facingDir.x);
+                    }
+                    else if (param.name == "MoveY" && param.type == AnimatorControllerParameterType.Float)
+                    {
+                        vfxAnimator.SetFloat("MoveY", facingDir.y);
+                    }
+                }
+
+                if (!vfxObj.TryGetComponent<AutoDestroyFX>(out _))
+                {
+                    vfxObj.AddComponent<AutoDestroyFX>();
+                }
+            }
+            else
+            {
+                Destroy(vfxObj, 1.0f);
+            }
         }
 
         private void OnDrawGizmosSelected()
