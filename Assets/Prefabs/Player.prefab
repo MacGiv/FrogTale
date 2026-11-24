@@ -408,7 +408,7 @@ MonoBehaviour:
   arrowSpawnPoint: {fileID: 2473404711069442025}
   carryHandler: {fileID: 0}
   helmetAnimatorOverride: {fileID: 22100000, guid: 9d5b456f269621b47aeb30ac09c472f4, type: 2}
-  startWithHelmet: 1
+  startWithHelmet: 0
 --- !u!114 &4998396240059985195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,11 +607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14c66b3e76883c4e9c9ff16ccd0ba2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerHealthSystem
-  maxHealth: 6
-  invincibilityDuration: 1
-  isShieldOn: 1
+  maxHealth: 5
+  invincibilityDuration: 1.25
+  isShieldOn: 0
   playerSprite: {fileID: 4074726627394767299}
-  currentHealth: 25
+  currentHealth: 5
 --- !u!114 &256641055099659110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,8 +631,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 32896
-  dropBoxSize: {x: 1, y: 1}
-  dropDistance: 0.7
+  dropBoxSize: {x: 0.75, y: 0.75}
+  dropDistance: 0.5
 --- !u!114 &8395082505162536254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,8 +645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca0791d166a7c54b9661a7ff27cfa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerAmmoSystem
-  currentArrows: 25
-  maxArrows: 25
+  currentArrows: 10
+  maxArrows: 50
 --- !u!114 &7106084710380421344
 MonoBehaviour:
   m_ObjectHideFlags: 0
