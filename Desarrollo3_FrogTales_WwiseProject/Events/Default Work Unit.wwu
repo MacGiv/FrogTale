@@ -191,7 +191,7 @@
 								<Action Name="" ID="{B2836C1A-4A2A-4902-83BE-8602AC98D9C8}" ShortID="470911456">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Env_Rock" ID="{230BAB38-4F45-4991-B5FC-83CF498EFC1D}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Env_Rock_door" ID="{400476BF-88E4-454C-993D-2620675E7653}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

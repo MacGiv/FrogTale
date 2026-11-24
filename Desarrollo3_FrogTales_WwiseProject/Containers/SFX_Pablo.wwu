@@ -4,6 +4,13 @@
 		<WorkUnit Name="SFX_Pablo" ID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}" OwnerID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Nested">
 			<ChildrenList>
 				<PropertyContainer Name="SFX" ID="{083C7CC3-A7FF-4B73-A65E-F75D6641C507}" ShortID="583540733">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -31,6 +38,17 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>17</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -48,6 +66,17 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -77,6 +106,11 @@
 											</MediaIDList>
 										</AudioFileSource>
 										<AudioFileSource Name="EnemyArrowHit" ID="{3B65B147-5E1F-4C11-96FF-9A114AF5430E}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.00069"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.00418"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>EnemyArrowHit.wav</AudioFile>
 											<MediaIDList>
@@ -93,10 +127,10 @@
 															<Effect Name="Parametric EQ (Custom)" ID="{1AF41936-3AF3-40FB-A633-30DF92B9D04E}" ShortID="49815012" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 																<PropertyList>
 																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
-																	<Property Name="FrequencyBand2" Type="Real32" Value="748.0776"/>
-																	<Property Name="FrequencyBand3" Type="Real32" Value="2020.985"/>
-																	<Property Name="GainBand2" Type="Real32" Value="-5.772152"/>
-																	<Property Name="GainBand3" Type="Real32" Value="6.03352"/>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="775.4819"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="2073.266"/>
+																	<Property Name="GainBand2" Type="Real32" Value="-3.96748"/>
+																	<Property Name="GainBand3" Type="Real32" Value="4.747967"/>
 																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
 																</PropertyList>
 															</Effect>
@@ -114,7 +148,18 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="75"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -158,7 +203,18 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="75"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -211,7 +267,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>3</Value>
+												<Value>4</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -275,6 +331,11 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>24</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
@@ -291,6 +352,7 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -463,6 +525,16 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>25</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -478,6 +550,7 @@
 												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -670,6 +743,22 @@
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{478E7C0D-F303-404F-AA72-E869858F97D7}">
+													<ChildrenList>
+														<Path2D Name="Enemy_Dead_Switch_Path" ID="{F0DC99AC-0D4D-4781-A367-E645A321D01C}">
+															<PointList>
+																<Point>
+																	<XPos>2.65298</XPos>
+																	<YPos>-0.90031</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+													</ChildrenList>
+												</Position>
+											</PositioningInfo>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -708,14 +797,16 @@
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
 														<Value>80</Value>
 													</ValueList>
 												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-9</Value>
+														<Value>-1</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -778,6 +869,12 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -813,6 +910,9 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{44420189-E2FF-4E5C-B883-51A22EA21FDF}"/>
+									</PositioningInfo>
 									<ActiveSourceList>
 										<ActiveSource Name="SlideDoor" ID="{82360EB7-86F2-4732-8EA9-D30434B163A9}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -880,6 +980,27 @@
 													</Reference>
 												</ReferenceList>
 											</EffectSlot>
+											<EffectSlot Name="" ID="{27F91876-EE5C-4841-8980-9D4637D23EC1}" ShortID="39895787">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Guitar Distortion (Custom)" ID="{093D09AC-DAC7-498F-8830-7535BC47649C}" ShortID="301206077" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+																<PropertyList>
+																	<Property Name="DistortionDrive" Type="Real32" Value="20"/>
+																	<Property Name="DistortionTone" Type="Real32" Value="15"/>
+																	<Property Name="DistortionType" Type="int32" Value="1"/>
+																	<Property Name="OutputLevel" Type="Real32" Value="-13"/>
+																	<Property Name="PreEQBand1Enable" Type="bool" Value="True"/>
+																	<Property Name="PreEQBand1FilterType" Type="int32" Value="1"/>
+																	<Property Name="PreEQBand1Frequency" Type="Real32" Value="702"/>
+																	<Property Name="PreEQBand1Gain" Type="Real32" Value="2.5"/>
+																	<Property Name="PreEQBand1QFactor" Type="Real32" Value="0.7"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
 										</ObjectList>
 									</ObjectLists>
 									<ActiveSourceList>
@@ -888,12 +1009,23 @@
 								</Sound>
 								<Sound Name="Env_Items_Pickup" ID="{CDD62914-4DC2-4CAC-86D4-D8C75A5B5D2A}" ShortID="98604980">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>28</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{11C17B4F-4207-4658-B0F4-F82939189204}"/>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -905,23 +1037,6 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{286F70AB-B962-4E21-8892-DA23D9CDBA14}">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
-												</Reference>
-											</ReferenceList>
-											<Language>SFX</Language>
-											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="335759465"/>
-											</MediaIDList>
-										</AudioFileSource>
 										<AudioFileSource Name="Collectible" ID="{BB6BCCB9-D41B-4E13-8969-87869EB5A2A7}">
 											<Language>SFX</Language>
 											<AudioFile>Collectible.wav</AudioFile>
@@ -930,6 +1045,30 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{A58FEA8B-9A6F-4D17-9EBD-8573C1E44D14}" ShortID="373667165">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Guitar Distortion (Custom)" ID="{C06FEA39-D932-4D69-B5FA-B2A6AF8E5601}" ShortID="720027334" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+																<PropertyList>
+																	<Property Name="DistortionDrive" Type="Real32" Value="21"/>
+																	<Property Name="DistortionTone" Type="Real32" Value="10"/>
+																	<Property Name="DistortionType" Type="int32" Value="1"/>
+																	<Property Name="OutputLevel" Type="Real32" Value="-12"/>
+																	<Property Name="PreEQBand1Enable" Type="bool" Value="True"/>
+																	<Property Name="PreEQBand1FilterType" Type="int32" Value="1"/>
+																	<Property Name="PreEQBand1Gain" Type="Real32" Value="4"/>
+																	<Property Name="Rectification" Type="Real32" Value="18"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="Collectible" ID="{BB6BCCB9-D41B-4E13-8969-87869EB5A2A7}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1286,6 +1425,11 @@
 										</RandomSequenceContainer>
 										<Sound Name="Env_Rock" ID="{230BAB38-4F45-4991-B5FC-83CF498EFC1D}" ShortID="204778719">
 											<PropertyList>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
 														<Value>-300</Value>
@@ -1301,6 +1445,11 @@
 															</Modifier>
 														</ModifierInfo>
 													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -1356,7 +1505,7 @@
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>8</Value>
+												<Value>12</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1713,6 +1862,73 @@
 										<ActiveSource Name="PlatformFull" ID="{0A521182-99A5-4F3D-8EB2-6CE1738910AC}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="Env_Rock_door" ID="{400476BF-88E4-454C-993D-2620675E7653}" ShortID="1015421049">
+									<PropertyList>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-580</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2AB694D8-CC1F-44EB-AE6A-BB5250092FE2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="75"/>
+															<Property Name="Min" Type="Real64" Value="-50"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{BD1376C3-CD83-434E-8357-258E3E139CC4}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+												</Reference>
+											</ReferenceList>
+											<Language>SFX</Language>
+											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="335759465"/>
+											</MediaIDList>
+										</AudioFileSource>
+										<AudioFileSource Name="BotonRoca" ID="{C7F4085F-FF77-4965-84EC-7B43EC41C7DC}">
+											<Language>SFX</Language>
+											<AudioFile>BotonRoca.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="295743545"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="BotonRoca" ID="{C7F4085F-FF77-4965-84EC-7B43EC41C7DC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</PropertyContainer>
 						<PropertyContainer Name="Player" ID="{13A61AEA-DD22-4C02-B33B-59A03B58091B}" ShortID="467907203">
@@ -1743,6 +1959,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1840,6 +2061,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -1896,7 +2122,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-7</Value>
+												<Value>-12</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>

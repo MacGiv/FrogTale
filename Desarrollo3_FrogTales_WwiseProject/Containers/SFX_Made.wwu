@@ -4,6 +4,13 @@
 		<WorkUnit Name="SFX_Made" ID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}" OwnerID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Nested">
 			<ChildrenList>
 				<PropertyContainer Name="SFX" ID="{DC95D43B-449C-4586-8256-2A848056481E}" ShortID="490298800">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -32,6 +39,11 @@
 										<Property Name="Highpass" Type="int16">
 											<ValueList>
 												<Value>17</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Lowpass" Type="int16">
@@ -298,9 +310,12 @@
 							<ChildrenList>
 								<SwitchContainer Name="Player_Arrow_Hit" ID="{5824EAC5-0A6D-43D9-A021-0416CE4EDE2C}" ShortID="751344081">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="90"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-2</Value>
+												<Value>-3</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -356,6 +371,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{71507275-DCE6-4E95-926A-26E5930BB9F9}"/>
+											</PositioningInfo>
 											<ActiveSourceList>
 												<ActiveSource Name="SFX_FLECHA_MADERA" ID="{436C45BD-10B7-430F-A659-02C3C61EFE79}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -363,10 +381,9 @@
 										<Sound Name="Player_Bow_Hit_Metal" ID="{7FC385EF-7FF1-4C21-8339-73C08C67BC30}" ShortID="571679815">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="1"/>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>7</Value>
+														<Value>2</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -393,9 +410,14 @@
 										</Sound>
 										<Sound Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}" ShortID="1050650305">
 											<PropertyList>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>26</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>5</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -482,12 +504,12 @@
 									<PropertyList>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>26</Value>
+												<Value>32</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-2</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -537,6 +559,18 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Player_Bow_Shot" ID="{3FBA8C73-147B-4657-8F20-6E5693686FA3}" ShortID="185388181">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -584,13 +618,13 @@
 									<PropertyList>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>40</Value>
+												<Value>44</Value>
 											</ValueList>
 										</Property>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
-												<Value>110</Value>
+												<Value>170</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
@@ -706,7 +740,7 @@
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>6</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -742,12 +776,12 @@
 																		<PropertyList>
 																			<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
 																			<Property Name="FilterTypeBand2" Type="int32" Value="5"/>
-																			<Property Name="FrequencyBand1" Type="Real32" Value="874.2889"/>
+																			<Property Name="FrequencyBand1" Type="Real32" Value="918.2518"/>
 																			<Property Name="FrequencyBand2" Type="Real32" Value="1773.972"/>
-																			<Property Name="FrequencyBand3" Type="Real32" Value="279.3116"/>
-																			<Property Name="GainBand1" Type="Real32" Value="-3.244275"/>
+																			<Property Name="FrequencyBand3" Type="Real32" Value="287.8098"/>
+																			<Property Name="GainBand1" Type="Real32" Value="-6.06087"/>
 																			<Property Name="GainBand2" Type="Real32" Value="6.61832"/>
-																			<Property Name="GainBand3" Type="Real32" Value="-8.642458"/>
+																			<Property Name="GainBand3" Type="Real32" Value="-3.642857"/>
 																			<Property Name="OnOffBand3" Type="bool" Value="True"/>
 																			<Property Name="QFactorBand3" Type="Real32" Value="0.8"/>
 																		</PropertyList>
@@ -764,15 +798,15 @@
 										</Sound>
 										<Sound Name="Player_Tongue_Shot" ID="{0D0FDAAA-08F8-4023-9DCF-7DE625EB5DD9}" ShortID="1061881348">
 											<PropertyList>
-												<Property Name="Highpass" Type="int16">
+												<Property Name="Lowpass" Type="int16">
 													<ValueList>
-														<Value>1</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -825,11 +859,11 @@
 																		<PropertyList>
 																			<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
 																			<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
-																			<Property Name="FrequencyBand1" Type="Real32" Value="1002.165"/>
-																			<Property Name="FrequencyBand2" Type="Real32" Value="419.6425"/>
+																			<Property Name="FrequencyBand1" Type="Real32" Value="1179.949"/>
+																			<Property Name="FrequencyBand2" Type="Real32" Value="436.0855"/>
 																			<Property Name="FrequencyBand3" Type="Real32" Value="2542.124"/>
-																			<Property Name="GainBand1" Type="Real32" Value="-2.27933"/>
-																			<Property Name="GainBand2" Type="Real32" Value="-2.547486"/>
+																			<Property Name="GainBand1" Type="Real32" Value="-4.617886"/>
+																			<Property Name="GainBand2" Type="Real32" Value="-3.837398"/>
 																			<Property Name="GainBand3" Type="Real32" Value="8"/>
 																			<Property Name="OnOffBand3" Type="bool" Value="True"/>
 																			<Property Name="QFactorBand2" Type="Real32" Value="0.9"/>
@@ -856,13 +890,31 @@
 																<PropertyList>
 																	<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
 																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
-																	<Property Name="FrequencyBand1" Type="Real32" Value="1034.122"/>
-																	<Property Name="FrequencyBand2" Type="Real32" Value="368.6846"/>
-																	<Property Name="FrequencyBand3" Type="Real32" Value="2393.311"/>
-																	<Property Name="GainBand1" Type="Real32" Value="-3.358779"/>
-																	<Property Name="GainBand2" Type="Real32" Value="-2.36962"/>
-																	<Property Name="GainBand3" Type="Real32" Value="9.787709"/>
+																	<Property Name="FrequencyBand1" Type="Real32" Value="997.5775"/>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="408.0272"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="2227.948"/>
+																	<Property Name="GainBand1" Type="Real32" Value="-4.878049"/>
+																	<Property Name="GainBand2" Type="Real32" Value="-2.921739"/>
+																	<Property Name="GainBand3" Type="Real32" Value="7.089431"/>
 																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+											<EffectSlot Name="" ID="{FE3A12B5-42F9-461A-A4C2-8D873B251ECF}" ShortID="912584620">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{93717870-24EA-4396-B61A-0C27A6125430}" ShortID="325999376" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																	<Property Name="FrequencyBand1" Type="Real32" Value="5096.593"/>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="775.4819"/>
+																	<Property Name="GainBand1" Type="Real32" Value="0.06504065"/>
+																	<Property Name="GainBand2" Type="Real32" Value="2.138614"/>
+																	<Property Name="OnOffBand1" Type="bool" Value="False"/>
 																</PropertyList>
 															</Effect>
 														</Custom>
@@ -914,7 +966,7 @@
 										</Property>
 										<Property Name="Lowpass" Type="int16">
 											<ValueList>
-												<Value>27</Value>
+												<Value>25</Value>
 											</ValueList>
 										</Property>
 										<Property Name="Pitch" Type="int32">
@@ -967,6 +1019,11 @@
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="19"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -979,6 +1036,16 @@
 							<ChildrenList>
 								<Sound Name="UI_Click_Button" ID="{3D2068C1-CDA6-4529-8F33-8B377FF44723}" ShortID="35182131">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>20</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -989,6 +1056,16 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-2</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1043,6 +1120,16 @@
 								</Sound>
 								<Sound Name="UI_Mouseover_Button" ID="{E5E532BE-0BBF-4D4D-8E15-849D72AF853B}" ShortID="10372291">
 									<PropertyList>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>15</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -1053,6 +1140,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1107,6 +1199,7 @@
 								</Sound>
 								<Sound Name="UI_Start_Menu" ID="{8B2BE569-36FA-421B-9959-40D3C9C20183}" ShortID="70088141">
 									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -1117,6 +1210,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -1165,6 +1263,28 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{AA220969-98DA-47E7-8DBF-C4DB0CBF6C93}" ShortID="379125089">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{6D7A0FC8-67CA-4A04-9708-14BC47370B32}" ShortID="799891996" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="617.4664"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="3349.564"/>
+																	<Property Name="GainBand2" Type="Real32" Value="-3.186992"/>
+																	<Property Name="GainBand3" Type="Real32" Value="8.260162"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="START_02" ID="{9BE910E0-ACEB-4C3F-A6E2-FFE75F8822B1}" Platform="Linked"/>
 									</ActiveSourceList>

@@ -11,6 +11,14 @@
 						</Module>
 					</ModuleList>
 				</SoundcasterSession>
+				<SoundcasterSession Name="MX" ID="{1E63ED62-EA41-441C-82D1-5E326335E59A}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_MX" ID="{A9F60DCC-D692-4271-8B28-2FC36CA84D5F}" WorkUnitID="{8261B203-0348-45A8-AEF2-31D8CA593DA9}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+					</ModuleList>
+				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundcasterSessions>
