@@ -99,9 +99,9 @@ MonoBehaviour:
   isDroper: 1
   droppableItems:
   - prefab: {fileID: 4340830154474281819, guid: 53e86a3aef86f5a4da5d1912b3318cfa, type: 3}
-    dropChance: 3
+    dropChance: 35
   - prefab: {fileID: 5228230958259665518, guid: bb32f77c8be41b043ab0a4006fbb11ff, type: 3}
-    dropChance: 1
+    dropChance: 5
 --- !u!1 &7725351491852228295
 GameObject:
   m_ObjectHideFlags: 0
