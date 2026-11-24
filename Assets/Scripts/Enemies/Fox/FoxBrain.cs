@@ -35,6 +35,7 @@ namespace FrogGame.Enemies
         [Header("Visuals & Flip Settings")]
         [SerializeField] private Transform visualsTransform;
         [SerializeField] private bool spriteFacesLeftByDefault = false;
+        [SerializeField] private EnemyHitFlash hitFlash;
 
         [Header("FX References")]
         [SerializeField] private Animator alertAnimator;
@@ -77,6 +78,7 @@ namespace FrogGame.Enemies
             currentHealth = maxHealth;
 
             Animator = GetComponent<Animator>();
+            if (hitFlash == null) hitFlash = GetComponent<EnemyHitFlash>();
 
             FSM = new FiniteStateMachine();
 
@@ -221,6 +223,10 @@ namespace FrogGame.Enemies
 
         public void TakeDamage(int damageAmount)
         {
+            if (hitFlash != null)
+            {
+                hitFlash.TriggerHitFlash();
+            }
             currentHealth -= damageAmount;
             Debug.Log($"{gameObject.name} took {damageAmount} damage. Health left: {currentHealth}");
 
